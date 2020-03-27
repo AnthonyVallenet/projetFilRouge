@@ -1,0 +1,9 @@
+{
+    "name": "anthony/projet-file-rouge",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
