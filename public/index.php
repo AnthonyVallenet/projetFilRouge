@@ -8,3 +8,7 @@ require SRC . 'helper.php';
 require SRC . 'database.php';
 
 $router = new App\Router($_SERVER["REQUEST_URI"]);
+$router->get('/', "HomeController@index");
+
+
+$router->run();

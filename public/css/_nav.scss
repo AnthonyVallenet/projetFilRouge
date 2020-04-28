@@ -1,0 +1,241 @@
+// _nav.scss
+
+nav {
+    width: 200px;
+    height: 100vh;
+    padding: 15px;
+    position: fixed;
+    background-color: #0e2650;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition-duration: .7s;
+
+    #burger {
+        display: none;
+    }
+
+    &>div {
+        height: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        &:first-child {
+            height: auto;
+            min-height: 50px;
+            align-items: center;
+            margin-bottom: 20px;
+
+            &>a {
+
+                &>.icon {
+                    font-size: 35px;
+                }
+            }
+        }
+
+        &:last-child {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            &>a {
+                min-height: 40px;
+            }
+        }
+
+        &>a {
+            min-height: 30px;
+            margin: 10px 0 5px 0;
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        &>div {
+            min-height: 30px;
+            margin: 10px 0 5px 0;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+        }
+
+        & .icon {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            font-size: 20px;
+        }
+
+        & p {
+            opacity: 1;
+            width: 100%;
+            margin-left: 15px;
+            visibility: visible;
+            transform: translateX(0px);
+            transition-duration: .7s;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    button {
+        margin: 25px 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        &>i {
+            font-size: 20px;
+            color: white;
+            transform: rotate(180deg);
+            margin-right: -90px;
+            transition-duration: .4s;
+        }
+    }
+
+    &.close {
+        width: 70px;
+
+        &>div {
+            &>a {
+                display: flex;
+            }
+
+            &>div {
+                display: flex;
+            }
+
+            & .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 40px;
+            }
+
+            & p {
+                opacity: 0;
+                width: 0;
+                visibility: hidden;
+                transform: translateX(40px);
+            }
+        }
+
+        button {
+    
+            &>i {
+                transform: rotate(0);
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        z-index: 999;
+        padding: 20px;
+        display: flex;
+        justify-content: start;
+        padding: 10px;
+        transition-duration: 1s;
+
+        &.close {
+            height: auto;
+            
+            &>div {
+                margin-bottom: 0;
+                visibility: hidden;
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+        }
+
+        #burger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            margin: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            &.change {
+                &>.bar1 {
+                    transform: rotate(-45deg) translate(-9px, 8px);
+                }
+                
+                &>.bar2 {
+                    opacity: 0;
+                }
+                
+                &>.bar3 {
+                    transform: rotate(45deg) translate(-9px, -10px);
+                }
+            }
+
+            &>.bar1, &>.bar2, &>.bar3 {
+                width: 40px;
+                min-width: 0;
+                height: 7px;
+                border-radius: 15px;
+                min-height: 0;
+                background-color: #ffffff;
+                margin: 3px 0;
+                transition: 0.4s;
+            }
+        }
+
+        button {
+            display: none;
+        }
+
+        &>div {
+
+            &:first-child {
+                display: flex;
+                position: relative;
+                visibility: visible;
+                width: auto;
+                height: auto;
+                opacity: 1;
+                transition-duration: .7s;
+            }
+        }
+
+    }
+
+    main {
+        padding-top: 75px;
+        margin: 0 !important;
+    }
+}
+
+
+main {
+    width: 100%;
+    margin-left: 200px;
+    min-height: 100vh;
+    z-index: 99;
+    transition-duration: .7s;
+
+    &.close {
+        margin-left: 70px;
+    }
+}
