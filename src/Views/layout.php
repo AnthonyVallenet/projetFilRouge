@@ -108,10 +108,18 @@
         <main id="main" class="close">
             <?php echo $content; ?>
         </main>
+        
+        <footer id="footer" class="close">
+            <a href="">
+                <img src="img/logo_edenSchool.png" alt="Logo Eden School">
+                Ce site a été réalisé par les élèves d'EDEN School
+            </a>
+        </footer>
     </body>
     <script>
         var nav = document.getElementById("nav");
         var main = document.getElementById("main");
+        var footer = document.getElementById("footer");
         var buttonNav = document.getElementById("buttonNav");
         var burger = document.getElementById("burger");
 
@@ -143,9 +151,11 @@
             if (navCookie == "close") {
                 nav.classList.add("close");
                 main.classList.add("close");
+                footer.classList.add("close");
             } else if (navCookie == "") {
                 nav.classList.remove("close");
                 main.classList.remove("close");
+                footer.classList.remove("close");
             }
         }
 
@@ -156,6 +166,7 @@
         buttonNav.onclick = function() {
             nav.classList.toggle("close");
             main.classList.toggle("close");
+            footer.classList.toggle("close");
             burger.classList.toggle("change");
             var navCookie = nav.classList;
             setCookie("navCookie", navCookie, 30);
