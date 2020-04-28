@@ -28,8 +28,28 @@ html {
 
 body {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
 }
-  
-  
+
+main {
+    flex: 1;
+    margin-left: 200px;
+    z-index: 99;
+    transition-duration: .7s;
+
+    &.close {
+        margin-left: 70px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    main {
+        margin-left: 0 !important;
+        margin-top: 75px;
+    }
+}
 
 @import 'nav';
+@import 'footer';
