@@ -35,7 +35,7 @@ class Router {
             }
         }
         // throw new \Exception('No matching routes');
-        require VIEWS . '404.php';
+        // require VIEWS . '404.php';
     }
 
 }
