@@ -12,8 +12,19 @@ class AuthController extends Controller {
         $this->manager = $this->manager('AuthManager');
     }
 
+    public function showLogin() {
+        $this->require("Auth/login.php", "");
+    }
+
     public function showRegister() {
         $this->require("Auth/register.php", "");
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        $this->redirect("");
     }
 
     public function register() {
@@ -47,6 +58,35 @@ class AuthController extends Controller {
             }
         } else {
             $this->redirect("register");
+        }
+    }
+
+    public function login() {
+        $this->validator->validate([
+            "email"=>["required", "email"],
+            "password"=>["required", "min:6", "alphaNum"]
+        ]);
+
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->find($_POST["email"]);
+
+            if ($res && password_verify($_POST['password'], $res->getPassword())) {
+                $_SESSION["user"] = [
+                    "id" => $res->getId(),
+                    "firstName" => $res->getFirstName(),
+                    "lastName" => $res->getLastName(),
+                    "email" => $res->getEmail(),
+                    "admin" => $res->getAdmin()
+                ];
+                $this->redirect("");
+            } else {
+                $_SESSION["error"]['message'] = "Une erreur sur les identifiants";
+                $this->redirect("login");
+            }
+        } else {
+            $this->redirect("login");
         }
     }
 }
