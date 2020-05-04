@@ -10,5 +10,10 @@ require SRC . 'database.php';
 $router = new App\Router($_SERVER["REQUEST_URI"]);
 $router->get('/', "HomeController@index");
 
+$router->get('/register', "AuthController@showRegister");
+
+
+
+$router->post('/register', "AuthController@register");
 
 $router->run();

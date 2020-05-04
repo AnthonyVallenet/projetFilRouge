@@ -34,6 +34,8 @@ body {
 }
 
 main {
+    display: flex;
+    background-color: #dfeaff;
     flex: 1;
     margin-left: 200px;
     z-index: 99;
@@ -41,6 +43,14 @@ main {
 
     &.close {
         margin-left: 70px;
+    }
+}
+
+.error {
+    color: red;
+
+    &>i {
+        margin-right: 4px;
     }
 }
 
