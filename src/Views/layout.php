@@ -54,7 +54,7 @@
                             <p>Contact</p>
                         </a>
                     <?php
-                    if ($_SESSION["user"]["id"] == 1) {
+                    if ($_SESSION["user"]["admin"] == 1) {
                         ?>
                             <a href="#">
                                 <i class="icon fas fa-user-cog"></i>
