@@ -111,7 +111,7 @@
         
         <footer id="footer" class="close">
             <a href="">
-                <img src="img/logo_edenSchool.png" alt="Logo Eden School">
+                <img src="/image/logo_edenSchool.png" alt="Logo Eden School">
                 Ce site a été réalisé par les élèves d'EDEN School
             </a>
         </footer>
