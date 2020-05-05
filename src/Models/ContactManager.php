@@ -26,4 +26,10 @@ class ContactManager extends Manager {
             $_POST["message"]
         ));
     }
+
+    public function allContact() {
+        $stmt = $this->bdd->query('SELECT * FROM contact');
+        
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Contact");
+    }
 }
