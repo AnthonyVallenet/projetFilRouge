@@ -1,8 +1,10 @@
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
-    
+    font-family: 'Rubik', sans-serif;
+
     &::-webkit-scrollbar-track
     {
         border-radius: 10px;
@@ -26,6 +28,18 @@ html {
     scroll-behavior: smooth;
 }
 
+header {
+    background-color: #dfeaff;
+}
+
+footer {
+    background-color: #f7f7f7;
+}
+
+.main-contact {
+    background-color:  #f0f2fd;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -44,6 +58,62 @@ main {
     &.close {
         margin-left: 70px;
     }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #5E6D85;
+    font-size: 65px;
+}
+
+.button:hover {
+    color: #1E3F78;
+    background-color: white;
+    border: 1px solid #1E3F78;
+}
+
+h1 {
+    margin: 80px;
+}
+
+h2 {
+    color: #1c1c1c;
+}
+
+.button {
+    background-color: #1E3F78;
+    color: white;
+    font-size: 15px;
+}
+
+.text {
+    color: #3F3F3F;
+    font-size: 20px;
+    margin: 50px;
+}
+
+.section {
+    padding-top: 130px;
+    padding-bottom: 130px;
+
+}
+
+.link {
+    font-size: 15px;
+}
+
+img[alt] {
+    color: #999999;
+    font-size: 15px;
+    margin: 30px;
+}
+
+cite {
+    color: #999999;
+}
+
+nav {
+    padding: 15px;
 }
 
 .error {
