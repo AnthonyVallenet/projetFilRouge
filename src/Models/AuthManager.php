@@ -35,4 +35,10 @@ class AuthManager extends Manager {
             $password
         ));
     }
+
+    public function allUser() {
+        $stmt = $this->bdd->query('SELECT * FROM users');
+
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Auth");
+    }
 }

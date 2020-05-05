@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Auth {
+class Contact {
 
     private $id;
     private $first_name;

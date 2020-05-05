@@ -16,6 +16,8 @@ $router->get('/logout', "AuthController@logout");
 
 $router->get('/contact', "ContactController@index");
 
+$router->get('/administration', "AdminController@index");
+
 
 
 $router->post('/register', "AuthController@register");

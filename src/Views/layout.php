@@ -56,7 +56,7 @@
                     <?php
                     if ($_SESSION["user"]["admin"] == 1) {
                         ?>
-                            <a href="#">
+                            <a href="/administration">
                                 <i class="icon fas fa-user-cog"></i>
                                 <p>Administration</p>
                             </a>
