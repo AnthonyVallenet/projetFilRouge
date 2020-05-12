@@ -10,6 +10,28 @@ ob_start();
 
         <div class="toggleDiv tags">
             <p>Tags</p>
+            <form action="/administration/tag/create" method="post">
+                    <label for="name"><i class="fas fa-user-tie"></i></label>
+                    <input type="text" name="name" id="name" value="<?php echo old("name");?>" placeholder="Name">
+                    <?php echo error("name") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("name") .'</span>' : ""?>
+
+                    <label for="color"><i class="fas fa-palette"></i></label>
+                    <input type="color" id="color" name="color" value="<?php echo old("color");?>">
+                    <?php echo error("color") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("color") .'</span>' : ""?>
+
+                    <button type="submit" name="button">Créer</button>
+                </form>
+            <?php
+                foreach ($info["tags"] as $tag) {
+                    ?>
+                        <div style="border: 2px solid black">
+                            <p><?php echo escape($tag->getId()); ?></p>
+                            <p><?php echo escape($tag->getName()); ?></p>
+                            <p><?php echo escape($tag->getColor()); ?></p>
+                        </div>
+                    <?php
+                }
+            ?>
         </div>
 
         <div class="toggleDiv contacts" style="display: none">

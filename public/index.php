@@ -33,8 +33,10 @@ $router->post('/login', "AuthController@login");
 $router->post('/contact', "ContactController@store");
 
 $router->post('/administration/user/create', "AuthController@createUser");
+$router->post('/administration/tag/create', "TagController@store");
 
 $router->post('/article/create', "ArticleController@store");
 $router->post('/article/search', "ArticleController@searching");
+
 
 $router->run();
