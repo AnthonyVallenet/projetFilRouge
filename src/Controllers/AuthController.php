@@ -89,4 +89,39 @@ class AuthController extends Controller {
             $this->redirect("login");
         }
     }
+
+    public function createUser() {
+        $this->validator->validate([
+            "firstName"=>["required", "min:3", "alpha"],
+            "lastName"=>["required", "min:3", "alphaDash"],
+            "email"=>["required", "email"],
+            "password"=>["required", "min:6", "alphaNum", "confirm"],
+            "passwordConfirm"=>["required", "min:6", "alphaNum"],
+            "roleSelect"=>["required", "min:0", "max:1", "numeric"]
+        ]);
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->find($_POST["email"]);
+
+            if (empty($res)) {
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $this->manager->storeUser($password);
+
+                $_SESSION["user"] = [
+                    "id" => $this->manager->getBdd()->lastInsertId(),
+                    "firstName" => $_POST["firstName"],
+                    "lastName" => $_POST["lastName"],
+                    "email" => $_POST["email"],
+                    "admin" => $_POST["roleSelect"]
+                ];
+                $this->redirect("administration#createUser");
+            } else {
+                $_SESSION["error"]['email'] = "L'email choisi est déjà utilisé !";
+                $this->redirect("administration#createUser");
+            }
+        } else {
+            $this->redirect("administration#createUser");
+        }
+    }
 }
