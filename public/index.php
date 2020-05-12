@@ -22,6 +22,7 @@ $router->get('/administration', "AdminController@index");
 
 $router->get('/articles', "ArticleController@index");
 $router->get('/article/create', "ArticleController@create");
+$router->get('/article/search', "ArticleController@search");
 
 
 
@@ -33,5 +34,6 @@ $router->post('/contact', "ContactController@store");
 $router->post('/administration/user/create', "AuthController@createUser");
 
 $router->post('/article/create', "ArticleController@store");
+$router->post('/article/search', "ArticleController@searching");
 
 $router->run();
