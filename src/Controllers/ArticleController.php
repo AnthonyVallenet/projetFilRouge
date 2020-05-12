@@ -77,15 +77,9 @@ class ArticleController extends Controller {
 
         if (!$this->validator->errors()) {
             $articles = $this->manager->searchByTitle();
+            $articles = $this->manager->searchByContent();
 
-            if ($articles == null) {
-                $articles = $this->manager->searchByContent();
-                $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
-                die;
-            } else {
-                $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
-                die;
-            }
+            $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
             
         } else {
             $this->redirect("article/search");
