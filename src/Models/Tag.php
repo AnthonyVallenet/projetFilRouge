@@ -1,0 +1,34 @@
+<?php
+namespace App\Models;
+
+class Tag {
+
+    private $id;
+    private $color;
+    private $name;
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getColor() {
+        return $this->color;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    
+    public function setId(Int $id) {
+        $this->id = $id;
+    }
+
+    public function setTitle(String $color) {
+        $this->color = $color;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+}
