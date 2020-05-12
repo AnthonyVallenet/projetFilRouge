@@ -2,7 +2,15 @@
 ob_start();
 ?>
 
-<section class="contact">
+
+<div id="bandeau">
+  <div class="block-title">
+    <h1>Contact</h1>
+  </div>
+</div>
+
+
+<section class="main-contact">
     <form action="/contact/" method="post">
 
       <label for="firstName"><i class="fas fa-user-tie"></i></label>
