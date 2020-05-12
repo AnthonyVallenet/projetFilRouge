@@ -36,6 +36,17 @@ class AuthManager extends Manager {
         ));
     }
 
+    public function storeUser($password) {
+        $stmt = $this->bdd->prepare("INSERT INTO users(first_name, last_name, email, password, admin) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute(array(
+            $_POST["firstName"],
+            $_POST["lastName"],
+            $_POST["email"],
+            $password,
+            $_POST["roleSelect"]
+        ));
+    }
+
     public function allUser() {
         $stmt = $this->bdd->query('SELECT * FROM users');
 
