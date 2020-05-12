@@ -23,6 +23,7 @@ $router->get('/administration', "AdminController@index");
 $router->get('/articles', "ArticleController@index");
 $router->get('/article/create', "ArticleController@create");
 $router->get('/article/search', "ArticleController@search");
+$router->get('/article/:id', "ArticleController@show");
 
 
 
