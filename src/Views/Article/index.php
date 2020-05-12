@@ -3,6 +3,11 @@ ob_start();
 ?>
 
 <section class="allArticles">
+    <form action="/article/search" method="post">
+        <input type="text" name="search" id="search" value="<?php echo old("name");?>" placeholder="Search">
+        <span class="error"><?php echo error("search");?></span>
+        <button>send</button>
+    </form>
     <?php
         foreach ($info as $article) {
             ?>

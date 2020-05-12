@@ -45,4 +45,23 @@ class ArticleManager extends Manager {
         $stmt->setFetchMode(\PDO::FETCH_CLASS,"App\Models\Article");
         return $stmt->fetch();
     }
+
+
+    public function searchByTitle() {
+        $stmt = $this->bdd->prepare('SELECT * FROM articles WHERE title LIKE ?');
+        $stmt->execute(array(
+            '%' . $_POST["search"] . '%'
+        ));
+        
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
+    }
+
+    public function searchByContent() {
+        $stmt = $this->bdd->prepare('SELECT * FROM articles WHERE content LIKE ?');
+        $stmt->execute(array(
+            '%' . $_POST["search"] . '%'
+        ));
+        
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
+    }
 }
