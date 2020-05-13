@@ -8,7 +8,6 @@ class TagManager extends Manager {
     function __construct()
     {
         parent::__construct();
-        $this->class = "App\Models\Article";
     }
 
     public function getBdd()
@@ -29,5 +28,14 @@ class TagManager extends Manager {
         $stmt = $this->bdd->query('SELECT * FROM tag');
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Tag");
+    }
+
+    public function articleTag($tagId, $idArticle) {
+        $stmt = $this->bdd->prepare("INSERT INTO article_tag(tag_id, article_id) VALUES (?, ?)");
+        
+        $stmt->execute(array(
+            $tagId,
+            $idArticle,
+        ));
     }
 }
