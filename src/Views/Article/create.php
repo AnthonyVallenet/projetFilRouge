@@ -48,6 +48,16 @@ old("enabled") == "on" ?: $enabled = "";
 
         <br>
 
+        <select name="tags[]" id="tags" multiple>
+            <?php 
+            foreach ($info as $tag) {
+                ?>
+                <option value="<?php echo escape($tag->getId()); ?>"><?php echo escape($tag->getName()); ?></option>
+                <?php
+            }
+            ?>
+        </select>
+
         <button type="submit">send</button>
     </form>
 </section>

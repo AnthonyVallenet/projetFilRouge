@@ -10,6 +10,7 @@ class ArticleController extends Controller {
     public function __construct() {
         parent::__construct();
         $this->manager = $this->manager('ArticleManager');
+        $this->managerTag = $this->manager('TagManager');
     }
 
     public function index() {
@@ -18,7 +19,8 @@ class ArticleController extends Controller {
     }
 
     public function create() {
-        $this->require("Article/create.php", "");
+        $tags = $this->managerTag->allTag();
+        $this->require("Article/create.php", $tags);
     }
 
     public function edit($slug) {
@@ -63,6 +65,11 @@ class ArticleController extends Controller {
                 $comment = 1;
             }
             $this->manager->store($img_type, $img_blob, $comment, $enabled);
+            $idArticle = $this->manager->getBdd()->lastInsertId();
+            
+            foreach ($_POST['tags'] as $tagId) {
+                $this->managerTag->articleTag($tagId, $idArticle);
+            }
 
             $this->redirect("");
         } else {
