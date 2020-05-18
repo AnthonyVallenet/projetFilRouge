@@ -29,7 +29,8 @@ class ArticleController extends Controller {
 
     public function show($slug) {
         $article = $this->manager->getArticleBy($slug);
-        $this->require("Article/show.php", $article);
+        $tags = $this->managerTag->getTagArticle($slug);
+        $this->require("Article/show.php", ["article" => $article, "tags" => $tags]);
     }
 
     public function store() {

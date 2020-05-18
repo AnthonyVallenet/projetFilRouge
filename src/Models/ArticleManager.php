@@ -32,7 +32,6 @@ class ArticleManager extends Manager {
 
     public function allArticle() {
         $stmt = $this->bdd->query('SELECT * FROM articles');
-
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
     }
 
@@ -64,4 +63,5 @@ class ArticleManager extends Manager {
         
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
     }
+
 }
