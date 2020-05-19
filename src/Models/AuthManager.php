@@ -26,6 +26,16 @@ class AuthManager extends Manager {
         return $stmt->fetch();
     }
 
+    public function findById($value) {
+        $stmt = $this->bdd->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->execute(array(
+            $value
+        ));
+        $stmt->setFetchMode(\PDO::FETCH_CLASS,"App\Models\Auth");
+
+        return $stmt->fetch();
+    }
+
     public function store($password) {
         $stmt = $this->bdd->prepare("INSERT INTO users(first_name, last_name, email, password) VALUES (?, ?, ?, ?)");
         $stmt->execute(array(
@@ -44,6 +54,17 @@ class AuthManager extends Manager {
             $_POST["email"],
             $password,
             $_POST["roleSelect"]
+        ));
+    }
+
+    public function updateUser($slug) {
+        $stmt = $this->bdd->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ?, admin = ? WHERE id = ?");
+        $stmt->execute(array(
+            $_POST["firstNameEditUser-". $slug],
+            $_POST["lastNameEditUser-". $slug],
+            $_POST["emailEditUser-". $slug],
+            $_POST["roleEditUser-". $slug],
+            $slug
         ));
     }
 
