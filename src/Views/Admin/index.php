@@ -62,11 +62,30 @@ ob_start();
                         ?>
                             <div style="border: 2px solid black">
                                 <p><?php echo escape($user->getId()); ?></p>
-                                <p><?php echo escape($user->getFirstName()); ?></p>
-                                <p><?php echo escape($user->getLastName()); ?></p>
-                                <p><?php echo escape($user->getEmail()); ?></p>
+
+                                <form action="/administration/user/edit/<?php echo escape($user->getId()); ?>" method="post">
+                                    <label for="firstNameEditUser-<?php echo escape($user->getId()); ?>"><i class="fas fa-user-tie"></i></label>
+                                    <input type="text" name="firstNameEditUser-<?php echo escape($user->getId()); ?>" id="firstNameEditUser-<?php echo escape($user->getId()); ?>" value="<?php echo old("firstNameEditUser-" . escape($user->getId())) ?: escape($user->getFirstName()); ?>" placeholder="Prénom">
+                                    <?php echo error("firstNameEditUser-" . escape($user->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("firstNameEditUser-" . escape($user->getId())) .'</span>' : ""?>
+
+                                    <label for="lastNameEditUser-<?php echo escape($user->getId()); ?>"><i class="fas fa-user-tie"></i></label>
+                                    <input type="text" name="lastNameEditUser-<?php echo escape($user->getId()); ?>" id="lastNameEditUser-<?php echo escape($user->getId()); ?>" value="<?php echo old("lastNameEditUser-" . escape($user->getId())) ?: escape($user->getlastName()); ?>" placeholder="Prénom">
+                                    <?php echo error("lastNameEditUser-" . escape($user->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("lastNameEditUser-" . escape($user->getId())) .'</span>' : ""?>
+
+                                    <label for="emailEditUser-<?php echo escape($user->getId()); ?>"><i class="fas fa-user-tie"></i></label>
+                                    <input type="email" name="emailEditUser-<?php echo escape($user->getId()); ?>" id="emailEditUser-<?php echo escape($user->getId()); ?>" value="<?php echo old("emailEditUser-" . escape($user->getId())) ?: escape($user->getEmail()); ?>" placeholder="Prénom">
+                                    <?php echo error("emailEditUser-" . escape($user->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("emailEditUser-" . escape($user->getId())) .'</span>' : ""?>
+
+                                    <label for="roleEditUser-<?php echo escape($user->getId()); ?>"><i class="fas fa-user-tie"></i></label>
+                                    <input type="checkbox" name="roleEditUser-<?php echo escape($user->getId()); ?>" id="roleEditUser-<?php echo escape($user->getId()); ?>" <?php if ($user->getAdmin() == 1) {echo "checked";}?>>
+                                    <?php echo error("roleEditUser-" . escape($user->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("roleEditUser-" . escape($user->getId())) .'</span>' : ""?>
+
+                                    <?php echo error("messageEditUser-" . escape($user->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditUser-" . escape($user->getId())) .'</span>' : ""?>
+
+                                    <button type="submit" name="button">Editer</button>
+                                </form>
+                                
                                 <p><?php echo escape($user->getCreatedAt()); ?></p>
-                                <p><?php echo escape($user->getAdmin()); ?></p>
                             </div>
                         <?php
                     }
