@@ -90,6 +90,46 @@ class AuthController extends Controller {
         }
     }
 
+    public function updateUser($slug) {
+        $this->validator->validate([
+            "firstNameEditUser-". $slug =>["required", "min:3", "alpha"],
+            "lastNameEditUser-". $slug =>["required", "min:3", "alphaDash"],
+            "emailEditUser-". $slug =>["required", "email"],
+            "roleEditUser-". $slug =>["checkbox"]
+        ]);
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->findById($slug);
+
+            if (empty($res)) {
+                $_SESSION["error"]['messageEditUser-'. $slug] = "Cet utilisateur est introuvable !";
+                $this->redirect("administration#users");
+            } else {
+                if ($_POST["roleEditUser-". $slug] == 'on') {
+                    $_POST["roleEditUser-". $slug] = '1';
+                } elseif ($_POST["roleEditUser-". $slug] == null) {
+                    $_POST["roleEditUser-". $slug] = '0';
+                }
+                $this->manager->updateUser($slug);
+
+                if ($slug == $_SESSION["user"]["id"]) {
+                    $_SESSION["user"] = [
+                        "id" => $slug,
+                        "firstName" => $_POST["firstNameEditUser-". $slug],
+                        "lastName" => $_POST["lastNameEditUser-". $slug],
+                        "email" => $_POST["emailEditUser-". $slug],
+                        "admin" => $_POST["roleEditUser-". $slug],
+                    ];
+                }
+                $this->redirect("administration#users");
+            }
+        } else {
+            $this->redirect("administration#users");
+            die;
+        }
+    }
+
     public function createUser() {
         $this->validator->validate([
             "firstName"=>["required", "min:3", "alpha"],

@@ -9,6 +9,7 @@ class Validator {
     private $errors = [];
     private $messages = [
         "required" => "Le champ est requis !",
+        "checkbox" => "Ce n'est pas une valeur accepté !",
         "min" => "Le champ doit contenir un minimum de %^% lettres !",
         "max" => "Le champ doit contenir un maximum de %^% lettres !",
         "regex" => "Le format n'est pas respecté",
@@ -25,6 +26,7 @@ class Validator {
     ];
     private $rules = [
         "required" => "#^.+$#",
+        "checkbox" => "#^on|$#",
         "min" => "#^.{ù,}$#",
         "max" => "#^.{0,ù}$#",
         "length" => "#^.{ù}$#",
