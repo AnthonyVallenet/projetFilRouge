@@ -70,7 +70,7 @@ try {
     $valUsers = $bdd->query('SELECT * FROM users')->fetch();
 
     if(!$valUsers) {
-        $passwordAdmin = password_hash('admin', PASSWORD_BCRYPT);
+        $passwordAdmin = password_hash('password', PASSWORD_BCRYPT);
         $stmt = $bdd->prepare("INSERT INTO users(first_name, last_name, email, password, admin) VALUES ('Admin', 'Admin', 'admin@gmail.com', ?, '1')");
         $stmt->execute(array(
             $passwordAdmin
