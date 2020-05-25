@@ -58,4 +58,10 @@ class ContactController extends Controller {
             die;
         }
     }
+
+    public function delete($slug) {
+        $this->manager->delete($slug);
+        
+        $this->redirect("administration#contacts");
+    }
 }

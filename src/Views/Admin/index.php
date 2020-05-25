@@ -81,6 +81,9 @@ ob_start();
 
                                 <button type="submit" name="button">Editer</button>
                             </form>
+                            <form action="/administration/contact/delete/<?php echo escape($contact->getId()); ?>" method="post">
+                                <button type="submit" name="button">delete</button>
+                            </form>
                         </div>
                     <?php
                 }

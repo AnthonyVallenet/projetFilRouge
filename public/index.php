@@ -38,6 +38,7 @@ $router->post('/administration/tag/create', "TagController@store");
 $router->post('/administration/tag/edit/:id', "TagController@update");
 $router->post('/administration/tag/delete/:id', "TagController@delete");
 $router->post('/administration/contact/edit/:id', "ContactController@update");
+$router->post('/administration/contact/delete/:id', "ContactController@delete");
 
 $router->post('/article/create', "ArticleController@store");
 $router->post('/article/search', "ArticleController@searching");
