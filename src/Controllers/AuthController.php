@@ -103,7 +103,7 @@ class AuthController extends Controller {
             $res = $this->manager->findById($slug);
 
             if (empty($res)) {
-                $_SESSION["error"]['messageEditUser-'. $slug] = "Cet utilisateur est introuvable !";
+                $_SESSION["error"]['messageErrorEditUser-'. $slug] = "Cet utilisateur est introuvable !";
                 $this->redirect("administration#users");
             } else {
                 if ($_POST["roleEditUser-". $slug] == 'on') {

@@ -18,7 +18,7 @@ class ContactController extends Controller {
             "firstName"=>["required", "min:3", "alpha"],
             "lastName"=>["required", "min:3", "alphaDash"],
             "email"=>["required", "email"],
-            "sujet"=>["required", "min:2"],
+            "subject"=>["required", "min:2"],
             "message"=>["required", "min:3"]
         ]);
         $_SESSION['old'] = $_POST;
@@ -29,6 +29,33 @@ class ContactController extends Controller {
             $this->redirect("");
         } else {
             $this->redirect("contact");
+        }
+    }
+
+    public function update($slug) {
+        $this->validator->validate([
+            "firstNameEditContact-". $slug =>["required", "min:3", "alpha"],
+            "lastNameEditContact-". $slug =>["required", "min:3", "alphaDash"],
+            "emailEditContact-". $slug =>["required", "email"],
+            "subjectEditContact-". $slug =>["required", "min:2"],
+            "messageEditContact-". $slug =>["required", "min:3"]
+        ]);
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->findById($slug);
+
+            if (empty($res)) {
+                $_SESSION["error"]['messageErrorEditContact-'. $slug] = "Ce contact est introuvable !";
+                $this->redirect("administration#contacts");
+            } else {
+                $this->manager->update($slug);
+
+                $this->redirect("administration#contacts");
+            }
+        } else {
+            $this->redirect("administration#contacts");
+            die;
         }
     }
 }

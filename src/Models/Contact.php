@@ -7,7 +7,7 @@ class Contact {
     private $first_name;
     private $last_name;
     private $email;
-    private $sujet;
+    private $subject;
     private $message;
     private $created_at;
 
@@ -27,8 +27,8 @@ class Contact {
         return $this->email;
     }
 
-    public function getSujet() {
-        return $this->sujet;
+    public function getSubject() {
+        return $this->subject;
     }
 
     public function getMessage() {
@@ -56,8 +56,8 @@ class Contact {
         $this->email = $email;
     }
 
-    public function setSujet(String $sujet) {
-        $this->sujet = $sujet;
+    public function setSubject(String $subject) {
+        $this->subject = $subject;
     }
 
     public function setmessage(Int $message) {
