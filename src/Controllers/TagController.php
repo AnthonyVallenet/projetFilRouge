@@ -35,7 +35,7 @@ class TagController extends Controller {
             $res = $this->manager->findById($slug);
 
             if (empty($res)) {
-                $_SESSION["error"]['messageEditTag-'. $slug] = "Ce tag est introuvable !";
+                $_SESSION["error"]['messageErrorEditTag-'. $slug] = "Ce tag est introuvable !";
                 $this->redirect("administration#tags");
             } else {
                 $this->manager->update($slug);

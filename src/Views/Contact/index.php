@@ -17,9 +17,9 @@ ob_start();
       <input type="email" id="email" name="email" value="<?php echo old("email");?>" placeholder="Email">
       <span class="error"><?php echo error("email");?></span>
 
-      <label for="sujet"><i class="fas fa-question"></i></label>
-      <input id="sujet" type="text" name="sujet" value="<?php echo old("sujet");?>" placeholder="Sujet">
-      <span class="error"><?php echo error("sujet");?></span>
+      <label for="subject"><i class="fas fa-question"></i></label>
+      <input id="subject" type="text" name="subject" value="<?php echo old("subject");?>" placeholder="sujet">
+      <span class="error"><?php echo error("subject");?></span>
    
       <label for="message"><i class="fas fa-sticky-note"></i></i></label>
       <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"><?php echo old("message");?></textarea>
