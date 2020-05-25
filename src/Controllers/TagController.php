@@ -24,4 +24,28 @@ class TagController extends Controller {
         }
     }
 
+    public function update($slug) {
+        $this->validator->validate([
+            "nameEditTag-". $slug =>["required", "min:2", "max:10"],
+            "colorEditTag-". $slug =>["required"],
+        ]);
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->findById($slug);
+
+            if (empty($res)) {
+                $_SESSION["error"]['messageEditTag-'. $slug] = "Ce tag est introuvable !";
+                $this->redirect("administration#tags");
+            } else {
+                $this->manager->update($slug);
+
+                $this->redirect("administration#tags");
+            }
+        } else {
+            $this->redirect("administration#tags");
+            die;
+        }
+    }
+
 }

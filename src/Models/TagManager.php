@@ -39,10 +39,6 @@ class TagManager extends Manager {
         ));
     }
 
-    // select tag.name from articles inner join article_tag on article_tag.article_id = articles.id inner join tag on tag.id = article_tag.tag_id where id = '2';
-    // SELECT t.name FROM tag t INNER JOIN article_tag at on t.id = at.tag_id INNER JOIN articles a on at.article_id = a.id WHERE a.id = 12;
-
-
     public function getTagArticle($slug) {
         $stmt = $this->bdd->prepare("SELECT t.name FROM tag t INNER JOIN article_tag at on t.id = at.tag_id INNER JOIN articles a on at.article_id = a.id WHERE a.id = ?;");
         
@@ -51,5 +47,25 @@ class TagManager extends Manager {
         ));
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Tag");
+    }
+
+
+    public function findById($value) {
+        $stmt = $this->bdd->prepare("SELECT * FROM tag WHERE id = ?");
+        $stmt->execute(array(
+            $value
+        ));
+        $stmt->setFetchMode(\PDO::FETCH_CLASS,"App\Models\Tag");
+
+        return $stmt->fetch();
+    }
+
+    public function update($slug) {
+        $stmt = $this->bdd->prepare("UPDATE tag SET name = ?, color = ? WHERE id = ?");
+        $stmt->execute(array(
+            $_POST["nameEditTag-". $slug],
+            $_POST["colorEditTag-". $slug],
+            $slug
+        ));
     }
 }
