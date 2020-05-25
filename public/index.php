@@ -36,6 +36,7 @@ $router->post('/administration/user/create', "AuthController@createUser");
 $router->post('/administration/user/edit/:id', "AuthController@updateUser");
 $router->post('/administration/tag/create', "TagController@store");
 $router->post('/administration/tag/edit/:id', "TagController@update");
+$router->post('/administration/tag/delete/:id', "TagController@delete");
 $router->post('/administration/contact/edit/:id', "ContactController@update");
 
 $router->post('/article/create', "ArticleController@store");

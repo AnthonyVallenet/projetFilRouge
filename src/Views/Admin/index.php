@@ -21,6 +21,7 @@ ob_start();
 
                 <button type="submit" name="button">Créer</button>
             </form>
+            
             <?php
                 foreach ($info["tags"] as $tag) {
                     ?>
@@ -37,6 +38,9 @@ ob_start();
                                 <?php echo error("messageErrorEditTag-" . escape($tag->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditTag-" . escape($tag->getId())) .'</span>' : ""?>
 
                                 <button type="submit" name="button">Editer</button>
+                            </form>
+                            <form action="/administration/tag/delete/<?php echo escape($tag->getId()); ?>" method="post">
+                                <button type="submit" name="button">delete</button>
                             </form>
                         </div>
                     <?php
