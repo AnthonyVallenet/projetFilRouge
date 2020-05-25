@@ -16,6 +16,12 @@ class ContactManager extends Manager {
         return $this->bdd;
     }
 
+    public function allContact() {
+        $stmt = $this->bdd->query('SELECT * FROM contact');
+        
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Contact");
+    }
+
     public function store() {
         $stmt = $this->bdd->prepare("INSERT INTO contact(first_name, last_name, email, subject, message) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute(array(
@@ -49,9 +55,10 @@ class ContactManager extends Manager {
         ));
     }
 
-    public function allContact() {
-        $stmt = $this->bdd->query('SELECT * FROM contact');
-        
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Contact");
+    public function delete($slug) {
+        $stmt = $this->bdd->prepare("DELETE FROM contact WHERE id = ?");
+        $stmt->execute(array(
+            $slug
+        ));
     }
 }
