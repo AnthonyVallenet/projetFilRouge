@@ -90,7 +90,7 @@ class AuthController extends Controller {
         }
     }
 
-    public function updateUser($slug) {
+    public function update($slug) {
         $this->validator->validate([
             "firstNameEditUser-". $slug =>["required", "min:3", "alpha"],
             "lastNameEditUser-". $slug =>["required", "min:3", "alphaDash"],
@@ -111,7 +111,7 @@ class AuthController extends Controller {
                 } elseif ($_POST["roleEditUser-". $slug] == null) {
                     $_POST["roleEditUser-". $slug] = '0';
                 }
-                $this->manager->updateUser($slug);
+                $this->manager->update($slug);
 
                 if ($slug == $_SESSION["user"]["id"]) {
                     $_SESSION["user"] = [
@@ -163,5 +163,11 @@ class AuthController extends Controller {
         } else {
             $this->redirect("administration#createUser");
         }
+    }
+
+    public function delete($slug) {
+        $this->manager->delete($slug);
+        
+        $this->redirect("administration#users");
     }
 }

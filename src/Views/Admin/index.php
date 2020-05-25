@@ -122,6 +122,9 @@ ob_start();
 
                                     <button type="submit" name="button">Editer</button>
                                 </form>
+                                <form action="/administration/user/delete/<?php echo escape($user->getId()); ?>" method="post">
+                                    <button type="submit" name="button">delete</button>
+                                </form>
                                 
                                 <p><?php echo escape($user->getCreatedAt()); ?></p>
                             </div>
