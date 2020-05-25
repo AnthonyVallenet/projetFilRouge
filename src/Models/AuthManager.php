@@ -57,7 +57,7 @@ class AuthManager extends Manager {
         ));
     }
 
-    public function updateUser($slug) {
+    public function update($slug) {
         $stmt = $this->bdd->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ?, admin = ? WHERE id = ?");
         $stmt->execute(array(
             $_POST["firstNameEditUser-". $slug],
@@ -72,5 +72,12 @@ class AuthManager extends Manager {
         $stmt = $this->bdd->query('SELECT * FROM users');
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Auth");
+    }
+
+    public function delete($slug) {
+        $stmt = $this->bdd->prepare("DELETE FROM users WHERE id = ?");
+        $stmt->execute(array(
+            $slug
+        ));
     }
 }
