@@ -2,7 +2,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
-    
+
     &::-webkit-scrollbar-track
     {
         border-radius: 10px;
@@ -63,3 +63,4 @@ main {
 
 @import 'nav';
 @import 'footer';
+@import 'variables';
