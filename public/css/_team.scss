@@ -1,0 +1,141 @@
+// main: style.scss
+
+section.team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #c3d4f169;
+
+    &>div {
+        width: 100%;
+
+        &:first-child {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 50px;
+
+            &>p, &>h2 {
+                padding: 5px 0px;
+                text-align: center;
+                background-color: $darkBlueColor;
+                border-left: 3px solid white;
+                border-right: 3px solid white;
+                color: white;
+            }
+
+            &>h2 {
+                width: 40%;
+                margin-bottom: 15px;
+            }
+
+            &>p {
+                width: 20%;
+            }
+        }
+
+        
+
+        &:last-child {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            &>div.blocPeople {
+                padding: 25px;
+                min-width: calc(100% / 3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &>div.people {
+                    z-index: 45;
+                    position: relative;
+                    min-width: 140px;
+                    min-height: 140px;
+                    border-radius: 100%;
+                    box-shadow: 0  5px 10px #8287990d, 0 15px 40px #72768633;
+
+                    &>div:first-child {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        height: 100%;
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        overflow: hidden;
+                        border-radius: 100%;
+                        transition: all ease .3s;
+                    }
+
+                    &>div:last-child {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all ease .5s;
+                    }
+
+                    &:hover {
+                        &>div:first-child {
+                            filter: grayscale(100%);
+                            -webkit-filter: saturate(90%) grayscale(.4) brightness(30%) sepia(80%);
+                        }
+
+                        &>div:last-child {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    section.team {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 55%;
+                }
+        
+                &>p {
+                    width: 35%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section.team {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 80%;
+                }
+        
+                &>p {
+                    width: 60%;
+                }
+            }
+        }
+    }
+}
