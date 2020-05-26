@@ -159,3 +159,82 @@ textarea {
     border-left: solid #6e97e3;
     height: 100px;
 }
+
+@media screen and (max-width: 1024px) {
+    .main-contact {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .first {
+        border-bottom: solid #6e97e3;
+        border-right: none;
+    }
+
+    .main-contact>div {
+        width: 100%; 
+    }
+
+    .prenom-nom {
+        width: 70%;
+    }
+
+    .email {
+        width: 70%;
+    }
+
+    .sujet {
+        width: 70%;
+    }
+
+    .message {
+        width: 70%;
+    }
+
+    .send {
+        width: 70%;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    #bandeau {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    .prenom-nom {
+        display: block;
+        width: 100%;
+    }
+
+    .prenom-nom>div {
+        width: 100%;
+    }
+
+    .second-titre {
+        margin-bottom: 20px;
+    }
+
+    .email {
+        width: 100%;
+    }
+
+    .sujet {
+        width: 100%;
+    }
+
+    .message {
+        width: 100%;
+    }
+}
+
+
+
