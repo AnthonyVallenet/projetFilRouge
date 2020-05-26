@@ -8,8 +8,8 @@ ob_start();
     <div class="slide1" style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
     </div>
     <div class="textSlide">
-      <p class="title">Titre 1</p>
-      <p class="subtitle">Sous titre</p>
+      <h1 class="title">Projet Fil Rouge</h1>
+      <p class="subtitle">Sous titre 1</p>
     </div>
   </div>
 
@@ -17,8 +17,8 @@ ob_start();
     <div class="slide2" style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
     </div>
     <div class="textSlide">
-      <p class="title">Titre 2</p>
-      <p class="subtitle">Sous titre</p>
+      <h1 class="title">Projet Fil Rouge</h1>
+      <p class="subtitle">Sous titre 2</p>
     </div>
   </div>
 
@@ -26,8 +26,8 @@ ob_start();
     <div class="slide3" style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
     </div>
     <div class="textSlide">
-      <p class="title">Titre 3</p>
-      <p class="subtitle">Sous titre</p>
+      <h1 class="title">Projet Fil Rouge</h1>
+      <p class="subtitle">Sous titre 3</p>
     </div>
   </div>
   
@@ -37,8 +37,17 @@ ob_start();
   <div class="arrowNextSlider">
     <a class="next" onclick="plusSlides(1)"><i class="fas fa-chevron-right"></i></a>
   </div>
-
 </header>
+
+<section class="infoProject sectionContent">
+  <div>
+    <h2>Quel est ce projet ?</h2>
+    <p class="subtitle">Projet éolienne</p>
+  </div>
+  <div>
+    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+  </div>
+</section>
 
   
     <script>
