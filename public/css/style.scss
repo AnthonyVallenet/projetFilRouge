@@ -121,6 +121,10 @@ nav {
     padding: 15px;
 }
 
+.sectionContent {
+    padding: 75px 150px;
+}
+
 .error {
     color: $errorColor;
 
@@ -139,3 +143,5 @@ nav {
 @import 'nav';
 @import 'footer';
 @import 'contact';
+@import 'carousel';
+@import 'infoProject';
