@@ -31,8 +31,12 @@ ob_start();
     </div>
   </div>
   
-  <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-chevron-left"></i></a>
-  <a class="next" onclick="plusSlides(1)"><i class="fas fa-chevron-right"></i></a>
+  <div class="arrowPrevSlider">
+    <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-chevron-left"></i></a>
+  </div>
+  <div class="arrowNextSlider">
+    <a class="next" onclick="plusSlides(1)"><i class="fas fa-chevron-right"></i></a>
+  </div>
 
 </header>
 
