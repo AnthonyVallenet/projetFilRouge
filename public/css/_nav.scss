@@ -5,8 +5,8 @@ nav {
     height: 100vh;
     padding: 15px;
     position: fixed;
-    background-color: #0e2650;
-    color: white;
+    background-color: $darkBlueColor;
+    color: $textNavColor;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,7 +54,7 @@ nav {
             padding-bottom: 5px;
             display: flex;
             justify-content: space-between;
-            color: white;
+            color: $textNavColor;
             text-decoration: none;
             position: relative;
         }
@@ -64,7 +64,7 @@ nav {
             margin: 10px 0 5px 0;
             display: flex;
             justify-content: space-between;
-            color: white;
+            color: $textNavColor;
             position: relative;
         }
 
@@ -97,7 +97,7 @@ nav {
 
         &>i {
             font-size: 20px;
-            color: white;
+            color: $textNavColor;
             transform: rotate(180deg);
             margin-right: -90px;
             transition-duration: .4s;
@@ -132,7 +132,7 @@ nav {
         }
 
         button {
-    
+
             &>i {
                 transform: rotate(0);
                 margin-right: 0;
@@ -156,7 +156,7 @@ nav {
 
         &.close {
             height: auto;
-            
+
             &>div {
                 margin-bottom: 0;
                 visibility: hidden;
@@ -180,11 +180,11 @@ nav {
                 &>.bar1 {
                     transform: rotate(-45deg) translate(-9px, 8px);
                 }
-                
+
                 &>.bar2 {
                     opacity: 0;
                 }
-                
+
                 &>.bar3 {
                     transform: rotate(45deg) translate(-9px, -10px);
                 }
@@ -196,7 +196,7 @@ nav {
                 height: 7px;
                 border-radius: 15px;
                 min-height: 0;
-                background-color: #ffffff;
+                background-color: $textNavColor;
                 margin: 3px 0;
                 transition: 0.4s;
             }
