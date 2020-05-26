@@ -46,3 +46,63 @@ section.infoProject {
         }
     }
 }
+
+
+@media screen and (max-width: 1024px) {
+    section.infoProject {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 55%;
+                }
+        
+                &>p {
+                    width: 35%;
+                }
+            }
+
+            &:last-child {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section.infoProject {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 80%;
+                }
+        
+                &>p {
+                    width: 60%;
+                }
+            }
+
+            &:last-child {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    section.infoProject {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 100%;
+                }
+        
+                &>p {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
