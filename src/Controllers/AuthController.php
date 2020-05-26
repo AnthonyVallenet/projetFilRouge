@@ -89,4 +89,85 @@ class AuthController extends Controller {
             $this->redirect("login");
         }
     }
+
+    public function update($slug) {
+        $this->validator->validate([
+            "firstNameEditUser-". $slug =>["required", "min:3", "alpha"],
+            "lastNameEditUser-". $slug =>["required", "min:3", "alphaDash"],
+            "emailEditUser-". $slug =>["required", "email"],
+            "roleEditUser-". $slug =>["checkbox"]
+        ]);
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->findById($slug);
+
+            if (empty($res)) {
+                $_SESSION["error"]['messageErrorEditUser-'. $slug] = "Cet utilisateur est introuvable !";
+                $this->redirect("administration#users");
+            } else {
+                if ($_POST["roleEditUser-". $slug] == 'on') {
+                    $_POST["roleEditUser-". $slug] = '1';
+                } elseif ($_POST["roleEditUser-". $slug] == null) {
+                    $_POST["roleEditUser-". $slug] = '0';
+                }
+                $this->manager->update($slug);
+
+                if ($slug == $_SESSION["user"]["id"]) {
+                    $_SESSION["user"] = [
+                        "id" => $slug,
+                        "firstName" => $_POST["firstNameEditUser-". $slug],
+                        "lastName" => $_POST["lastNameEditUser-". $slug],
+                        "email" => $_POST["emailEditUser-". $slug],
+                        "admin" => $_POST["roleEditUser-". $slug],
+                    ];
+                }
+                $this->redirect("administration#users");
+            }
+        } else {
+            $this->redirect("administration#users");
+            die;
+        }
+    }
+
+    public function createUser() {
+        $this->validator->validate([
+            "firstName"=>["required", "min:3", "alpha"],
+            "lastName"=>["required", "min:3", "alphaDash"],
+            "email"=>["required", "email"],
+            "password"=>["required", "min:6", "alphaNum", "confirm"],
+            "passwordConfirm"=>["required", "min:6", "alphaNum"],
+            "roleSelect"=>["required", "min:0", "max:1", "numeric"]
+        ]);
+        $_SESSION['old'] = $_POST;
+
+        if (!$this->validator->errors()) {
+            $res = $this->manager->find($_POST["email"]);
+
+            if (empty($res)) {
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $this->manager->storeUser($password);
+
+                $_SESSION["user"] = [
+                    "id" => $this->manager->getBdd()->lastInsertId(),
+                    "firstName" => $_POST["firstName"],
+                    "lastName" => $_POST["lastName"],
+                    "email" => $_POST["email"],
+                    "admin" => $_POST["roleSelect"]
+                ];
+                $this->redirect("administration#createUser");
+            } else {
+                $_SESSION["error"]['email'] = "L'email choisi est déjà utilisé !";
+                $this->redirect("administration#createUser");
+            }
+        } else {
+            $this->redirect("administration#createUser");
+        }
+    }
+
+    public function delete($slug) {
+        $this->manager->delete($slug);
+        
+        $this->redirect("administration#users");
+    }
 }

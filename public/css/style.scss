@@ -1,9 +1,14 @@
 
+// _style.scss
+@import 'variables';
+
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
     font-family: 'Rubik', sans-serif;
+
 
     &::-webkit-scrollbar-track
     {
@@ -20,7 +25,7 @@
     &::-webkit-scrollbar-thumb
     {
         border-radius: 10px;
-        background-color: #555;
+        background-color: $scrollBarColor;
     }
 }
 
@@ -46,7 +51,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    background-color: #dfeaff;
+    background: $mainBgColor;
     flex: 1;
     margin-left: 200px;
     z-index: 99;
@@ -121,7 +126,7 @@ nav {
 }
 
 .error {
-    color: red;
+    color: $errorColor;
 
     &>i {
         margin-right: 4px;

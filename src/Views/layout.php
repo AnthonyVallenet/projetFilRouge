@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Projet Fil Rouge</title>
         <link rel="stylesheet" href="/css/style.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/726b142b0a.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
@@ -58,7 +59,7 @@
                     <?php
                     if ($_SESSION["user"]["admin"] == 1) {
                         ?>
-                            <a href="#">
+                            <a href="/administration">
                                 <i class="icon fas fa-user-cog"></i>
                                 <p>Administration</p>
                             </a>
@@ -110,10 +111,10 @@
         <main id="main" class="close">
             <?php echo $content; ?>
         </main>
-        
+
         <footer id="footer" class="close">
             <a href="">
-                <img src="img/logo_edenSchool.png" alt="Logo Eden School">
+                <img src="/image/logo_edenSchool.png" alt="Logo Eden School">
                 Ce site a été réalisé par les élèves d'EDEN School
             </a>
         </footer>
