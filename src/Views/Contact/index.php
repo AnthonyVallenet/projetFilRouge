@@ -6,14 +6,14 @@ ob_start();
 
 <div id="bandeau">
   <div class="header">
-    <h1>Contact</h1>
+    <h1 class="titre1">Contact</h1>
   </div>
 </div>
 
 
 <section class="main-contact">
   <div class="first">
-    <h2 class="second-titre">Informations</h2>
+    <h2 class="second-titre titre2">Informations</h2>
     <div class="contact-info">
       <div>
         <p class="text">Direction :</p>
@@ -51,7 +51,7 @@ ob_start();
 
 
 
-    <h2 class="second-titre">Contact</h2>
+    <h2 class="second-titre titre2">Contact</h2>
     <form action="/contact/" method="post">
       <div class="prenom-nom">
         <div class="prenom">

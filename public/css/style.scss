@@ -62,21 +62,21 @@ main {
     }
 }
 
-h1 {
+.titre1 {
     font-family: 'Josefin Sans', sans-serif;
     color: #5E6D85;
     font-size: 55px;
     text-align: center;
 }
 
-h2 {
+.titre2 {
     font-family: 'Josefin Sans', sans-serif;
     color: #5E6D85;
     font-size: 45px;
     text-align: center;
 }
 
-h3 {
+.titre3 {
     font-family: 'Josefin Sans', sans-serif;
     color: #5E6D85;
     font-size: 30px;
@@ -115,10 +115,6 @@ h3 {
 
 .border-bottom {
     border-bottom: solid red;
-}
-
-cite {
-    color: #999999;
 }
 
 nav {
