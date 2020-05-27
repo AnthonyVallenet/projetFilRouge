@@ -133,10 +133,20 @@ nav {
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .sectionContent {
+        padding: 75px 75px;
+    }
+}
+
 @media screen and (max-width: 550px) {
     main {
         margin-left: 0 !important;
         margin-top: 75px;
+    }
+
+    .sectionContent {
+        padding: 75px 25px;
     }
 }
 
@@ -145,3 +155,4 @@ nav {
 @import 'contact';
 @import 'carousel';
 @import 'infoProject';
+@import 'team';
