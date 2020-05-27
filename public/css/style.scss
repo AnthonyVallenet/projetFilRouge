@@ -1,10 +1,14 @@
+
 // _style.scss
 @import 'variables';
+
 
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Rubik', sans-serif;
+
 
     &::-webkit-scrollbar-track
     {
@@ -29,6 +33,14 @@ html {
     scroll-behavior: smooth;
 }
 
+header {
+    background-color: #dfeaff;
+}
+
+footer {
+    background-color: #f7f7f7;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -48,6 +60,65 @@ main {
     &.close {
         margin-left: 70px;
     }
+}
+
+.titre1 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #5E6D85;
+    font-size: 55px;
+    text-align: center;
+}
+
+.titre2 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #5E6D85;
+    font-size: 45px;
+    text-align: center;
+}
+
+.titre3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #5E6D85;
+    font-size: 30px;
+    text-align: center;
+}
+
+.button {
+    background-color: #0e2650;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid #0e2650;
+    transition: all ease .5s;
+}
+
+.text {
+    color: #3F3F3F;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.section {
+    padding-top: 130px;
+    padding-bottom: 130px;
+}
+
+.link {
+    font-size: 15px;
+}
+
+.text-alt {
+    color: #999999;
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.border-bottom {
+    border-bottom: solid red;
+}
+
+nav {
+    padding: 15px;
 }
 
 .sectionContent {
@@ -81,6 +152,7 @@ main {
 
 @import 'nav';
 @import 'footer';
+@import 'contact';
 @import 'carousel';
 @import 'infoProject';
 @import 'team';
