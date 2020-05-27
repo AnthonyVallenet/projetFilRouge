@@ -3,7 +3,7 @@ ob_start();
 ?>
 
 <section id="register">
-    <h1>Créer un compte</h1>
+    <h1 class="titre2">Créer votre compte</h1>
     <form action="/register/" method="post">
         
         <input type="text" name="firstName" id="firstName" value="<?php echo old("firstName");?>" placeholder="Prénom">
