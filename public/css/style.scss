@@ -9,7 +9,6 @@
     margin: 0;
     font-family: 'Rubik', sans-serif;
 
-
     &::-webkit-scrollbar-track
     {
         border-radius: 10px;
@@ -147,6 +146,18 @@ nav {
 
     .sectionContent {
         padding: 75px 25px;
+    }
+
+    .titre1 {
+        font-size: 45px;
+    }
+
+    .titre2 {
+        font-size: 35px;
+    }
+
+    .titre2 {
+        font-size: 25px;
     }
 }
 
