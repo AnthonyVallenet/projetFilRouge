@@ -21,7 +21,7 @@
     &::-webkit-scrollbar-thumb
     {
         border-radius: 10px;
-        background-color: $scrollBarColor;
+        background-color: $grey;
     }
 }
 
@@ -48,6 +48,38 @@ main {
         margin-left: 70px;
     }
 }
+.bandeau{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding:$headerYPadding $headerXPadding;
+  #title{
+    border-bottom: solid 3px $lightBlueColor;
+    color: $titleColor;
+    background-color: $white1;
+    font-family: $josephine;
+    padding:$titleYPadding $titleXPadding;
+    text-align: center;
+  }
+}
+
+.input{
+  font-family: $josephine;
+  color: $titleColor;
+  padding: 10px;
+  margin-right: 100px;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $white1;
+  border: none;
+  border-left: solid 3px $lightBlueColor;
+  &:hover{
+    border-left: solid 3px $darkBlueColor;
+  }
+}
+
 
 .error {
     color: $errorColor;
@@ -66,3 +98,5 @@ main {
 
 @import 'nav';
 @import 'footer';
+
+@import "createArticle";
