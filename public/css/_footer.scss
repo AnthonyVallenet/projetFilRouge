@@ -24,9 +24,14 @@ footer {
         margin-left: 70px;
     }
 }
-
+@media screen and (max-width: 1024px) {
+    footer {
+        padding: 75px 75px;
+    }
+}
 @media screen and (max-width: 550px) {
     footer {
         margin-left: 0 !important;
+        padding: 75px 25px;
     }
 }

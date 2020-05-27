@@ -1,0 +1,108 @@
+// main: style.scss
+
+section.infoProject {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &>div {
+        width: 100%;
+
+        &:first-child {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 50px;
+
+            &>p, &>h2 {
+                padding: 5px 0px;
+                text-align: center;
+                background-color: white;
+                border-left: 3px solid $darkBlueColor;
+                border-right: 3px solid $darkBlueColor;
+            }
+
+            &>h2 {
+                width: 40%;
+                margin-bottom: 15px;
+            }
+
+            &>p {
+                width: 20%;
+            }
+        }
+
+        &:last-child {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 70%;
+            box-shadow: 0  5px 10px #8287990d, 0 15px 40px #72768633;
+            font-size: 20px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    section.infoProject {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 55%;
+                }
+
+                &>p {
+                    width: 35%;
+                }
+            }
+
+            &:last-child {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section.infoProject {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 80%;
+                }
+
+                &>p {
+                    width: 60%;
+                }
+            }
+
+            &:last-child {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    section.infoProject {
+        &>div {
+            &:first-child {
+
+                &>h2 {
+                    width: 100%;
+                }
+
+                &>p {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
