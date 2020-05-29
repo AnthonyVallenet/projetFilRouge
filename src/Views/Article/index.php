@@ -2,28 +2,52 @@
 ob_start();
 ?>
 
-<section class="allArticles">
+<div class="bandeau">
+    <div id="title">
+        <h1 class="titre1">Les articles</h1>
+    </div>
+</div>
+<section class="allArticles sectionPage">
     <form action="/article/search" method="post">
-        <input type="text" name="search" id="search" value="<?php echo old("name");?>" placeholder="Search">
+        <div>
+            <input type="text" name="search" id="search" value="<?php echo old("name");?>" placeholder="Search">
+            <button><i class="fas fa-search"></i></button>
+        </div>
         <span class="error"><?php echo error("search");?></span>
-        <button>send</button>
     </form>
-    <?php
-        foreach ($info as $article) {
-            ?>
-            <div style="border: 2px solid black">
-                <a href="/article/<?php echo escape($article->getId());?>">Lien de l'article</a>
-                <p><?php echo escape($article->getId()); ?></p>
-                <p><?php echo escape($article->getTitle()); ?></p>
-                <p><?php echo escape($article->getDate()); ?></p>
-                <p><?php echo escape($article->getContent()); ?></p>
-                <p><?php echo escape($article->getEnabled()); ?></p>
-                <p><?php echo escape($article->getComment()); ?></p>
-                <img src="/img/article/<?php echo escape($article->getId());?>" alt="image article" style="width: 200px">
-            </div>
-            <?php
-        }
-    ?>
+
+    <div>
+        <?php
+            foreach ($info as $article) {
+                $date = strftime("%e %B %G", strtotime(escape($data["date"])));
+                ?>
+                <div>
+                    <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">
+                        <div class="infos">
+                            <div>
+                                <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
+                                <h3 class="date text-alt"><?php echo strftime("%d %b %G", strtotime(escape($article->getDate())));?></h3>
+                            </div>
+                            <div class="fade">
+                                <p class="txt"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
+                                <?php
+                                if ($_SESSION["user"]["admin"] == 1) {
+                                    ?>
+                                        <div>
+                                            <a href="#" class="delete">SUPPRIMER</a>
+                                            <a href="#" class="edit">MODIFIER</a>
+                                        </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        ?>
+    </div>
 </section>
 
 <?php
