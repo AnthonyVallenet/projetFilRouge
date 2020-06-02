@@ -4,14 +4,13 @@ ob_start();
 
 <script src="https://kit.fontawesome.com/51cdbc8526.js" crossorigin="anonymous"></script>
 
-<div id="bandeau">
-  <div class="header">
+<div class="bandeau">
+  <div id="title">
     <h1 class="titre1">Contact</h1>
   </div>
 </div>
 
-
-<section class="main-contact">
+<section class="sectionContact">
   <div class="first">
     <h2 class="second-titre titre2">Informations</h2>
     <div class="contact-info">
@@ -23,6 +22,7 @@ ob_start();
           <li>Madame Hélène Ribeiro, Fondatrice</li>
         </ul>
       </div>
+
       <div class="text">
         <p>tel: 09 81 78 68 85</p>
       </div>
@@ -37,31 +37,27 @@ ob_start();
       </div>
 
       <div class="contact-icon">
-        <a><i id="facebook" class="fab fa-facebook-square"></i></a>
+        <a><i class="fab fa-facebook-square facebook"></i></a>
 
-        <a><i id="twitter" class="fab fa-twitter-square"></i></a>
+        <a><i class="fab fa-twitter-square twitter"></i></a>
 
-        <a><i id="linkedin" class="fab fa-linkedin"></i></a>
-
-
+        <a><i class="fab fa-linkedin linkedin"></i></a>
       </div>
     </div>
   </div>
+
   <div>
-
-
-
     <h2 class="second-titre titre2">Contact</h2>
     <form action="/contact/" method="post">
       <div class="prenom-nom">
-        <div class="prenom">
+        <div>
           <label for="lastName">Nom:</label>
           <input type="text" class="text-alt" name="lastName" id="lastName" value="<?php echo old("lastName");?>"
             placeholder="Nom">
           <span class="error"><?php echo error("lastName");?></span>
         </div>
 
-        <div class="nom">
+        <div>
           <label for="firstName">Prenom:</label>
           <input type="text" class="text-alt" name="firstName" id="firstName" value="<?php echo old("firstName");?>"
             placeholder="Prenom">
@@ -69,26 +65,28 @@ ob_start();
         </div>
       </div>
 
-      <div class="email">
+      <div>
         <label for="email">Email:</label>
-        <input type="email" class="text-alt" id="email" name="email" value="<?php echo old("email");?>" placeholder="Email">
+        <input type="email" class="text-alt" id="email" name="email" value="<?php echo old("email");?>"
+          placeholder="Email">
         <span class="error"><?php echo error("email");?></span>
       </div>
 
-      <div class="sujet">
-        <label for="sujet">Sujet:</label>
-        <input id="sujet" class="text-alt" type="text" name="sujet" value="<?php echo old("sujet");?>" placeholder="Sujet">
-        <span class="error"><?php echo error("sujet");?></span>
+      <div>
+        <label for="subject">Sujet:</label>
+        <input id="subject" class="text-alt" type="text" name="subject" value="<?php echo old("subject");?>"
+          placeholder="Sujet">
+        <span class="error"><?php echo error("subject");?></span>
       </div>
 
-      <div class="message">
+      <div>
         <label for="message">Message:</label>
         <textarea name="message" id="message" cols="30" rows="10"
           placeholder="Message"><?php echo old("message");?></textarea>
         <span class="error"><?php echo error("message");?></span>
       </div>
 
-      <div class="send">
+      <div>
         <button class="button send-button" type="submit" name="button">Submit</button>
       </div>
     </form>

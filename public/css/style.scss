@@ -9,7 +9,6 @@
     margin: 0;
     font-family: 'Rubik', sans-serif;
 
-
     &::-webkit-scrollbar-track
     {
         border-radius: 10px;
@@ -90,6 +89,17 @@ main {
     cursor: pointer;
     border: 1px solid #0e2650;
     transition: all ease .5s;
+    border-radius: 5px;
+    padding: 8px 60px;
+    float: right;
+    margin-top: 20px;
+}
+
+.button:hover {
+    color: #1E3F78;
+    background-color: white;
+    border: 1px solid #0e2650;
+    transition: all ease .5s;
 }
 
 .text {
@@ -133,10 +143,32 @@ nav {
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .sectionContent {
+        padding: 75px 75px;
+    }
+}
+
 @media screen and (max-width: 550px) {
     main {
         margin-left: 0 !important;
         margin-top: 75px;
+    }
+
+    .sectionContent {
+        padding: 75px 25px;
+    }
+
+    .titre1 {
+        font-size: 45px;
+    }
+
+    .titre2 {
+        font-size: 35px;
+    }
+
+    .titre2 {
+        font-size: 25px;
     }
 }
 
@@ -146,3 +178,4 @@ nav {
 @import 'carousel';
 @import 'infoProject';
 @import 'register';
+@import 'team';

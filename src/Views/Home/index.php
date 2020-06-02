@@ -49,31 +49,94 @@ ob_start();
   </div>
 </section>
 
+<section class="team sectionContent">
+  <div>
+    <h2>L'équipe du projet</h2>
+    <p class="subtitle">Élève d'EDEN School</p>
+  </div>
+  <div>
+
+    <div class="blocPeople">
+      <div class="people">
+        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        </div>
+        <div>
+          <p>Test 1</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocPeople">
+      <div class="people">
+        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        </div>
+        <div>
+          <p>Test 2</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocPeople">
+      <div class="people">
+        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        </div>
+        <div>
+          <p>Test 3</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocPeople">
+      <div class="people">
+        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        </div>
+        <div>
+          <p>Test 4</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocPeople">
+      <div class="people">
+        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        </div>
+        <div>
+          <p>Test 5</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="sectionContent test">
+</section>
+
   
-    <script>
-      var slideIndex = 1;
-      showSlides(slideIndex);
+  <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
 
-      function plusSlides(n) {
-        showSlides(slideIndex += n);
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
       }
-
-      function currentSlide(n) {
-        showSlides(slideIndex = n);
-      }
-
-      function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slides[slideIndex-1].style.display = "block";
-      }
-    </script>
+      slides[slideIndex-1].style.display = "block";
+    }
+  </script>
 <?php
 
 $content = ob_get_clean();
