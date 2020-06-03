@@ -52,7 +52,7 @@ old("enabled") == "on" ?: $enabled = "";
             <?php 
             foreach ($info as $tag) {
                 ?>
-                <option value="<?php echo escape($tag->getId()); ?>"><?php echo escape($tag->getName()); ?></option>
+                <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
                 <?php
             }
             ?>
