@@ -156,6 +156,10 @@ nav {
     padding: 75px 150px;
 }
 
+.sectionPage {
+    padding: 50px 100px;
+}
+
 .error {
     color: $errorColor;
 
@@ -168,6 +172,10 @@ nav {
     .sectionContent {
         padding: 75px 75px;
     }
+
+    .sectionPage {
+        padding: 50px 75px;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -178,6 +186,10 @@ nav {
 
     .sectionContent {
         padding: 75px 25px;
+    }
+
+    .sectionPage {
+        padding: 50px 25px;
     }
 
     .titre1 {
@@ -200,3 +212,4 @@ nav {
 @import 'carousel';
 @import 'infoProject';
 @import 'team';
+@import 'allArticles';
