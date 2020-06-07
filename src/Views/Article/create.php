@@ -23,9 +23,8 @@ old("enabled") == "on" ?: $enabled = "";
         <label for="enabled">Mettre en pause l'article</label>
         <span class="error"><?php echo error("enabled");?></span>
       </div>
-      <div class="input">
+      <div class="input tag" id="tag">
         <p>#Tags:</p>
-        <i class="fas fa-arrow-down"></i>
         <select style="display:none" name="tags[]" id="tags" multiple>
           <?php
           foreach ($info as $tag) {
@@ -35,6 +34,8 @@ old("enabled") == "on" ?: $enabled = "";
           }
           ?>
         </select>
+        <i class="fas fa-arrow-down" id="arrow" onclick="rotate()"></i>
+        
       </div>
     </div>
 
@@ -58,9 +59,11 @@ old("enabled") == "on" ?: $enabled = "";
           <div  class="result" >
             <img id="output" src="https://media.discordapp.net/attachments/700677739471962192/714830061496303647/image-not-found.png?width=1055&height=703" alt="">
             <input type="file" id="file" name="" accept="image/png, image/jpeg"/>
-            <label for="file" id="labelFile" class="button"><i class="fas fa-image"></i></label>
-          </div>
+            <label for="file" id="labelFile" class="fileButton"><i class="fas fa-image"></i></label>
+         </div>
         </div>
+
+
         <div class="description">
           <label for="content"></label>
           <textarea name="content" class="input" id="content" cols="30" rows="10" placeholder="content"><?php echo old("content");?></textarea>
@@ -82,6 +85,8 @@ old("enabled") == "on" ?: $enabled = "";
   </section>
 </div>
 <script src="/js/hover_image.js" charset="utf-8"></script>
+<script src="/js/show_tag.js" charset="utf-8"></script>
+
 <?php
 
 $content = ob_get_clean();

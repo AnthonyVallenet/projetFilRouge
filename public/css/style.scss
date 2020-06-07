@@ -79,8 +79,6 @@ main {
   font-family: $josephine;
   color: $titleColor;
   padding: 10px;
-  margin-right: 100px;
-  width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,8 +119,16 @@ main {
     cursor: pointer;
     border: 1px solid #0e2650;
     transition: all ease .5s;
-}
+    border-radius: 5px;
+    padding: 8px 60px;
+    &:hover {
+        color: #1E3F78;
+        background-color: white;
+        border: 1px solid #0e2650;
+        transition: all ease .5s;
+    }
 
+}
 .text {
     color: #3F3F3F;
     font-size: 20px;
@@ -193,9 +199,9 @@ nav {
     }
 }
 
-@import "createArticle";
 @import 'nav';
 @import 'footer';
+@import "createArticle";
 @import 'contact';
 @import 'carousel';
 @import 'infoProject';

@@ -1,0 +1,47 @@
+// main: style.scss
+
+.sectionRegister {
+
+    padding: 100px;
+    &>div {
+        padding: 20px;
+        background: white;
+        &>form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+
+            &>.formBlock {
+
+                display: flex;
+
+                &>.block1,
+                .block2 {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                &>.block1 {
+                    border-right: solid #6e97e3;
+
+                    input {
+                        margin-right: 10px;
+                    }
+                }
+
+                input {
+                    border: none;
+                    margin-bottom: 30px;
+                    border-left: solid #6e97e3;
+                    background: #f7f7f7;
+                    padding: 8px 14px 8px 14px;
+                }
+
+
+            }
+        }
+
+    }
+
+}
