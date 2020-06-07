@@ -121,14 +121,12 @@ main {
     transition: all ease .5s;
     border-radius: 5px;
     padding: 8px 60px;
-<<<<<<< HEAD
     &:hover {
         color: #1E3F78;
         background-color: white;
         border: 1px solid #0e2650;
         transition: all ease .5s;
     }
-=======
     float: right;
     margin-top: 20px;
 }
@@ -139,9 +137,7 @@ main {
     border: 1px solid #0e2650;
     transition: all ease .5s;
 }
->>>>>>> 0e7bc3a8818f91bcccd5d06a7892d2b2c46e18cc
 
-}
 .text {
     color: #3F3F3F;
     font-size: 20px;
