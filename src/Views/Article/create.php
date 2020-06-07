@@ -78,6 +78,22 @@ old("enabled") == "on" ?: $enabled = "";
 
         <button class="button" type="submit">send</button>
       </div>
+<!-- 
+        <label for="imgArticle">Img :</label>
+        <input type="file" id="imgArticle" name="imgArticle" accept="image/png, image/jpeg"/>
+        <span class="error"><?php echo error("imgArticle");?></span>
+
+        <br>
+
+        <select name="tags[]" id="tags" multiple>
+            <?php 
+            foreach ($info as $tag) {
+                ?>
+                <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
+                <?php
+            }
+            ?>
+        </select> -->
 
 
       </div>

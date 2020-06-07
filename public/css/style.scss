@@ -96,7 +96,7 @@ main {
     color: #5E6D85;
     font-size: 55px;
     text-align: center;
-}
+}   
 
 .titre2 {
     font-family: 'Josefin Sans', sans-serif;
@@ -121,12 +121,25 @@ main {
     transition: all ease .5s;
     border-radius: 5px;
     padding: 8px 60px;
+<<<<<<< HEAD
     &:hover {
         color: #1E3F78;
         background-color: white;
         border: 1px solid #0e2650;
         transition: all ease .5s;
     }
+=======
+    float: right;
+    margin-top: 20px;
+}
+
+.button:hover {
+    color: #1E3F78;
+    background-color: white;
+    border: 1px solid #0e2650;
+    transition: all ease .5s;
+}
+>>>>>>> 0e7bc3a8818f91bcccd5d06a7892d2b2c46e18cc
 
 }
 .text {
@@ -162,6 +175,10 @@ nav {
     padding: 75px 150px;
 }
 
+.sectionPage {
+    padding: 50px 100px;
+}
+
 .error {
     color: $errorColor;
 
@@ -174,6 +191,10 @@ nav {
     .sectionContent {
         padding: 75px 75px;
     }
+
+    .sectionPage {
+        padding: 50px 75px;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -184,6 +205,10 @@ nav {
 
     .sectionContent {
         padding: 75px 25px;
+    }
+
+    .sectionPage {
+        padding: 50px 25px;
     }
 
     .titre1 {
@@ -206,3 +231,7 @@ nav {
 @import 'carousel';
 @import 'infoProject';
 @import 'team';
+@import 'register';
+@import 'team';
+@import 'allArticles';
+

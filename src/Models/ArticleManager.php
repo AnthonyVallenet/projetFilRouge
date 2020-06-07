@@ -30,6 +30,21 @@ class ArticleManager extends Manager {
         ));
     }
 
+    public function update($slug, $img_type, $img_blob, $comment, $enabled) {
+        $stmt = $this->bdd->prepare("UPDATE articles SET title = ?, date = ?, content = ?, img_type = ?, img_blob = ?, enabled = ?, comment = ? WHERE id = ?");
+        
+        $stmt->execute(array(
+            $_POST["titleEditArticle"],
+            $_POST["dateEditArticle"],
+            $_POST["contentEditArticle"],
+            $img_type,
+            $img_blob,
+            $enabled,
+            $comment,
+            $slug
+        ));
+    }
+
     public function allArticle() {
         $stmt = $this->bdd->query('SELECT * FROM articles');
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
