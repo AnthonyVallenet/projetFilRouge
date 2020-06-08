@@ -2,7 +2,11 @@
 ob_start();
 ?>
     <section id="admin">
-        <p>Admin</p>
+        <div class="bandeau">
+            <div id='title'>
+            <h1 class="titre1">Admin</h1>
+            </div>
+        </div>
 
         <a href="#tags"><button class="btnToggle active tags">Tags</button></a>
         <a href="#contacts"><button class="btnToggle contacts">Contacts</button></a>
@@ -12,7 +16,7 @@ ob_start();
         <div class="toggleDiv tags">
             <form action="/administration/tag/create" method="post" class="addForm">
                 <div>
-                    <label for="name"><i class=""></i></label>
+                    <label for="name"></label>
                     <input type="text" name="name" id="name" value="<?php echo old("name");?>" placeholder="Nom du tag">
                     <?php echo error("name") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("name") .'</span>' : ""?>
 
@@ -28,40 +32,41 @@ ob_start();
                     <button type="submit" name="button" class="validate"><i class="fas fa-check"></i></button>
                 </div>
             </form>
+
             <div class="tag_container">
                 <?php
                     foreach ($info["tags"] as $tag) {
                         ?>
-                            <div class="tag_item" style="background-color: <?php echo escape($tag->getColor());?>">
-                                <form action="/administration/tag/edit/<?php echo escape($tag->getId()); ?>" method="post" class="editForm">
-                                    <label class="editNameTagLabel" for="nameEditTag-<?php echo escape($tag->getId()); ?>">#
-                                        <input class="nameEditTag" type="text" name="nameEditTag-<?php echo escape($tag->getId()); ?>" id="nameEditTag-<?php echo escape($tag->getId()); ?>" value="<?php echo old("nameEditTag-" . escape($tag->getId())) ?: escape($tag->getName()); ?>" placeholder="Name">
-                                        <?php echo error("nameEditTag-" . escape($tag->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("nameEditTag-" . escape($tag->getId())) .'</span>' : ""?>
-                                    </label>
-                                    <div class="edit_color_part">
-                                        <label for="colorEditTag-<?php echo escape($tag->getId()); ?>" class='editColorLabel'>
-                                            <!-- <i class="fas fa-fill-drip"></i> -->
-                                            <p>Couleur</p>
-                                            <input type="color" class="colorEditTag" name="colorEditTag-<?php echo escape($tag->getId()); ?>" id="colorEditTag-<?php echo escape($tag->getId()); ?>" value="<?php echo old("colorEditTag-" . escape($tag->getId())) ?: escape($tag->getColor()); ?>">
-                                            <?php echo error("colorEditTag-" . escape($tag->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("colorEditTag-" . escape($tag->getId())) .'</span>' : ""?>
+                            <div class="tag_item" style="background-color: <?php echo escape($tag->getColor());?>;  display:flex; flex-direction:column; align-items:center">
+                                <div style="width:100%;">
+                                    <form action="/administration/tag/edit/<?php echo escape($tag->getIdTag()); ?>" method="post" class="editForm">
+                                        <label class="editNameTagLabel" for="nameEditTag-<?php echo escape($tag->getIdTag()); ?>">#
+                                            <input class="nameEditTag" type="text" name="nameEditTag-<?php echo escape($tag->getIdTag()); ?>" id="nameEditTag-<?php echo escape($tag->getIdTag()); ?>" value="<?php echo old("nameEditTag-" . escape($tag->getIdTag())) ?: escape($tag->getName()); ?>" placeholder="Name">
                                         </label>
-                                    </div>
+                                        <div class="edit_color_part">
+                                            <label for="colorEditTag-<?php echo escape($tag->getIdTag()); ?>" class='editColorLabel'>
+                                                <!-- <i class="fas fa-fill-drip"></i> -->
+                                                <p>Couleur</p>
+                                                <input type="color" class="colorEditTag" name="colorEditTag-<?php echo escape($tag->getIdTag()); ?>" id="colorEditTag-<?php echo escape($tag->getIdTag()); ?>" value="<?php echo old("colorEditTag-" . escape($tag->getIdTag())) ?: escape($tag->getColor()); ?>">
+                                                <?php echo error("colorEditTag-" . escape($tag->getIdTag())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("colorEditTag-" . escape($tag->getIdTag())) .'</span>' : ""?>
+                                            </label>
+                                        </div>
 
-                                    <?php echo error("messageErrorEditTag-" . escape($tag->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditTag-" . escape($tag->getId())) .'</span>' : ""?>
+                                        <?php echo error("messageErrorEditTag-" . escape($tag->getIdTag())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditTag-" . escape($tag->getIdTag())) .'</span>' : ""?>
 
-                                    <button type="submit" name="button" class="edit"><i class="fas fa-check"></i></button>
-                                </form>
-                                <form action="/administration/tag/delete/<?php echo escape($tag->getId()); ?>" method="post">
-                                    <button type="submit" name="button" class="delete"><i class="fas fa-times"></i></button>
-                                </form>
+                                        <button type="submit" name="button" class="edit"><i class="fas fa-check"></i></button>
+                                    </form>
+                                    <form action="/administration/tag/delete/<?php echo escape($tag->getIdTag()); ?>" method="post">
+                                        <button type="submit" name="button" class="delete"><i class="fas fa-times"></i></button>
+                                    </form>
+                                </div>
+                                <?php echo error("nameEditTag-" . escape($tag->getIdTag())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("nameEditTag-" . escape($tag->getIdTag())) .'</span>' : ""?>
                             </div>
                         <?php
                     }
                 ?>
             </div>
         </div>
-
-
 
 
 <!-- contact -->

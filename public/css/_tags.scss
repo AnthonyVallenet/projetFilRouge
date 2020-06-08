@@ -4,11 +4,11 @@ $createColor: #d9d9d9;
 .tags{
     font-family: $josephine;
     .addForm{
+        padding: 0 100px;
         div{
-            width: 40%;
             display: flex;
-            justify-content: space-around;
-            .color_part{
+            
+           .color_part{
                 margin: 0 10px;
                 #colorLabel{
                     width: 100%;
@@ -46,7 +46,7 @@ $createColor: #d9d9d9;
                 border: none;
                 border-radius: 5px;
                 text-align: center;
-                padding: 10px 50px;
+                padding: 10px 10px;
                 font-size: 20px;
                 outline: none;
                 &::-webkit-input-placeholder{
@@ -58,7 +58,7 @@ $createColor: #d9d9d9;
             .validate{
                 border: none;
                 border-radius: 50%;
-                padding: 0 9px;
+                padding: 7px 9px;
                 background-color: $validateGreen;
                 font-size: 25px;
                 color: white;
@@ -73,15 +73,17 @@ $createColor: #d9d9d9;
     }
     .tag_container{
         width: 100%;
+        padding: 30px 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         float: left;
         .tag_item{
             padding: 10px 5px;
-            width: 25%;
+            width: 20%;
             min-width: 250px;
             margin-left: 10px;
+            margin-bottom: 15px;
             border-radius: 5px;
             position: relative;
             display: flex;
@@ -96,6 +98,7 @@ $createColor: #d9d9d9;
                 button[type='submit']{
                     border-radius: 50%;
                     font-size: 15px;
+                    margin-left: 10px;
                 }
                 .edit{
                     background-color: $validateGreen;
@@ -125,7 +128,9 @@ $createColor: #d9d9d9;
                 .editNameTagLabel{
                     display: flex;
                     align-items: center;
+                    color: white;
                     input[type="text"]{
+                        color: white;
                         width: 100%;
                         background: none;
                         border: none;
