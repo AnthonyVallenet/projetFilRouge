@@ -2,18 +2,26 @@
 
 // colors
 $mainBgColor: #dfeaff;
-$footerBgColor: #f7f7f7;
-$contactBgColor: #f0f2fd;
+$white1: #f7f7f7;
+$white2: #f0f2fd;
 $darkBlueColor: #0e2650;
+$lightBlueColor: #6e97e3;
 
 $titleColor: #5e6d85;
 $textNavColor: #fff;
 $textFooterColor: #65c0be;
 
-$scrollBarColor: #555;
+$grey: #555;
 
 $errorColor: red;
 
 //fonts
 $josephine: 'Josefin Sans', sans-serif;
 $rubik: 'Rubik', sans-serif;
+
+//padding/margin
+
+$headerYPadding: 50px;
+$headerXPadding: 0;
+$titleYPadding: 40px;
+$titleXPadding: 60px;
