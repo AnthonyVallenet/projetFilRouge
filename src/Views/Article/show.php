@@ -17,55 +17,122 @@ if ($info["article"]->getEnabled()) {
     old("comment") == "on" ?: $comment = "";
 }
 ?>
-
-<section class="article">
-    <button class="btnToggleEdit">edit</button>
-    <div class="toggleDivEdit">
-        <p><?php echo escape($info["article"]->getId()); ?></p>
-        <p><?php echo escape($info["article"]->getTitle()); ?></p>
-        <p><?php echo escape($info["article"]->getDate()); ?></p>
-        <p><?php echo escape($info["article"]->getContent()); ?></p>
-        <p><?php echo escape($info["article"]->getEnabled()); ?></p>
-        <p><?php echo escape($info["article"]->getComment()); ?></p>
-        <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
-        <?php
-            foreach ($info["tagsArticle"] as $tagArticle) {
-                ?>
-                    <p><?php echo escape($tagArticle->getIdTag()); ?></p>
-                    <p><?php echo escape($tagArticle->getName()); ?></p>
-                    <p><?php echo escape($tagArticle->getColor()); ?></p>
-                <?php
-            }
-        ?>
+<div id='article'>
+    <div class="bandeau">
+        <div id='title'>
+        <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
+        </div>
     </div>
-    <div class="toggleDivEdit" style="display: none">
-        <p>edit</p>
-        <form action="/administration/article/edit/<?php echo escape($info["article"]->getId()); ?>" enctype="multipart/form-data" method="post">
-            <input type="text" name="titleEditArticle" id="titleEditArticle" value="<?php echo old("titleEditArticle") ?: escape($info["article"]->getTitle()); ?>" placeholder="Titre">
-            <?php echo error("titleEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("titleEditArticle") .'</span>' : ""?>
+    <section class="article">
+        <div class="buttonContainer">
+            <button class="btnToggleEdit button">edit</button>
+        </div>
+        <!-- show -->
+        <div class="toggleDivEdit">
+            
+            <p><?php echo escape($info["article"]->getId()); ?></p>
+            <p><?php echo escape($info["article"]->getTitle()); ?></p>
+            <p><?php echo escape($info["article"]->getDate()); ?></p>
+            <p><?php echo escape($info["article"]->getContent()); ?></p>
+            <p><?php echo escape($info["article"]->getEnabled()); ?></p>
+            <p><?php echo escape($info["article"]->getComment()); ?></p>
+            <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
+            <?php
+                foreach ($info["tagsArticle"] as $tagArticle) {
+                    ?>
+                        <p><?php echo escape($tagArticle->getIdTag()); ?></p>
+                        <p><?php echo escape($tagArticle->getName()); ?></p>
+                        <p><?php echo escape($tagArticle->getColor()); ?></p>
+                    <?php
+                }
+            ?>
+        </div>
+        
+        <!-- edit -->
+        <div class="toggleDivEdit" style="display: none">
+            <form action="/administration/article/edit/<?php echo escape($info["article"]->getId()); ?>" enctype="multipart/form-data" method="post">
+            <!-- Pause et tag -->
+                <div class="enableAndTag" style="margin-top: 50px">
+                    <div class="input enabled">
+                        <input type="checkbox" id="enabledEditArticle" name="enabledEditArticle" <?php echo $enabled;?>>
+                        <label for="enabledEditArticle">Mettre en pause l'article</label>
+                        <!-- <span class="error"><?php echo error("enabledEditArticle");?></span> -->
+                    </div>
+                    <div class="input tag" id="tag">
+                        <p>#Tags:</p>
+                            <select style="display:none" name="tags[]" id="tags" multiple>
+                            <?php
+                            foreach ($info['allTags'] as $tag) {
+                                ?>
+                                    <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
+                                <?php
+                            }
+                            ?>
+                            </select>
+                        <i class="fas fa-arrow-down" id="arrow" onclick="rotate()"></i>
+                    </div>
+                </div>
 
-            <input type="date" name="dateEditArticle" id="dateEditArticle" value="<?php echo old("dateEditArticle") ?: escape($info["article"]->getDate()); ?>">
-            <?php echo error("dateEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("dateEditArticle") .'</span>' : ""?>
 
-            <textarea name="contentEditArticle" id="contentEditArticle" cols="30" rows="10"><?php echo old("contentEditArticle") ?: escape($info["article"]->getContent()); ?></textarea>
-            <?php echo error("contentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("contentEditArticle") .'</span>' : ""?>
+                <!-- titre et date -->
+                <div class="titreDate">
+                    <div class="block">
+                        <!-- titre -->
+                        <div class="titre input">
+                            <label for="titleEditArticle"></label>
+                            <input type="text" name="titleEditArticle" id="titleEditArticle" value="<?php echo old("titleEditArticle") ?: escape($info["article"]->getTitle()); ?>" placeholder="Titre">
+                        </div>
+                        <?php echo error("titleEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("titleEditArticle") .'</span>' : ""?>
+                    </div>
+                    
+                    <div class="block">
+                        <!-- date -->
+                        <div class="date input">
+                            <label for="dateEditArticle">Date: </label>
+                            <input type="date" name="dateEditArticle" id="dateEditArticle" value="<?php echo old("dateEditArticle") ?: escape($info["article"]->getDate()); ?>">
+                        </div>
+                        <?php echo error("dateEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("dateEditArticle") .'</span>' : ""?>
+                    </div>
+                        </div>
 
-            <input type="file" id="imgEditArticle" name="imgEditArticle" accept="image/png, image/jpeg"/>
-            <?php echo error("imgEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("imgEditArticle") .'</span>' : ""?>
 
-            <input type="checkbox" id="commentEditArticle" name="commentEditArticle" <?php echo $comment; ?>>
-            <span class="error"><?php echo error("commentEditArticle");?></span>
+                <!--  image et description -->
+               
+                <div class="imgDescription">
+                    <div class="container">
+                        <div  class="result" >
+                            <img id="output" src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" alt="">
+                            <input type="file" id="file" name="imgEditArticle" accept="image/png, image/jpeg"/>
+                            <label for="file" id="labelFile" class="fileButton"><i class="fas fa-image"></i></label>
+                        </div>
+                    <?php echo error("imgEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("imgEditArticle") .'</span>' : ""?>
+                </div>
 
-            <input type="checkbox" id="enabledEditArticle" name="enabledEditArticle" <?php echo $comment; ?>>
-            <span class="error"><?php echo error("enabledEditArticle");?></span>
 
-            <?php echo error("messageEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditArticle") .'</span>' : ""?>
+                    <div class="description">
+                        <label for="contentEditArticle"></label>
+                        <textarea class="input" name="contentEditArticle" id="contentEditArticle" cols="30" rows="10"><?php echo old("contentEditArticle") ?: escape($info["article"]->getContent()); ?></textarea>
+                        <?php echo error("contentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("contentEditArticle") .'</span>' : ""?>
+                    </div>
+                </div>
 
-            <button type="submit" name="button">Editer</button>
-        </form>
-    </div>
-</section>
+                <!-- activer les commentaires et sumbit -->
 
+                <div class="commentSend">
+                    <label for="commentEditArticle"><span>Autoriser les commentaires</span>
+                    <input type="checkbox" id="commentEditArticle" name="commentEditArticle" <?php echo $comment; ?>>
+                    </label>
+                    <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
+
+                    <button class="button" type="submit">Envoyer</button>
+                </div>
+
+
+                <?php echo error("messageEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditArticle") .'</span>' : ""?>
+            </form>
+        </div>
+    </section>
+</div>
 <script>
     let btnToggleEdit = document.querySelector('.btnToggleEdit');
     let toggleDivEdit = document.querySelectorAll('.toggleDivEdit');
@@ -95,7 +162,8 @@ if ($info["article"]->getEnabled()) {
         btnToggleEdit.innerHTML = "show";
     }
 </script>
-
+<script src="/js/hover_image.js" charset="utf-8"></script>
+<script src="/js/show_tag.js" charset="utf-8"></script>
 <?php
 $content = ob_get_clean();
 require VIEWS . 'layout.php';
