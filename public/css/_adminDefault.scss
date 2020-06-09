@@ -10,7 +10,7 @@ section.sectionAdmin {
 
         &>a {
             width: 100px;
-            height: 30px;
+            height: 33px;
 
             &>button {
                 outline: none;
@@ -19,11 +19,11 @@ section.sectionAdmin {
                 cursor: pointer;
                 border: none;
                 border-top: 2px solid transparent;
-                border-bottom: 2px solid black;
+                border-bottom: 2px solid $darkBlueColor;
                 background-color: transparent;
 
                 &.active {
-                    border: 2px solid black;
+                    border: 2px solid $darkBlueColor;
                     border-bottom: 2px solid transparent;
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
@@ -36,13 +36,13 @@ section.sectionAdmin {
             &:first-child {
                 width: 100px;
                 height: auto;
-                border-bottom: 2px solid black;
+                border-bottom: 2px solid $darkBlueColor;
             }
 
             &:last-child {
                 flex: 1;
                 height: auto;
-                border-bottom: 2px solid black;
+                border-bottom: 2px solid $darkBlueColor;
             }
         }
     }

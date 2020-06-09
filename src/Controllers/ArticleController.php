@@ -108,7 +108,7 @@ class ArticleController extends Controller {
                 $this->managerTag->articleTag($tagId, $idArticle);
             }
 
-            $this->redirect("");
+            $this->redirect("articles");
         } else {
             $this->redirect("article/create");
         }
