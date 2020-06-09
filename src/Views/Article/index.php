@@ -19,7 +19,6 @@ ob_start();
     <div>
         <?php
             foreach ($info as $article) {
-                $date = strftime("%e %B %G", strtotime(escape($data["date"])));
                 ?>
                 <div>
                     <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">

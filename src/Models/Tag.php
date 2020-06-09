@@ -7,7 +7,7 @@ class Tag {
     private $color;
     private $name;
 
-    public function getId() {
+    public function getIdTag() {
         return $this->id;
     }
 
@@ -24,7 +24,7 @@ class Tag {
         $this->id = $id;
     }
 
-    public function setTitle(String $color) {
+    public function setColor($color) {
         $this->color = $color;
     }
 

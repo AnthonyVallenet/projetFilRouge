@@ -40,8 +40,15 @@
 
                     &>.block1 {
                         border-right: solid #6e97e3;
+                        display: flex;
+                        padding-right: 30px;
+                        align-items: center;
 
-
+                        div {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                        }
                         .firstname,
                         .lastname,
                         .email {
@@ -154,7 +161,7 @@
                         background: #f7f7f7;
                         padding: 10px 15px;
                         outline: none;
-                        width: 80%;
+                        flex: 1;
 
                         &:focus {
                             border-left: solid $darkBlueColor;
@@ -202,6 +209,7 @@
 
                 .block1 {
                     border-right: none !important;
+                    padding-right: 0 !important;
 
                     .firstname,
                     .lastname,

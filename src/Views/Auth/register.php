@@ -4,7 +4,11 @@ ob_start();
 
 <section class="sectionRegister">
     <div>
-        <h1 class="titre2">Créer votre compte</h1>
+        <div class="bandeau">
+            <div id='title'>
+                <h1 class="titre1">Créer votre compte</h1>
+            </div>
+        </div>
         <form action="/register/" method="post">
             <div class="formBlock">
                 <div class="allblock">
@@ -73,7 +77,8 @@ ob_start();
                     </div>
                 </div>
                 <div class="block3">
-                    <p class="text-alt">Vous avez déjà un compte ? <a class="connect" href="/login">Connectez vous</a></p>
+                    <p class="text-alt">Vous avez déjà un compte ? <a class="connect" href="/login">Connectez vous</a>
+                    </p>
                 </div>
 
             </div>

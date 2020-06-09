@@ -17,7 +17,7 @@ try {
     $tableArticles = "CREATE TABLE IF NOT EXISTS articles (
         id INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
-        date DATETIME NOT NULL,
+        date DATE NOT NULL,
         content TEXT NOT NULL,
         img_type VARCHAR(25) NOT NULL,
         img_blob LONGBLOB NOT NULL,

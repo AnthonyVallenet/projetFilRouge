@@ -23,14 +23,50 @@ class ArticleController extends Controller {
         $this->require("Article/create.php", $tags);
     }
 
-    public function edit($slug) {
+    public function update($slug) {
+        $this->validator->validate([
+            "titleEditArticle" => ["required", "min:3"],
+            "dateEditArticle" => ["required", "date"],
+            "contentEditArticle" => ["required"]
+        ]);
+        $_SESSION['old'] = $_POST;
+        
+        $img_type = $_FILES['imgEditArticle']['type'];
+        $img_blob = file_get_contents($_FILES['imgEditArticle']['tmp_name']);
+        $enabled = $_POST["enabled"];
+        $comment = $_POST["comment"];
+        
+        if (!$this->validator->errors()) {
+            if ($_POST["enabledEditArticle"] == NULL) {
+                $enabled = 0;
+            } else {
+                $enabled = 1;
+            }
+            if ($_POST["commentEditArticle"] == NULL) {
+                $comment = 0;
+            } else {
+                $comment = 1;
+            }
 
+            if (empty($img_blob)) {
+                $article = $this->manager->getArticleBy($slug);
+                $img_blob = $article->getImgBlob();
+                $img_type = $article->getImgType();
+            }
+            
+            $this->manager->update($slug, $img_type, $img_blob, $comment, $enabled);
+
+            $this->redirect("article/$slug");
+        } else {
+            $this->redirect("article/$slug?edit");
+        }
     }
 
     public function show($slug) {
         $article = $this->manager->getArticleBy($slug);
-        $tags = $this->managerTag->getTagArticle($slug);
-        $this->require("Article/show.php", ["article" => $article, "tags" => $tags]);
+        $tagsArticle = $this->managerTag->getTagArticle($slug);
+        $allTags = $this->managerTag->allTag($slug);
+        $this->require("Article/show.php", ["article" => $article, "tagsArticle" => $tagsArticle, "allTags" => $allTags]);
     }
 
     public function store() {
@@ -72,7 +108,7 @@ class ArticleController extends Controller {
                 $this->managerTag->articleTag($tagId, $idArticle);
             }
 
-            $this->redirect("");
+            $this->redirect("articles");
         } else {
             $this->redirect("article/create");
         }
