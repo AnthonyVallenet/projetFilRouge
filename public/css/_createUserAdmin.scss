@@ -1,0 +1,148 @@
+// main: style.scss
+
+section.sectionAdmin {
+
+    &>div.users {
+
+        &>.formUser {
+
+            &>div:last-child {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 50px;
+
+                &>form {
+                    padding: 25px;
+                    width: 35%;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 5px;
+                    border: 3px solid $darkBlueColor;
+
+                    @media screen and (max-width: 1024px) {
+                        width: 60%;
+                    }
+
+                    @media screen and (max-width: 768px) {
+                        width: 80%;
+                    }
+
+                    @media screen and (max-width: 550px) {
+                        width: 100%;
+                        padding: 15px;
+                    }
+
+                    &>div {
+                        margin-bottom: 25px;
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            margin-top: 5px;
+                        }
+
+                        input {
+                            outline: none;
+                            flex: 1;
+                            padding: 8px 14px;
+                            border: 2px solid rgba(0, 6, 39, 0.692);
+                            border-radius: 3px;
+
+                            &:focus {
+                                border: 2px solid $darkBlueColor;
+                            }
+                        }
+
+                        &>div {
+                            display: flex;
+
+                            input {
+                                border-radius: 0px;
+                                border: none;
+                                border-left: 2px solid rgba(0, 6, 39, 0.692);
+                                border-top: 2px solid rgba(0, 6, 39, 0.692);
+                                border-bottom: 2px solid rgba(0, 6, 39, 0.692);
+                                border-top-left-radius: 3px;
+                                border-bottom-left-radius: 3px;
+
+                                &:focus {
+                                    border-right: none;
+                                }
+                            }
+
+                            button {
+                                cursor: pointer;
+                                border: none;
+                                width: 30px;
+                                border-top: 2px solid rgba(0, 6, 39, 0.692);
+                                border-right: 2px solid rgba(0, 6, 39, 0.692);
+                                border-bottom: 2px solid rgba(0, 6, 39, 0.692);
+                                background-color: transparent;
+                                border-top-right-radius: 3px;
+                                border-bottom-right-radius: 3px;
+                            }
+
+                            input:focus+button {
+                                border-top: 2px solid $darkBlueColor;
+                                border-right: 2px solid $darkBlueColor;
+                                border-bottom: 2px solid $darkBlueColor;
+                            }
+                        }
+
+                        &:last-child {
+                            margin: 0;
+                            align-items: flex-end;
+
+                            @media screen and (max-width: 550px) {
+                                align-items: center;
+                            }
+                        }
+
+                        &.checkboxInput {
+                            input {
+                                position: absolute;
+                                left: -9999px;
+                            }
+
+                            label {
+                                display: block;
+                                position: relative;
+                                padding: 10px 30px 10px 62px;
+                                border: 3px solid #fff;
+                                border-radius: 100px;
+                                color: #fff;
+                                background-color: $darkBlueColor;
+                                white-space: nowrap;
+                                cursor: pointer;
+                                user-select: none;
+                                transition: background-color .2s;
+                            }
+
+                            label::before {
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                top: 10px;
+                                bottom: 10px;
+                                left: 10px;
+                                width: 25px;
+                                border: 3px solid #fff;
+                                border-radius: 100px;
+                                transition: background-color .2s;
+                            }
+
+                            input:checked+label {
+                                background-color: green;
+                            }
+
+                            input:checked+label::before {
+                                background-color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -136,26 +136,24 @@ class AuthController extends Controller {
             "lastName"=>["required", "min:3", "alphaDash"],
             "email"=>["required", "email"],
             "password"=>["required", "min:6", "alphaNum", "confirm"],
-            "passwordConfirm"=>["required", "min:6", "alphaNum"],
-            "roleSelect"=>["required", "min:0", "max:1", "numeric"]
+            "passwordConfirm"=>["required", "min:6", "alphaNum"]
         ]);
         $_SESSION['old'] = $_POST;
+        $role = $_POST["roleSelect"];
 
         if (!$this->validator->errors()) {
             $res = $this->manager->find($_POST["email"]);
 
             if (empty($res)) {
+                if ($_POST["roleSelect"] == NULL) {
+                    $role = 0;
+                } else {
+                    $role = 1;
+                }
                 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-                $this->manager->storeUser($password);
+                $this->manager->storeUser($password, $role);
 
-                $_SESSION["user"] = [
-                    "id" => $this->manager->getBdd()->lastInsertId(),
-                    "firstName" => $_POST["firstName"],
-                    "lastName" => $_POST["lastName"],
-                    "email" => $_POST["email"],
-                    "admin" => $_POST["roleSelect"]
-                ];
-                $this->redirect("administration#createUser");
+                $this->redirect("administration#users");
             } else {
                 $_SESSION["error"]['email'] = "L'email choisi est déjà utilisé !";
                 $this->redirect("administration#createUser");
