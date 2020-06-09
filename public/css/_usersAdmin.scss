@@ -61,12 +61,11 @@ section.sectionAdmin {
         &>.allUser {
 
             &>div.blocAllUser {
-                // display: flex;
-                // flex-wrap: wrap;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
                 align-items: center;
+                margin-bottom: 50px;
 
                 &>div {
                     width: calc(100% / 3);
