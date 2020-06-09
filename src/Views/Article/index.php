@@ -34,7 +34,7 @@ ob_start();
                                     ?>
                                         <div>
                                             <a href="#" class="delete">SUPPRIMER</a>
-                                            <a href="#" class="edit">MODIFIER</a>
+                                            <a href="/article/<?php echo escape($article->getId());?>?edit" class="edit">MODIFIER</a>
                                         </div>
                                     <?php
                                 }
