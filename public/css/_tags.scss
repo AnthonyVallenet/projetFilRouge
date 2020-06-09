@@ -5,6 +5,52 @@ $createColor: #d9d9d9;
     font-family: $josephine;
     .addForm{
         padding: 0 100px;
+        @media screen and (max-width: 1260px){
+            padding: 0px !important;
+            div{
+                justify-content: center;
+                .color_part{
+                    height: 40px;
+                    
+                    #colorLabel{
+                        height:100%;
+                        #color{
+                            height: 100%;
+                            padding: 0 !important;
+                        }
+                    }
+                }
+            }
+          }
+          @media screen and (max-width: 600px){
+            padding: 0px !important;
+            div{
+                flex-direction: column;
+                align-items: center;
+                #name{
+                    padding: 8px 0 !important;
+                    width: 80%;
+                    margin-bottom: 10px;
+                }
+                .color_part{
+                    height: 40px;
+                    width: 80%;
+                    #colorLabel{
+                        height:100%;
+                        #color{
+                            height: 100%;
+                            padding: 0 !important;
+                        }
+                    }
+                }
+                .validate{
+                    padding: 5px 0 !important;
+                    width: 80%;
+                    border-radius: 5px !important;
+                    margin-top: 10px;
+                }
+            }
+          }
         div{
             display: flex;
             
