@@ -1,122 +1,7 @@
 //main: style.scss
 
-$createColor: #d9d9d9;
 .tags{
     font-family: $josephine;
-    .addForm{
-        padding: 0 100px;
-        @media screen and (max-width: 1260px){
-            padding: 0px !important;
-            div{
-                justify-content: center;
-                .color_part{
-                    height: 40px;
-                    
-                    #colorLabel{
-                        height:100%;
-                        #color{
-                            height: 100%;
-                            padding: 0 !important;
-                        }
-                    }
-                }
-            }
-          }
-          @media screen and (max-width: 600px){
-            padding: 0px !important;
-            div{
-                flex-direction: column;
-                align-items: center;
-                #name{
-                    padding: 8px 0 !important;
-                    width: 80%;
-                    margin-bottom: 10px;
-                }
-                .color_part{
-                    height: 40px;
-                    width: 80%;
-                    #colorLabel{
-                        height:100%;
-                        #color{
-                            height: 100%;
-                            padding: 0 !important;
-                        }
-                    }
-                }
-                .validate{
-                    padding: 5px 0 !important;
-                    width: 80%;
-                    border-radius: 5px !important;
-                    margin-top: 10px;
-                }
-            }
-          }
-        div{
-            display: flex;
-            
-           .color_part{
-                margin: 0 10px;
-                #colorLabel{
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor:pointer;
-                    p{
-                        position: absolute;
-                        text-transform: uppercase;
-                        color: white;
-                    }
-                    #color{
-                        -webkit-appearance: none;
-                        border: none;
-                        width: 100%;
-                        min-width: 150px;
-                        height: 100%;
-                        &::-webkit-color-swatch-wrapper {
-                            padding: 0;
-                        }
-                        &::-webkit-color-swatch {
-                            border-radius: 5px;
-                            border: none;
-                        }
-                        &:focus{
-                            outline: none;
-                        }
-                    }
-                } 
-            }
-            #name{
-                height: 100%;
-                background-color: $createColor;
-                border: none;
-                border-radius: 5px;
-                text-align: center;
-                padding: 10px 10px;
-                font-size: 20px;
-                outline: none;
-                &::-webkit-input-placeholder{
-                    font-family: $josephine;
-                    font-size: 15px;
-                    text-transform: uppercase;
-                }
-            }   
-            .validate{
-                border: none;
-                border-radius: 50%;
-                padding: 7px 9px;
-                background-color: $validateGreen;
-                font-size: 25px;
-                color: white;
-                border: 1px solid $validateGreen;
-
-                &:hover{
-                    background-color: white;
-                    color: $validateGreen;
-                }
-            }
-        }
-    }
     .tag_container{
         width: 100%;
         padding: 30px 0;
@@ -125,11 +10,15 @@ $createColor: #d9d9d9;
         justify-content: space-around;
         float: left;
         .tag_item{
-            padding: 10px 5px;
-            width: 20%;
+            border: solid 2px $darkBlueColor;
+            display:flex; 
+            flex-direction:column; 
+            align-items:center;
+            padding: 15px 5px;
+            width: 25%;
             min-width: 250px;
-            margin-left: 10px;
-            margin-bottom: 15px;
+            margin-left: 30px;
+            margin-bottom: 40px;
             border-radius: 5px;
             position: relative;
             display: flex;
@@ -146,25 +35,32 @@ $createColor: #d9d9d9;
                     font-size: 15px;
                     margin-left: 10px;
                 }
-                .edit{
+                .validate{
+                    transition-duration: 0.3s;
                     background-color: $validateGreen;
                     color: white;
                     padding: 4px 6px;
                     border: 1px solid $validateGreen;
+                }
+
+                .edit{
+                    background-color: transparent;
+                    color: transparent;
+                    padding: 4px 6px;
+                    border: 1px solid transparent;
                     &:hover{
                         background-color: white;
                         color: $validateGreen;
                     }
                 }
                 .delete{
-                    background-color: $errorColor;
-                    color: white;
+                    background-color: transparent;
+                    color: transparent;
                     padding: 4px 8px;
-                    border: 1px solid $errorColor;
-                    display: none;
+                    border: 1px solid transparent;
                     position: absolute;
-                    top: -10px;
-                    left: -10px;
+                    top: -15px;
+                    left: -20px;
                     outline: none;
                     &:hover{
                         background-color: white;
@@ -174,9 +70,9 @@ $createColor: #d9d9d9;
                 .editNameTagLabel{
                     display: flex;
                     align-items: center;
-                    color: white;
+                    color: $darkBlueColor;
                     input[type="text"]{
-                        color: white;
+                        color: $darkBlueColor;
                         width: 100%;
                         background: none;
                         border: none;
@@ -197,13 +93,12 @@ $createColor: #d9d9d9;
                             font-size: 10px;
                             position: absolute;
                             text-transform: uppercase;
-                            color: white;
+                            color: $darkBlueColor;
                         }
                         .colorEditTag{
                             cursor:pointer;
                             -webkit-appearance: none;
                             background-color: transparent;
-                            border: solid 1px white;
                             padding: 10px 0;
                             border-radius: 5px;
                             width: 100%;
@@ -224,9 +119,30 @@ $createColor: #d9d9d9;
             }
             &:hover{
                 .delete{
-                    display: block;
+                    transition-duration: 0.2s;
+                    background-color: $errorColor;
+                    color: white;
+                    padding: 4px 8px;
+                    border: 1px solid $errorColor;
+                    position: absolute;
+                    top: -15px;
+                    left: -20px;
+                    outline: none;
+                }
+                .edit{
+                    transition-duration: 0.2s;
+                    background-color: $validateGreen;
+                    color: white;
+                    padding: 4px 6px;
+                    border: 1px solid $validateGreen;
                 }
             }
+            @media screen and (max-width: 690px){
+                margin-left: 0;   
+            }
+        }
+        .error{
+            width: 100%;
         }
     }
 }
