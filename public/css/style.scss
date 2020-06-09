@@ -119,23 +119,17 @@ main {
     cursor: pointer;
     border: 1px solid #0e2650;
     transition: all ease .5s;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 8px 60px;
+    float: right;
+    margin-top: 20px;
+
     &:hover {
         color: #1E3F78;
         background-color: white;
         border: 1px solid #0e2650;
         transition: all ease .5s;
     }
-    float: right;
-    margin-top: 20px;
-}
-
-.button:hover {
-    color: #1E3F78;
-    background-color: white;
-    border: 1px solid #0e2650;
-    transition: all ease .5s;
 }
 
 .text {
@@ -232,5 +226,6 @@ nav {
 @import 'allArticles';
 @import 'adminDefault';
 @import 'usersAdmin';
+@import 'createUserAdmin';
 
 
