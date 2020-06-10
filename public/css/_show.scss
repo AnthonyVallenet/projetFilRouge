@@ -1,0 +1,130 @@
+// main: style.scss
+
+.show_title{
+    flex-direction: column;
+    align-items: center;
+    border-bottom: solid 3px $lightBlueColor;
+    margin: 0 100px 40px 100px;
+    width: auto;
+    .subtitle{
+        margin-top: 20px;
+        color: $titleColor;
+        background-color: $white1;
+        font-family: $josephine;
+        text-align: center;
+        padding: 5px 50px;
+    }
+}
+
+.imgContent{
+    display: flex;
+    justify-content: space-around;
+    .img, .contentTag{
+        width: 50%;
+    }
+
+    .img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+        img{
+            width: 100% !important;
+            max-height: 1000px;
+        }
+    }
+
+    .contentTag{
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px 20px 20px;
+        text-align: justify;
+        border-left: solid 3px $lightBlueColor;
+        .tagContainer{
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            padding: 15px 0;
+            .articleTagItem{
+                margin: 5px 10px;
+                border-radius: 5px;
+                width: 20%;
+                text-align: center;
+                @media screen and (max-width: 920px){
+                    width: 40%;
+                }
+            }
+        }
+        .content{
+            flex: 1;
+            padding: 15px 20px;
+            background-color: $white1;
+        }
+    }
+    @media screen and (max-width: 920px){
+        flex-direction: column;
+        align-items: center;
+        .img, .contentTag{
+            width: 90%;
+        }
+        .contentTag{
+            border-left: none;
+            border-top: solid 3px $lightBlueColor;
+        }
+    }
+}
+.comments{
+    padding: 0 20px;
+    h2{
+        color: $darkBlueColor;
+    }
+    .allComments{
+        padding: 20px 0;
+        max-height: 400px;
+        overflow-y: scroll;
+        @media screen and (max-width: 920px){
+            max-height: 250px;
+        }
+        .comment{
+            padding: 10px;
+            .commentUsername{
+                color: $darkBlueColor;
+            }
+            .commentContent{
+                color: $lightBlueColor;
+            }
+        }
+    }
+    
+    .sendComment{
+        width: 60%;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        &>div{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            input{
+                width:100%;
+                outline: none;
+            }
+            @media screen and (max-width: 920px){
+                width:100%;
+            }
+        }
+        
+        button{
+            margin: 0;
+            @media screen and (max-width: 920px){
+                margin-top: 20px;
+            }
+        }
+        @media screen and (max-width: 1260px){
+            width: 100%;
+        }
+        @media screen and (max-width: 920px){
+            flex-direction: column;
+        }
+    }
+}

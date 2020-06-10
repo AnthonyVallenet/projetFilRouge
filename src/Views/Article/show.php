@@ -18,38 +18,90 @@ if ($info["article"]->getEnabled()) {
 }
 ?>
 <div id='article'>
-    <div class="bandeau">
-        <div id='title'>
-        <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
-        </div>
-    </div>
 
-    <section class="article">
-        <div class="buttonContainer">
-            <button class="btnToggleEdit button">edit</button>
+
+<!-- show -->
+    <div class="toggleDivEdit">
+        <div class="bandeau show_title">
+            <div id='title'>
+                <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
+            </div>
+            <div class="subtitle"><?php echo escape($info["article"]->getDate()); ?></div>
         </div>
-        <!-- show -->
-        <div class="toggleDivEdit">
-            <p><?php echo escape($info["article"]->getId()); ?></p>
-            <p><?php echo escape($info["article"]->getTitle()); ?></p>
-            <p><?php echo escape($info["article"]->getDate()); ?></p>
-            <p><?php echo escape($info["article"]->getContent()); ?></p>
-            <p><?php echo escape($info["article"]->getEnabled()); ?></p>
-            <p><?php echo escape($info["article"]->getComment()); ?></p>
-            <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
-            <?php
-                foreach ($info["tagsArticle"] as $tagArticle) {
-                    ?>
-                        <p><?php echo escape($tagArticle->getIdTag()); ?></p>
-                        <p><?php echo escape($tagArticle->getName()); ?></p>
-                        <p><?php echo escape($tagArticle->getColor()); ?></p>
+
+        <section class="article">
+            <div class="buttonContainer">
+                <button class="btnToggleEdit button">Modifier</button>
+            </div>
+
+            <div class="imgContent">
+                <div class="img">
+                    <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
+                </div>
+                <div class="contentTag">
+                    <div class="tagContainer">
+                        <?php
+                            foreach ($info["tagsArticle"] as $tagArticle) {
+                                ?>
+                                    <div class="articleTagItem" style="color: <?php echo escape($tagArticle->getColor()); ?>; border: 2px solid <?php echo escape($tagArticle->getColor()); ?>"><?php echo escape($tagArticle->getName()); ?></div>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    <div class="content">
+                        <p><?php echo nl2br(escape($info["article"]->getContent())); ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <?php 
+                if($info["article"]->getComment() == 1){
+                    ?> 
+                        <div class="comments">
+                            <h2>Commentaires</h2>
+                            <div class="allComments">
+                                <div class="comment">
+                                    <h3 class="commentUsername">
+                                        Guerlain
+                                    </h3>
+                                    <p class=commentContent>
+                                        Je trouve cet article plutôt bien.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- input pour ecrire le commentaire -->
+                            <div class="sendComment">
+                                <div>
+                                    <input type="text" name="comment" class="input">
+                                    <!-- message d'erreur ici!!-->
+                                </div>
+                                <button type="submit" class="button">Commenter</button>
+                            </div>
+                        </div>
                     <?php
                 }
             ?>
+            <!-- <?php echo escape($info["article"]->getComment()); ?> -->
+        </section>
+    </div>
+
+
+<!-- edit -->
+    <div class="toggleDivEdit" style="display: none"> 
+        <div class="bandeau">
+            <div id='title'>
+                <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
+            </div>
         </div>
-        
+
+        <section class="article">
+        <div class="buttonContainer">
+            <button class="btnToggleEdit button">Afficher</button>
+        </div>
+
         <!-- edit -->
-        <div class="toggleDivEdit" style="display: none">
+        <div class="">
             <form action="/administration/article/edit/<?php echo escape($info["article"]->getId()); ?>" enctype="multipart/form-data" method="post">
             <!-- Pause et tag -->
                 <div class="enableAndTag" style="margin-top: 50px">
@@ -136,36 +188,42 @@ if ($info["article"]->getEnabled()) {
             </form>
         </div>
     </section>
+
+
+    </div>
 </div>
 
 <script>
-    let btnToggleEdit = document.querySelector('.btnToggleEdit');
+    let btnToggleEdit = document.querySelectorAll('.btnToggleEdit');
     let toggleDivEdit = document.querySelectorAll('.toggleDivEdit');
     var url = document.location.href;
     var urlOrigin = document.location.origin;
 
-    btnToggleEdit.onclick = function() {
-        if (toggleDivEdit[0].style.display == "none") {
-            window.location.href = urlOrigin + '/article/<?php echo escape($info["article"]->getId()); ?>';
-            toggleDivEdit[1].style.display = "none";
-            toggleDivEdit[0].style.display = "block";
-            btnToggleEdit.innerHTML = "edit";
-        } else if(toggleDivEdit[1].style.display == "none") {
-            window.location.href = url + "?edit";
-            toggleDivEdit[0].style.display = "none";
-            toggleDivEdit[1].style.display = "block";
-            btnToggleEdit.innerHTML = "show";
-        }
-    };
-
     var urlJS = '/article/<?php echo escape($info["article"]->getId()); ?>?edit';
     var regex = /^\/article\/[1-9]+\?edit$/;
+    
+    btnToggleEdit.forEach((btn,index) => {
+        btn.addEventListener('click',(e) => {
+            toggleEdit(e.currentTarget, index);
+        });
+    });
+
+    const toggleEdit = (el, index) => {
+        if(url === urlOrigin + urlJS.match(regex)){
+            window.location.href = urlOrigin + '/article/<?php echo escape($info["article"]->getId()); ?>';
+        }else{
+            window.location.href = url + "?edit";
+        }
+    }
 
     if (url === urlOrigin + urlJS.match(regex)) {
-        toggleDivEdit[0].style.display = "none";
-        toggleDivEdit[1].style.display = "block";
-        btnToggleEdit.innerHTML = "show";
+        let index = 1;
+        toggleDivEdit.forEach(div => {
+            div.style.display = "none";
+        })
+        toggleDivEdit[index].style.display = "block";
     }
+
 </script>
 <script src="/js/hover_image.js" charset="utf-8"></script>
 <script src="/js/show_tag.js" charset="utf-8"></script>

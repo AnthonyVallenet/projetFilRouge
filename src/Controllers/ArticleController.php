@@ -35,7 +35,7 @@ class ArticleController extends Controller {
         $this->validator->validate([
             "titleEditArticle" => ["required", "min:3"],
             "dateEditArticle" => ["required", "date"],
-            "contentEditArticle" => ["required"]
+            "contentEditArticle" => ["all"]
         ]);
         $_SESSION['old'] = $_POST;
         
@@ -43,7 +43,7 @@ class ArticleController extends Controller {
         $img_blob = file_get_contents($_FILES['imgEditArticle']['tmp_name']);
         $enabled = $_POST["enabled"];
         $comment = $_POST["comment"];
-        
+
         if (!$this->validator->errors()) {
             if ($_POST["enabledEditArticle"] == NULL) {
                 $enabled = 0;
@@ -62,6 +62,7 @@ class ArticleController extends Controller {
                 $img_type = $article->getImgType();
             }
             
+
             $this->manager->update($slug, $img_type, $img_blob, $comment, $enabled);
 
             $this->redirect("article/$slug");
@@ -85,7 +86,7 @@ class ArticleController extends Controller {
         $this->validator->validate([
             "title" => ["required", "min:3"],
             "date" => ["required", "date"],
-            "content" => ["required"]
+            "content" => ["all"]
         ]);
         $_SESSION['old'] = $_POST;
 
