@@ -39,25 +39,66 @@ if ($info["article"]->getEnabled()) {
                     <div class="img">
                         <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
                     </div>
-                    <div class="content">
-                        <p><?php echo escape($info["article"]->getContent()); ?></p>
+                    <div class="contentTag">
+                        <div class="tagContainer">
+                            <?php
+                                foreach ($info["tagsArticle"] as $tagArticle) {
+                                    ?>
+                                        <div class="articleTagItem" style="color: <?php echo escape($tagArticle->getColor()); ?>; border: 2px solid <?php echo escape($tagArticle->getColor()); ?>"><?php echo escape($tagArticle->getName()); ?></div>
+                                    <?php
+                                }
+                            ?>
+                        </div>
+                        <div class="content">
+                            <p><?php echo nl2br(escape($info["article"]->getContent())); ?></p>
+                        </div>
                     </div>
                 </div>
-                
-                <p><?php echo escape($info["article"]->getEnabled()); ?></p>
-                <p><?php echo escape($info["article"]->getComment()); ?></p>
-                <?php
-                    foreach ($info["tagsArticle"] as $tagArticle) {
-                        ?>
-                            <p><?php echo escape($tagArticle->getName()); ?></p>
-                            <p><?php echo escape($tagArticle->getColor()); ?></p>
-                        <?php
-                    }
-                ?>
             </div>
+            <?php 
+                if($info["article"]->getComment() == 1){
+                    ?> 
+                        <div class="comments">
+                            <h2>Commentaires</h2>
+                            <div class="comment">
+                                <h3 class="commentUsername">
+                                    Guerlain
+                                </h3>
+                                <p class=commentContent>
+                                    Je trouve cet article plutôt bien.
+                                </p>
+                            </div>
+                            <div class="comment">
+                                <h3 class="commentUsername">
+                                    Anthony
+                                </h3>
+                                <p class=commentContent>
+                                    Je sui bien de ton avis.
+                                </p>
+                            </div>
+                            <div class="comment">
+                                <h3 class="commentUsername">
+                                    Guerlain
+                                </h3>
+                                <p class=commentContent>
+                                    Ah oui? merci.
+                                </p>
+                            </div>
+                            <div class="comment">
+                                <h3 class="commentUsername">
+                                    Faustin
+                                </h3>
+                                <p class=commentContent>
+                                    Moi j'aime po.
+                                </p>
+                            </div>
+                        </div>
+                    <?php
+                }
+            ?>
+            <!-- <?php echo escape($info["article"]->getComment()); ?> -->
         </section>
     </div>
-
 
 
 <!-- edit -->
@@ -150,8 +191,9 @@ if ($info["article"]->getEnabled()) {
                     <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
                     <div>
                         <button class="button edit" type="submit">Envoyer</button>
-                        <a href="#" class="button delete">Supprimer</a>
-
+                        <form action="/administration/article/delete/<?php echo escape($info["article"]->getId()); ?>" method="post">
+                            <button type="submit" name="button" class="button delete">SUPPRIMER</button>
+                        </form>
                     </div>
                 </div>
 
@@ -164,6 +206,7 @@ if ($info["article"]->getEnabled()) {
 
     </div>
 </div>
+
 <script>
     let btnToggleEdit = document.querySelectorAll('.btnToggleEdit');
     let toggleDivEdit = document.querySelectorAll('.toggleDivEdit');
@@ -194,6 +237,7 @@ if ($info["article"]->getEnabled()) {
         })
         toggleDivEdit[index].style.display = "block";
     }
+
 </script>
 <script src="/js/hover_image.js" charset="utf-8"></script>
 <script src="/js/show_tag.js" charset="utf-8"></script>

@@ -198,7 +198,7 @@ nav {
     }
 
     .sectionPage {
-        padding: 50px 25px;
+        padding: 50px 0;
     }
 
     .titre1 {
@@ -229,3 +229,4 @@ nav {
 @import 'usersAdmin';
 @import 'createUserAdmin';
 @import 'show';
+@import 'adminContact';

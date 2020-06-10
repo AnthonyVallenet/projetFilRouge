@@ -18,13 +18,45 @@
 
 .imgContent{
     display: flex;
-    justify-content: space-between;
-    .img, .content{
-        width: 45%;
+    justify-content: space-around;
+    .img, .contentTag{
+        width: 50%;
     }
-    .content{
-        text-justify: distribute;
-        padding: 10px;
+
+    .img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+        img{
+            width: 100% !important;
+            max-height: 1000px;
+        }
+    }
+
+    .contentTag{
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px 20px 20px;
+        text-align: justify;
         border-left: solid 3px $lightBlueColor;
+        .tagContainer{
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            padding: 15px 0;
+            .articleTagItem{
+                margin: 5px 10px;
+
+                border-radius: 5px;
+                width: 20%;
+                text-align: center;
+            }
+        }
+        .content{
+            flex: 1;
+            padding: 15px 20px;
+            background-color: $white1;
+        }
     }
 }

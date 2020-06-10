@@ -79,4 +79,10 @@ class ArticleManager extends Manager {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
     }
 
+    public function delete($slug) {
+        $stmt = $this->bdd->prepare("DELETE FROM articles WHERE id = ?");
+        $stmt->execute(array(
+            $slug,
+        ));
+    }
 }
