@@ -31,7 +31,7 @@ try {
         first_name VARCHAR(255) NOT NULL,
         last_name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
-        sujet VARCHAR(255) NOT NULL,
+        subject VARCHAR(255) NOT NULL,
         message TEXT NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );";

@@ -34,63 +34,49 @@ if ($info["article"]->getEnabled()) {
                 <button class="btnToggleEdit button">Modifier</button>
             </div>
 
-            <div class="show_content">
-                <div class="imgContent">
-                    <div class="img">
-                        <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
+            <div class="imgContent">
+                <div class="img">
+                    <img src="/img/article/<?php echo escape($info["article"]->getId());?>" alt="image article" style="width: 200px">
+                </div>
+                <div class="contentTag">
+                    <div class="tagContainer">
+                        <?php
+                            foreach ($info["tagsArticle"] as $tagArticle) {
+                                ?>
+                                    <div class="articleTagItem" style="color: <?php echo escape($tagArticle->getColor()); ?>; border: 2px solid <?php echo escape($tagArticle->getColor()); ?>"><?php echo escape($tagArticle->getName()); ?></div>
+                                <?php
+                            }
+                        ?>
                     </div>
-                    <div class="contentTag">
-                        <div class="tagContainer">
-                            <?php
-                                foreach ($info["tagsArticle"] as $tagArticle) {
-                                    ?>
-                                        <div class="articleTagItem" style="color: <?php echo escape($tagArticle->getColor()); ?>; border: 2px solid <?php echo escape($tagArticle->getColor()); ?>"><?php echo escape($tagArticle->getName()); ?></div>
-                                    <?php
-                                }
-                            ?>
-                        </div>
-                        <div class="content">
-                            <p><?php echo nl2br(escape($info["article"]->getContent())); ?></p>
-                        </div>
+                    <div class="content">
+                        <p><?php echo nl2br(escape($info["article"]->getContent())); ?></p>
                     </div>
                 </div>
             </div>
+
             <?php 
                 if($info["article"]->getComment() == 1){
                     ?> 
                         <div class="comments">
                             <h2>Commentaires</h2>
-                            <div class="comment">
-                                <h3 class="commentUsername">
-                                    Guerlain
-                                </h3>
-                                <p class=commentContent>
-                                    Je trouve cet article plutôt bien.
-                                </p>
+                            <div class="allComments">
+                                <div class="comment">
+                                    <h3 class="commentUsername">
+                                        Guerlain
+                                    </h3>
+                                    <p class=commentContent>
+                                        Je trouve cet article plutôt bien.
+                                    </p>
+                                </div>
                             </div>
-                            <div class="comment">
-                                <h3 class="commentUsername">
-                                    Anthony
-                                </h3>
-                                <p class=commentContent>
-                                    Je sui bien de ton avis.
-                                </p>
-                            </div>
-                            <div class="comment">
-                                <h3 class="commentUsername">
-                                    Guerlain
-                                </h3>
-                                <p class=commentContent>
-                                    Ah oui? merci.
-                                </p>
-                            </div>
-                            <div class="comment">
-                                <h3 class="commentUsername">
-                                    Faustin
-                                </h3>
-                                <p class=commentContent>
-                                    Moi j'aime po.
-                                </p>
+                            
+                            <!-- input pour ecrire le commentaire -->
+                            <div class="sendComment">
+                                <div>
+                                    <input type="text" name="comment" class="input">
+                                    <!-- message d'erreur ici!!-->
+                                </div>
+                                <button type="submit" class="button">Commenter</button>
                             </div>
                         </div>
                     <?php

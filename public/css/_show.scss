@@ -47,16 +47,84 @@
             padding: 15px 0;
             .articleTagItem{
                 margin: 5px 10px;
-
                 border-radius: 5px;
                 width: 20%;
                 text-align: center;
+                @media screen and (max-width: 920px){
+                    width: 40%;
+                }
             }
         }
         .content{
             flex: 1;
             padding: 15px 20px;
             background-color: $white1;
+        }
+    }
+    @media screen and (max-width: 920px){
+        flex-direction: column;
+        align-items: center;
+        .img, .contentTag{
+            width: 90%;
+        }
+        .contentTag{
+            border-left: none;
+            border-top: solid 3px $lightBlueColor;
+        }
+    }
+}
+.comments{
+    padding: 0 20px;
+    h2{
+        color: $darkBlueColor;
+    }
+    .allComments{
+        padding: 20px 0;
+        max-height: 400px;
+        overflow-y: scroll;
+        @media screen and (max-width: 920px){
+            max-height: 250px;
+        }
+        .comment{
+            padding: 10px;
+            .commentUsername{
+                color: $darkBlueColor;
+            }
+            .commentContent{
+                color: $lightBlueColor;
+            }
+        }
+    }
+    
+    .sendComment{
+        width: 60%;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        &>div{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            input{
+                width:100%;
+                outline: none;
+            }
+            @media screen and (max-width: 920px){
+                width:100%;
+            }
+        }
+        
+        button{
+            margin: 0;
+            @media screen and (max-width: 920px){
+                margin-top: 20px;
+            }
+        }
+        @media screen and (max-width: 1260px){
+            width: 100%;
+        }
+        @media screen and (max-width: 920px){
+            flex-direction: column;
         }
     }
 }

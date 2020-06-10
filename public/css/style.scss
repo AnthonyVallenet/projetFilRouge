@@ -87,6 +87,9 @@ main {
     &:hover {
         border-left: solid 3px $darkBlueColor;
     }
+    &:focus{
+        border-left: solid 3px $darkBlueColor;
+    }
 }
 
 
@@ -212,16 +215,25 @@ nav {
     .titre2 {
         font-size: 25px;
     }
+
+    .bandeau {
+
+        #title {
+            padding: 20px 30px;
+        }
+    }
 }
 
 @import 'nav';
 @import 'footer';
 @import "create-editArticle";
 @import 'contact';
+@import 'articlesCarousel';
 @import 'carousel';
 @import 'infoProject';
 @import 'team';
 @import 'register';
+@import 'login';
 @import 'team';
 @import 'allArticles';
 @import 'tags';
@@ -230,3 +242,4 @@ nav {
 @import 'createUserAdmin';
 @import 'show';
 @import 'adminContact';
+@import 'search';

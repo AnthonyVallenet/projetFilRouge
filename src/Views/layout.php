@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/726b142b0a.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-
     </head>
     <body onload="checkCookie()">
         <nav id="nav" class="close">
