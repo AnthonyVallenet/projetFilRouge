@@ -14,6 +14,9 @@ $router->get('/register', "AuthController@showRegister");
 $router->get('/login', "AuthController@showLogin");
 $router->get('/logout', "AuthController@logout");
 
+
+$router->get('/error/404', "HomeController@pageNotFound");
+
 $router->get('/img/article/:id', "ImageController@imageArticle");
 
 $router->get('/contact', "ContactController@index");

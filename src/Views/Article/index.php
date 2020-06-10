@@ -30,7 +30,7 @@ ob_start();
                             <div class="fade">
                                 <p class="txt"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
                                 <?php
-                                if ($_SESSION["user"]["admin"] == 1) {
+                                if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
                                     ?>
                                         <div>
                                             <form action="/administration/article/delete/<?php echo escape($article->getId()); ?>" method="post">

@@ -91,6 +91,10 @@ class AuthController extends Controller {
     }
 
     public function update($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->validator->validate([
             "firstNameEditUser-". $slug =>["required", "min:3", "alpha"],
             "lastNameEditUser-". $slug =>["required", "min:3", "alphaDash"],
@@ -131,6 +135,10 @@ class AuthController extends Controller {
     }
 
     public function createUser() {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->validator->validate([
             "firstName"=>["required", "min:3", "alpha"],
             "lastName"=>["required", "min:3", "alphaDash"],
@@ -164,6 +172,10 @@ class AuthController extends Controller {
     }
 
     public function delete($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->manager->delete($slug);
         
         $this->redirect("administration#users");
