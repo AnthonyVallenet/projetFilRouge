@@ -19,11 +19,19 @@ class ArticleController extends Controller {
     }
 
     public function create() {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $tags = $this->managerTag->allTag();
         $this->require("Article/create.php", $tags);
     }
 
     public function update($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->validator->validate([
             "titleEditArticle" => ["required", "min:3"],
             "dateEditArticle" => ["required", "date"],
@@ -74,6 +82,10 @@ class ArticleController extends Controller {
     }
 
     public function store() {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->validator->validate([
             "title" => ["required", "min:3"],
             "date" => ["required", "date"],
@@ -133,6 +145,10 @@ class ArticleController extends Controller {
     }
 
     public function delete($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->manager->delete($slug);
         
         $this->redirect("articles");

@@ -11,6 +11,10 @@ class AdminController extends Controller {
     }
 
     public function index() {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $users = $this->managerUser->allUser();
         $tags = $this->managerTag->allTag();
         $contacts = $this->managerContact->allContact();
