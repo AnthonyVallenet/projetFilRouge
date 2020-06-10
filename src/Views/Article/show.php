@@ -30,7 +30,6 @@ if ($info["article"]->getEnabled()) {
         </div>
         <!-- show -->
         <div class="toggleDivEdit">
-            
             <p><?php echo escape($info["article"]->getId()); ?></p>
             <p><?php echo escape($info["article"]->getTitle()); ?></p>
             <p><?php echo escape($info["article"]->getDate()); ?></p>

@@ -1,0 +1,252 @@
+// main: style.scss
+
+section.sectionSearch {
+    background-color: white;
+    flex: 1;
+
+    &>form {
+        margin-bottom: 50px;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &>div {
+            width: 250px;
+            display: flex;
+            border-radius: 30px;
+            border: 3px solid $darkBlueColor;
+            background-color: white;
+            
+            &>input {
+                background-color: white;
+                flex: 1;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+                border: none;
+                outline: none;
+                padding-left: 10px;
+            }
+
+            &>button {
+                background-color: $darkBlueColor;
+                color: white;
+                width: 37px;
+                height: 37px;
+                border-radius: 100%;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &>div {
+        
+        &>div {
+
+            &:first-child {
+                display: flex;
+                align-items: flex-end;
+                flex-wrap: wrap;
+                margin-bottom: 50px;
+                padding: 0 25px;
+                
+                h2 {
+                    padding-bottom: 5px;
+                    margin-right: 15px;
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid $lightBlueColor;
+                }
+
+                p {
+                    margin-bottom: 10px;
+                    font-size: 1.5rem;
+                    padding-bottom: 5px;
+                    color: $darkBlueColor;
+                    font-weight: bold;
+                }
+            }
+
+            &:last-child {
+                flex: 1;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+        
+                &>div {
+                    width: calc(100% / 3);
+                    position: relative;
+                    margin: 25px auto;
+                    min-width: 350px;
+                    min-height: 350px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+        
+                    .cardArticle {
+                        width: 350px;
+                        height: 350px;
+                        margin: 20px;
+                        border-radius: 5px;
+                        box-shadow: 0 1px 4px rgba(black, .3);
+                        overflow:hidden;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+        
+                        .infos {
+                            width: auto;
+                            height: 270px;
+                            position: relative;
+                            background: white;
+                            transition: .4s .15s cubic-bezier(.17,.67,.5,1.03);
+                            transform:translateY(260px);
+        
+                            &>div {
+                                &:first-child {
+                                    height: 35%;
+                                    padding: 14px 24px 0 24px;
+                                }
+                                &:last-child {
+                                    height: 65%;
+                                }
+                            }
+        
+                            a {
+                                text-decoration: none;
+                            }
+                            
+                            .title {
+                                position:relative;
+                                margin: 10px 0;
+                                letter-spacing: 3px;
+                                color: $darkBlueColor;
+                                font-size: 1rem;
+                                text-transform: uppercase;
+                                text-shadow: 0 0 0px lighten(#152536, 20);
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: flex-end;
+        
+                                i {
+                                    font-size: 25px;
+                                }
+                            }
+                            .date {
+                                margin-bottom: 10px;
+                                text-transform: uppercase;
+                            }
+                            .fade {
+                                opacity:0;
+                                transition:.5s .25s cubic-bezier(.17,.67,.5,1.03);
+        
+                                .txt {
+                                    height: 75%;
+                                    border-top:1px solid grey;
+                                    padding-top: 10px;
+                                    line-height: 1.7;
+                                    font-size: .95rem;
+                                    color: #3F3F3F;
+                                    margin: 0 24px 0 24px;
+                                }
+        
+                                &>div {
+                                    height: 25%;
+                                    display: flex;
+        
+                                    form {
+                                        width: 50%;
+        
+                                        &>button {
+                                            width: 100%;
+                                            height: 100%;
+                                            color: white;
+                                            border: none;
+                                            font-weight: bold;
+                                            letter-spacing: 2px;
+                                            cursor: pointer;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            background-color: rgb(196, 0, 0);
+                                        }
+                                    }
+        
+                                    a {
+                                        width: 50%;
+                                        height: 100%;
+                                        color: white;
+                                        font-weight: bold;
+                                        letter-spacing: 2px;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+        
+                                        &.edit {
+                                            background-color: #b97900;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &:hover .infos, &:focus-within .infos {
+                            transform:translateY(80px);
+                            .fade {
+                                opacity:1;
+                            }
+                        }
+                    }
+                }
+
+                
+
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    section.sectionSearch {
+    
+        &>form {
+            margin-bottom: 50px;
+            position: sticky;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        &>div {
+            &>div {
+    
+                &:last-child {
+                    flex: 1;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+            
+                    &>div {
+                        min-width: 300px;
+                        min-height: 300px;
+                
+                        .cardArticle {
+                            width: 300px;
+                            height: 300px;
+                
+                            .infos {
+                                transform:translateY(200px);
+                                height: 220px;
+                            }
+                            &:hover .infos, &:focus-within .infos {
+                                transform:translateY(80px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -212,6 +212,13 @@ nav {
     .titre2 {
         font-size: 25px;
     }
+
+    .bandeau {
+
+        #title {
+            padding: 20px 30px;
+        }
+    }
 }
 
 @import 'nav';
@@ -229,3 +236,4 @@ nav {
 @import 'usersAdmin';
 @import 'createUserAdmin';
 @import 'adminContact';
+@import 'search';
