@@ -3,11 +3,20 @@ ob_start();
 
 ?>
 
-<section class="secError">
+<section class="sectionPage sectionPNF">
     <div>
-        <h1 class="error">Erreur 404</h1>
-        <p>La page rechercher n'existe pas ! <a href="/">Quitter cette page !</a></p>
+        <a href="/"><i class="fas fa-arrow-left"></i></a>
+        <span>Retour à l'accueil</span>
     </div>
+    
+    <div>
+        <a href="/"><h1>Oups !</h1></a>
+        <div>
+            <p>La page que vous cherchez est introuvable !</p>
+            <p>Erreur 404 - <a href="/">Revenir à l'accueil !</a></p>
+        </div>
+    </div>
+    
 </section>
 
 <?php
