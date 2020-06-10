@@ -39,6 +39,7 @@ class Validator {
         "alphaNumDash" => "#^[A-z0-9-\|]+$#",
         "alphaDash" => "#^[A-z-\|]+$#",
         "numeric" => "#^[0-9]+$#",
+        "all" => "#^.+$#s",
         "confirm" => ""
     ];
 

@@ -87,6 +87,9 @@ main {
     &:hover {
         border-left: solid 3px $darkBlueColor;
     }
+    &:focus{
+        border-left: solid 3px $darkBlueColor;
+    }
 }
 
 
@@ -237,6 +240,7 @@ nav {
 @import 'adminDefault';
 @import 'usersAdmin';
 @import 'createUserAdmin';
+@import 'show';
 @import 'adminContact';
 @import 'search';
 @import 'pageNotFound';
