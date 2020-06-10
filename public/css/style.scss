@@ -118,8 +118,10 @@ main {
     cursor: pointer;
     border: 1px solid #0e2650;
     transition: all ease .5s;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 8px 60px;
+    margin-top: 20px;
+
 
     &:hover {
         color: #1E3F78;
@@ -127,17 +129,8 @@ main {
         border: 1px solid #0e2650;
         transition: all ease .5s;
     }
-
-    float: right;
-    margin-top: 20px;
 }
 
-.button:hover {
-    color: #1E3F78;
-    background-color: white;
-    border: 1px solid #0e2650;
-    transition: all ease .5s;
-}
 
 .text {
     color: #3F3F3F;
@@ -223,7 +216,7 @@ nav {
 
 @import 'nav';
 @import 'footer';
-@import "createArticle";
+@import "create-editArticle";
 @import 'contact';
 @import 'carousel';
 @import 'infoProject';
@@ -232,5 +225,7 @@ nav {
 @import 'login';
 @import 'team';
 @import 'allArticles';
+@import 'tags';
 @import 'adminDefault';
 @import 'usersAdmin';
+@import 'createUserAdmin';

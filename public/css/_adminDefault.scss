@@ -49,5 +49,9 @@ section.sectionAdmin {
 
     &>.toggleDiv {
         margin: 0 30px;
+
+        @media screen and (max-width: 550px) {
+            margin: 0 15px;
+        }
     }
 }

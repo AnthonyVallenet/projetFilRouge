@@ -7,13 +7,13 @@ $enabled = "checked";
 old("comment") == "on" ?: $comment = "";
 old("enabled") == "on" ?: $enabled = "";
 ?>
-<div id="createArticle">
+<div id="article">
   <div class="bandeau">
     <div id='title'>
       <h1 class="titre1">Créez votre article</h1>
     </div>
   </div>
-  <section class="createArticle">
+  <section class="article">
 
     <form action="/article/create" enctype="multipart/form-data" method="post">
 
@@ -81,7 +81,7 @@ old("enabled") == "on" ?: $enabled = "";
           <input type="checkbox" id="comment" name="comment" <?php echo $comment; ?>>
         </label>
 
-        <button class="button" type="submit">send</button>
+        <button class="button" type="submit">Envoyer</button>
       </div>
 <!-- 
         <label for="imgArticle">Img :</label>
