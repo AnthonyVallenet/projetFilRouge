@@ -119,6 +119,7 @@
                 Ce site a été réalisé par les élèves d'EDEN School
             </a>
         </footer>
+
     </body>
     <script>
         var nav = document.getElementById("nav");
