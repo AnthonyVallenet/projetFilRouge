@@ -108,11 +108,6 @@
             color: $titleColor;
             font-family: $josephine;
           }
-          // ::-webkit-datetime-edit-text { display: none;}
-          // ::-webkit-datetime-edit-month-field {display: none; }
-          // ::-webkit-datetime-edit-day-field { display: none; }
-          // ::-webkit-datetime-edit-year-field { display: none; }
-          // ::-webkit-calendar-picker-indicator { color: red; }
         }
       }
     }
@@ -139,6 +134,55 @@
       padding: 0 50px;
       display: flex;
       justify-content: space-between;
+      @media screen and (max-width: 920px){
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      div{
+        height: auto;
+        @media screen and (max-width: 920px){
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        @media screen and (max-width: 550px){
+          width: 100%;
+        }
+        .edit{
+          background-color: #b97900;
+          border: solid 1px white;
+          @media screen and (max-width: 1260px){
+            margin-top: 0 !important;
+          }
+          @media screen and (max-width: 920px){
+            width: 100%;
+          }
+          
+          &:hover{
+            background-color: white;
+            color: #b97900;
+            border: solid 1px #b97900;
+          }
+        }
+  
+        .delete{
+          text-decoration: none;
+          background-color: #c40000;
+          border: solid 1px white;
+          &:hover{
+            background-color: white;
+            color: #c40000;
+            border: solid 1px #c40000;
+          }
+          @media screen and (max-width: 920px){
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+      }
+
       label{
         span{
           margin-left: 20px;
@@ -366,7 +410,6 @@
       }
 
       .commentSend{
-        flex-direction: column;
         label{
           margin-bottom: 20px;
         }
