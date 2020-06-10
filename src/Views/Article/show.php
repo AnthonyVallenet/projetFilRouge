@@ -110,15 +110,16 @@ if ($info["article"]->getEnabled()) {
                         <label for="enabledEditArticle">Mettre en pause l'article</label>
                         <!-- <span class="error"><?php echo error("enabledEditArticle");?></span> -->
                     </div>
+
                     <div class="input tag" id="tag">
                         <p>#Tags:</p>
                             <select style="display:none" name="tags[]" id="tags" multiple>
                             <?php
-                            foreach ($info['allTags'] as $tag) {
-                                ?>
-                                    <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
-                                <?php
-                            }
+                                foreach ($info['allTags'] as $tag) {
+                                    ?>
+                                        <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
+                                    <?php
+                                }
                             ?>
                             </select>
                         <i class="fas fa-arrow-down" id="arrow" onclick="rotate()"></i>

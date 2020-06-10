@@ -54,8 +54,11 @@ class ArticleController extends Controller {
                 $img_type = $article->getImgType();
             }
             
-
             $this->manager->update($slug, $img_type, $img_blob, $comment, $enabled);
+
+            // foreach ($_POST['tags'] as $tagId) {
+            //     $this->managerTag->updateArticleTag($tagId, $idArticle);
+            // }
 
             $this->redirect("article/$slug");
         } else {

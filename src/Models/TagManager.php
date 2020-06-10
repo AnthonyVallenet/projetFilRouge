@@ -39,6 +39,15 @@ class TagManager extends Manager {
         ));
     }
 
+    // public function updateArticleTag($tagId, $idArticle) {
+    //     $stmt = $this->bdd->prepare("UPDATE article_tag set tag_id = ?, article_id = ? WHERE ?");
+        
+    //     $stmt->execute(array(
+    //         $tagId,
+    //         $idArticle,
+    //     ));
+    // }
+
     public function getTagArticle($slug) {
         $stmt = $this->bdd->prepare("SELECT t.id, t.name, t.color FROM tag t INNER JOIN article_tag at on t.id = at.tag_id INNER JOIN articles a on at.article_id = a.id WHERE a.id = ?;");
         
