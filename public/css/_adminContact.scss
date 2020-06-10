@@ -1,0 +1,135 @@
+// main: style.scss
+
+section.sectionAdmin {
+
+    &>div.contacts {
+
+        &>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+            &>div {
+                width: 50%;
+                padding: 25px;
+                min-width: 280px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: height 1000ms;
+
+                @media screen and (max-width: 550px) {
+                    padding: 25px 17px;
+                }
+
+                @media screen and (max-width: 768px) {
+                    width: 100%;
+                }
+    
+                &>div {
+                    position: relative;
+                    width: 70%;
+
+                    @media screen and (max-width: 1024px) {
+                        width: 100%;
+                    }
+    
+                    &:hover {
+                        &>form {
+    
+                            &:last-child {
+                                display: block;
+    
+                                &>button {
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                    }
+    
+                    &>form {
+        
+                        &:first-child {
+                            border: 2px solid $darkBlueColor;
+                            border-radius: 5px;
+                            background-color: $white2;
+                            position: relative;
+        
+                            input, textarea {
+                                background-color: transparent;
+                                border: none;
+                                padding: 5px 10px;
+                                border-left: 3px solid $darkBlueColor;
+                            }
+    
+                            textarea {
+                                resize: none;
+                            }
+        
+                            input {
+                                margin-bottom: 10px;
+                            }
+        
+                            &>div {
+                                display: flex;
+    
+                                &:first-child {
+                                    flex-direction: column;
+                                    padding: 15px;
+                                }
+    
+                                &:last-child {
+                                    align-items: flex-end;
+                                    justify-content: flex-end;
+                                }
+                            }
+    
+                            button {
+                                cursor: pointer;
+                                border: none;
+                                width: 100%;
+                                padding: 15px 20px;
+                                border-bottom-right-radius: 2px;
+                                border-bottom-left-radius: 2px;
+                                background-color: #b97900;
+                                font-weight: bold;
+                                color: white;
+                            }
+                        }
+        
+                        &:last-child {
+                            position: absolute;
+                            top: -17px;
+                            right: -17px;
+    
+                            &>button {
+                                opacity: 0;
+                                visibility: hidden;
+                                cursor: pointer;
+                                border: none;
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 100%;
+                                background-color: red;
+                                font-weight: bold;
+                                color: white;
+                                transition: all ease .5s;
+                                
+                                i {
+                                    font-size: 20px;
+                                }
+
+                                @media screen and (max-width: 1024px) {
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

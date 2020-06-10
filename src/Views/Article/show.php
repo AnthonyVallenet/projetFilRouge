@@ -56,7 +56,7 @@ if ($info["article"]->getEnabled()) {
             <input type="checkbox" id="commentEditArticle" name="commentEditArticle" <?php echo $comment; ?>>
             <span class="error"><?php echo error("commentEditArticle");?></span>
 
-            <input type="checkbox" id="enabledEditArticle" name="enabledEditArticle" <?php echo $comment; ?>>
+            <input type="checkbox" id="enabledEditArticle" name="enabledEditArticle" <?php echo $enabled; ?>>
             <span class="error"><?php echo error("enabledEditArticle");?></span>
 
             <?php echo error("messageEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditArticle") .'</span>' : ""?>

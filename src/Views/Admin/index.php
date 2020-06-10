@@ -58,45 +58,44 @@ ob_start();
         </div>
 
         <div class="toggleDiv contacts" style="display: none">
-            <p>Contacts</p>
-            <?php
-                foreach ($info["contacts"] as $contact) {
-                    ?>
-                        <div style="border: 2px solid black">
-                            <p><?php echo escape($contact->getId()); ?></p>
+            <div>
+                <?php
+                    foreach ($info["contacts"] as $contact) {
+                        ?>
+                            <div>
+                                <div>
+                                    <form action="/administration/contact/edit/<?php echo escape($contact->getId()); ?>" method="post">
+                                        <div>
+                                            <input type="text" name="firstNameEditContact-<?php echo escape($contact->getId()); ?>" id="firstNameEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("firstNameEditContact-" . escape($contact->getId())) ?: escape($contact->getFirstName()); ?>" placeholder="Prénom">
+                                            <?php echo error("firstNameEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("firstNameEditContact-" . escape($contact->getId())) .'</span>' : ""?>
 
-                            <form action="/administration/contact/edit/<?php echo escape($contact->getId()); ?>" method="post">
-                                <label for="firstNameEditContact-<?php echo escape($contact->getId()); ?>"><i class="fas fa-user-tie"></i></label>
-                                <input type="text" name="firstNameEditContact-<?php echo escape($contact->getId()); ?>" id="firstNameEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("firstNameEditContact-" . escape($contact->getId())) ?: escape($contact->getFirstName()); ?>" placeholder="Prénom">
-                                <?php echo error("firstNameEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("firstNameEditContact-" . escape($contact->getId())) .'</span>' : ""?>
+                                            <input type="text" name="lastNameEditContact-<?php echo escape($contact->getId()); ?>" id="lastNameEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("lastNameEditContact-" . escape($contact->getId())) ?: escape($contact->getLastName()); ?>" placeholder="Name">
+                                            <?php echo error("lastNameEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("lastNameEditContact-" . escape($contact->getId())) .'</span>' : ""?>
 
-                                <label for="lastNameEditContact-<?php echo escape($contact->getId()); ?>"><i class="fas fa-user-tie"></i></label>
-                                <input type="text" name="lastNameEditContact-<?php echo escape($contact->getId()); ?>" id="lastNameEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("lastNameEditContact-" . escape($contact->getId())) ?: escape($contact->getLastName()); ?>" placeholder="Name">
-                                <?php echo error("lastNameEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("lastNameEditContact-" . escape($contact->getId())) .'</span>' : ""?>
+                                            <input type="email" name="emailEditContact-<?php echo escape($contact->getId()); ?>" id="emailEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("emailEditContact-" . escape($contact->getId())) ?: escape($contact->getEmail()); ?>" placeholder="Email">
+                                            <?php echo error("emailEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("emailEditContact-" . escape($contact->getId())) .'</span>' : ""?>
 
-                                <label for="emailEditContact-<?php echo escape($contact->getId()); ?>"><i class="fas fa-user-tie"></i></label>
-                                <input type="email" name="emailEditContact-<?php echo escape($contact->getId()); ?>" id="emailEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("emailEditContact-" . escape($contact->getId())) ?: escape($contact->getEmail()); ?>" placeholder="Email">
-                                <?php echo error("emailEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("emailEditContact-" . escape($contact->getId())) .'</span>' : ""?>
+                                            <input type="text" name="subjectEditContact-<?php echo escape($contact->getId()); ?>" id="subjectEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("subjectEditContact-" . escape($contact->getId())) ?: escape($contact->getSubject()); ?>" placeholder="Sujet">
+                                            <?php echo error("subjectEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("subjectEditContact-" . escape($contact->getId())) .'</span>' : ""?>
 
-                                <label for="subjectEditContact-<?php echo escape($contact->getId()); ?>"><i class="fas fa-user-tie"></i></label>
-                                <input type="text" name="subjectEditContact-<?php echo escape($contact->getId()); ?>" id="subjectEditContact-<?php echo escape($contact->getId()); ?>" value="<?php echo old("subjectEditContact-" . escape($contact->getId())) ?: escape($contact->getSubject()); ?>" placeholder="Sujet">
-                                <?php echo error("subjectEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("subjectEditContact-" . escape($contact->getId())) .'</span>' : ""?>
+                                            <textarea name="messageEditContact-<?php echo escape($contact->getId()); ?>" id="messageEditContact-<?php echo escape($contact->getId()); ?>" cols="30" rows="10" placeholder="Messsage"><?php echo old("messageEditContact-" . escape($contact->getId())) ?: escape($contact->getMessage()); ?></textarea>
+                                            <?php echo error("messageEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditContact-" . escape($contact->getId())) .'</span>' : ""?>
 
-                                <label for="messageEditContact-<?php echo escape($contact->getId()); ?>"><i class="fas fa-user-tie"></i></label>
-                                <textarea name="messageEditContact-<?php echo escape($contact->getId()); ?>" id="messageEditContact-<?php echo escape($contact->getId()); ?>" cols="30" rows="10" placeholder="Messsage"><?php echo old("messageEditContact-" . escape($contact->getId())) ?: escape($contact->getMessage()); ?></textarea>
-                                <?php echo error("messageEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditContact-" . escape($contact->getId())) .'</span>' : ""?>
-
-                                <?php echo error("messageErrorEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditContact-" . escape($contact->getId())) .'</span>' : ""?>
-
-                                <button type="submit" name="button">Editer</button>
-                            </form>
-                            <form action="/administration/contact/delete/<?php echo escape($contact->getId()); ?>" method="post">
-                                <button type="submit" name="button">delete</button>
-                            </form>
-                        </div>
-                    <?php
-                }
-            ?>
+                                            <?php echo error("messageErrorEditContact-" . escape($contact->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditContact-" . escape($contact->getId())) .'</span>' : ""?>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btnEdit" name="button">MODIFIER</button>
+                                        </div>
+                                    </form>
+                                    <form action="/administration/contact/delete/<?php echo escape($contact->getId()); ?>" method="post">
+                                        <button type="submit" name="button"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                ?>
+            </div>
         </div>
 
         <div class="toggleDiv users" style="display: none">
@@ -331,6 +330,7 @@ ob_start();
                 toggleUser(e.currentTarget, index);
             });
         })
+
 
         var btnPass = document.getElementById("btnPassword");
         var inputPass = document.getElementById("inputPassword");
