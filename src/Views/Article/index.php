@@ -33,7 +33,9 @@ ob_start();
                                 if ($_SESSION["user"]["admin"] == 1) {
                                     ?>
                                         <div>
-                                            <a href="#" class="delete">SUPPRIMER</a>
+                                            <form action="/administration/article/delete/<?php echo escape($article->getId()); ?>" method="post">
+                                                <button type="submit" name="button">SUPPRIMER</button>
+                                            </form>
                                             <a href="/article/<?php echo escape($article->getId());?>?edit" class="edit">MODIFIER</a>
                                         </div>
                                     <?php

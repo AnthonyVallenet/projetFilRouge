@@ -23,6 +23,7 @@ if ($info["article"]->getEnabled()) {
         <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
         </div>
     </div>
+
     <section class="article">
         <div class="buttonContainer">
             <button class="btnToggleEdit button">edit</button>
@@ -125,8 +126,9 @@ if ($info["article"]->getEnabled()) {
                     <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
                     <div>
                         <button class="button edit" type="submit">Envoyer</button>
-                        <a href="#" class="button delete">Supprimer</a>
-
+                        <form action="/administration/article/delete/<?php echo escape($info["article"]->getId()); ?>" method="post">
+                            <button type="submit" name="button" class="button delete">SUPPRIMER</button>
+                        </form>
                     </div>
                 </div>
 
@@ -136,6 +138,7 @@ if ($info["article"]->getEnabled()) {
         </div>
     </section>
 </div>
+
 <script>
     let btnToggleEdit = document.querySelector('.btnToggleEdit');
     let toggleDivEdit = document.querySelectorAll('.toggleDivEdit');
