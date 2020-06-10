@@ -131,4 +131,10 @@ class ArticleController extends Controller {
         }
     }
 
+    public function delete($slug) {
+        $this->manager->delete($slug);
+        
+        $this->redirect("articles");
+    }
+
 }

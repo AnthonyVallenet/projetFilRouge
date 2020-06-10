@@ -33,6 +33,7 @@ $router->post('/login', "AuthController@login");
 $router->post('/contact', "ContactController@store");
 
 $router->post('/administration/article/edit/:id', "ArticleController@update");
+$router->post('/administration/article/delete/:id', "ArticleController@delete");
 $router->post('/administration/user/create', "AuthController@createUser");
 $router->post('/administration/user/edit/:id', "AuthController@update");
 $router->post('/administration/user/delete/:id', "AuthController@delete");

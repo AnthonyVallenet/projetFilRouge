@@ -130,6 +130,24 @@ section.allArticles {
                             height: 25%;
                             display: flex;
 
+                            form {
+                                width: 50%;
+
+                                &>button {
+                                    width: 100%;
+                                    height: 100%;
+                                    color: white;
+                                    border: none;
+                                    font-weight: bold;
+                                    letter-spacing: 2px;
+                                    cursor: pointer;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background-color: rgb(196, 0, 0);
+                                }
+                            }
+
                             a {
                                 width: 50%;
                                 height: 100%;
@@ -140,10 +158,6 @@ section.allArticles {
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-
-                                &.delete {
-                                    background-color: #c40000;
-                                }
 
                                 &.edit {
                                     background-color: #b97900;
