@@ -19,4 +19,12 @@
 .imgContent{
     display: flex;
     justify-content: space-between;
+    .img, .content{
+        width: 45%;
+    }
+    .content{
+        text-justify: distribute;
+        padding: 10px;
+        border-left: solid 3px $lightBlueColor;
+    }
 }

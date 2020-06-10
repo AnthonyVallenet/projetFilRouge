@@ -148,8 +148,11 @@ if ($info["article"]->getEnabled()) {
                     <input type="checkbox" id="commentEditArticle" name="commentEditArticle" <?php echo $comment; ?>>
                     </label>
                     <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
+                    <div>
+                        <button class="button edit" type="submit">Envoyer</button>
+                        <a href="#" class="button delete">Supprimer</a>
 
-                    <button class="button" type="submit">Envoyer</button>
+                    </div>
                 </div>
 
 
