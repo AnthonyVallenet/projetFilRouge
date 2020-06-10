@@ -9,6 +9,7 @@ ob_start();
                 <h1 class="titre1">Créer votre compte</h1>
             </div>
         </div>
+    
         <form action="/register/" method="post">
             <div class="formBlock">
                 <div class="allblock">
