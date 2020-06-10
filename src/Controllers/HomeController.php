@@ -11,5 +11,7 @@ class HomeController extends Controller {
         $this->require("Home/index.php", "");
     }
 
-
+    public function pageNotFound() {
+        $this->require("404.php", "");
+    }
 }

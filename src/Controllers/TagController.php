@@ -9,6 +9,10 @@ class TagController extends Controller {
     }
 
     public function store() {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->validator->validate([
             "name"=>["required", "min:2", "max:10"],
             "color"=>["required"],
@@ -25,6 +29,10 @@ class TagController extends Controller {
     }
 
     public function update($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->validator->validate([
             "nameEditTag-". $slug =>["required", "min:2", "max:10"],
             "colorEditTag-". $slug =>["required"],
@@ -49,6 +57,10 @@ class TagController extends Controller {
     }
 
     public function delete($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
         $this->manager->delete($slug);
         
         $this->redirect("administration#tags");
