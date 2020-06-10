@@ -1,0 +1,30 @@
+// main: style.scss
+
+.articlesCarousel {
+
+    div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 50px;
+
+        h2 {
+            margin-bottom: 15px;
+            width: 40%;
+            padding: 5px 0px;
+            text-align: center;
+            background-color: white;
+            border-left: 3px solid $darkBlueColor;
+            border-right: 3px solid $darkBlueColor;
+        }
+
+        p {
+            width: 20%;
+            padding: 5px 0px;
+            text-align: center;
+            background-color: white;
+            border-left: 3px solid #0e2650;
+            border-right: 3px solid #0e2650;
+        }
+    }
+}
