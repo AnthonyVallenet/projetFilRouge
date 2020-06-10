@@ -1,0 +1,171 @@
+// main: style.scss
+
+section.sectionPNF {
+    background-color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    &>div {
+        
+        &:first-child {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+
+            a {
+                color: black;
+                transition: all ease .2s;
+
+                i {
+                    font-size: 48px;
+                    cursor: pointer;
+                }
+            }
+
+            span {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                background-color: $darkBlueColor;
+                color: white;
+                left: 60px;
+                width: 150px;
+                padding: 5px 10px;
+                border-radius: 3px;
+                transition: all ease .2s;
+            }
+
+            &:hover {
+                a {
+                    color: $darkBlueColor;
+                }
+
+                span {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        &:last-child {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            a {
+                text-decoration: none;
+                margin-bottom: 50px;
+
+                &>h1 {
+                    text-align: center;
+                    font-size: 240px;
+                    color: #0a1d3d;
+                    transition: color ease-in-out .2s;
+            
+                    &:hover {
+                        color: $darkBlueColor;
+                    }
+                }
+            }
+
+            &>div {
+                margin: 0 150px;
+
+                p {
+                    font-size: 22px;
+
+                    &:first-child {
+                        margin-bottom: 10px;
+                    }
+
+                    &:last-child {
+                        font-weight: bold;
+                    }
+
+                    &>a {
+                        color: $darkBlueColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    section.sectionPNF {
+    
+        &>div {
+    
+            &:last-child {
+    
+                a {
+    
+                    &>h1 {
+                        font-size: 150px;
+                    }
+                }
+    
+                &>div {
+                    margin: 0 75px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section.sectionPNF {
+    
+        &>div {
+    
+            &:last-child {
+    
+                a {
+    
+                    &>h1 {
+                        font-size: 100px;
+                    }
+                }
+    
+                &>div {
+                    margin: 0 25px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    section.sectionPNF {
+    
+        &>div {
+
+            &:first-child {
+                margin-left: 15px;
+                margin-bottom: 50px;
+            }
+    
+            &:last-child {
+    
+                a {
+    
+                    &>h1 {
+                        font-size: 95px;
+                    }
+                }
+    
+                &>div {
+                    margin: 0 15px;
+                }
+            }
+        }
+    }
+}

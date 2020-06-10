@@ -116,25 +116,17 @@ class ArticleController extends Controller {
     }
 
     public function searching() {
-        $this->validator->validate([
-            "search" => ["required", "min:2", "max:40"]
-        ]);
         $_SESSION['old'] = $_POST;
 
-        if (!$this->validator->errors()) {
-            $articles = $this->manager->searchByTitle();
+        $articles = $this->manager->searchByTitle();
 
-            if (!$articles) {
-                $articles = $this->manager->searchByContent();
-                $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
-                die;
-            }
-
+        if (!$articles) {
+            $articles = $this->manager->searchByContent();
             $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
-            
-        } else {
-            $this->redirect("article/search");
+            die;
         }
+
+        $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
     }
 
     public function delete($slug) {
