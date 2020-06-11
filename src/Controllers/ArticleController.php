@@ -63,10 +63,10 @@ class ArticleController extends Controller {
             }
             
             $this->manager->update($slug, $img_type, $img_blob, $comment, $enabled);
-
-            // foreach ($_POST['tags'] as $tagId) {
-            //     $this->managerTag->updateArticleTag($tagId, $idArticle);
-            // }
+            $idArticle = $this->manager->getArticleBy($slug)->getId();
+            foreach ($_POST['tags'] as $tagId) {
+                $this->managerTag->articleTag($tagId, $idArticle);
+            }
 
             $this->redirect("article/$slug");
         } else {
