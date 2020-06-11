@@ -47,6 +47,7 @@ try {
         user_id INT UNSIGNED NOT NULL,
         article_id INT UNSIGNED NOT NULL,
         content VARCHAR(255) NOT NULL,
+        editing DATETIME NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT fk_comment_user_id FOREIGN KEY (user_id) REFERENCES users(id),
         CONSTRAINT fk_comment_article_id FOREIGN KEY (article_id) REFERENCES articles(id)

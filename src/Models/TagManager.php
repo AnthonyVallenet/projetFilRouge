@@ -40,7 +40,7 @@ class TagManager extends Manager {
     }
 
     public function getTagArticle($slug) {
-        $stmt = $this->bdd->prepare("SELECT t.id, t.name, t.color FROM tag t INNER JOIN article_tag at on t.id = at.tag_id INNER JOIN articles a on at.article_id = a.id WHERE a.id = ?;");
+        $stmt = $this->bdd->prepare("SELECT t.* FROM tag t INNER JOIN article_tag at ON at.tag_id = t.id WHERE at.article_id = ?;");
         
         $stmt->execute(array(
             $slug
