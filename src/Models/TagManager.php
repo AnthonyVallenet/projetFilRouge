@@ -44,7 +44,7 @@ class TagManager extends Manager {
     }
 
     public function getTagArticle($slug) {
-        $stmt = $this->bdd->prepare("SELECT t.id, t.name, t.color FROM tag t INNER JOIN article_tag at on t.id = at.tag_id INNER JOIN articles a on at.article_id = a.id WHERE a.id = ?;");
+        $stmt = $this->bdd->prepare("SELECT t.* FROM tag t INNER JOIN article_tag at ON at.tag_id = t.id WHERE at.article_id = ?;");
         
         $stmt->execute(array(
             $slug
@@ -73,13 +73,13 @@ class TagManager extends Manager {
         ));
     }
 
-    // public function deleteTagFromArticle($tagId, $idArticle) {
-    //     $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE id = ?");
-    //     $stmt->execute(array(
-             
-    //         $idArticle,
-    //     ));
-    // }
+    public function deleteArticleTag($tagId, $idArticle) {
+        $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE tag_id = ? AND article_id = ?");
+        $stmt->execute(array(
+            $tagId,
+            $idArticle,
+        ));
+    }
 
     public function delete($slug) {
         $stmt = $this->bdd->prepare("DELETE FROM tag WHERE id = ?");
