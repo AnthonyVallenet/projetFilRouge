@@ -26,7 +26,7 @@ class ArticleManager extends Manager {
             $img_blob,
             $_POST["content"],
             $comment,
-            $enabled
+            $enabled,
         ));
     }
 

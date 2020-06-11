@@ -73,6 +73,14 @@ class TagManager extends Manager {
         ));
     }
 
+    // public function deleteTagFromArticle($tagId, $idArticle) {
+    //     $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE id = ?");
+    //     $stmt->execute(array(
+             
+    //         $idArticle,
+    //     ));
+    // }
+
     public function delete($slug) {
         $stmt = $this->bdd->prepare("DELETE FROM tag WHERE id = ?");
         $stmt->execute(array(
