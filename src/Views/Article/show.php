@@ -74,15 +74,31 @@ if ($info["article"]->getEnabled()) {
                                         Je trouve cet article plutôt bien.
                                     </p>
                                 </div>
+                                <?php
+                                    foreach ($info["allComments"] as $commentArticle) {
+                                        ?>
+                                            <div class="comment">
+                                                <h3 class="commentUsername">
+                                                    <?php echo escape($commentArticle->getFirstNameComment()); ?>
+                                                </h3>
+                                                <p class=commentContent>
+                                                    <?php echo escape($commentArticle->getContent()); ?>
+                                                </p>
+                                            </div>
+                                        <?php
+                                    }
+                                ?>
                             </div>
                             
                             <!-- input pour ecrire le commentaire -->
                             <div class="sendComment">
-                                <div>
-                                    <input type="text" name="comment" class="input">
-                                    <!-- message d'erreur ici!!-->
-                                </div>
-                                <button type="submit" class="button">Commenter</button>
+                                <form action="" method="post">
+                                    <div>
+                                        <input type="text" name="comment" class="input">
+                                        <!-- message d'erreur ici!!-->
+                                    </div>
+                                    <button type="submit" class="button">Commenter</button>
+                                </form>
                             </div>
                         </div>
                     <?php

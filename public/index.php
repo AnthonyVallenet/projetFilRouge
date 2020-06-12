@@ -28,6 +28,8 @@ $router->get('/article/create', "ArticleController@create");
 $router->get('/article/search', "ArticleController@search");
 $router->get('/article/:id', "ArticleController@show");
 
+$router->get('/article/:id/send', "CommentController@index");
+
 
 
 $router->post('/register', "AuthController@register");
