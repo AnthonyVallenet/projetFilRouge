@@ -91,7 +91,6 @@ if ($info["article"]->getEnabled()) {
             <!-- <?php echo escape($info["article"]->getComment()); ?> -->
         </section>
     </div>
-
     <?php 
         if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
             ?>
@@ -100,6 +99,7 @@ if ($info["article"]->getEnabled()) {
                     <div class="bandeau">
                         <div id='title'>
                             <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
+
                         </div>
                     </div>
 
@@ -120,7 +120,7 @@ if ($info["article"]->getEnabled()) {
                                     </div>
                                     <div class="input tag" id="tag">
                                         <p>#Tags:</p>
-                                            <select style="display:none" name="tags[]" id="tags" multiple>
+                                            <select name="tags[]" id="tags" multiple>
                                             <?php
                                             foreach ($info['allTags'] as $tag) {
                                                 ?>

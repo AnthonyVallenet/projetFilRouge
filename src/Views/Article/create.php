@@ -24,7 +24,7 @@ old("enabled") == "on" ?: $enabled = "";
       </div>
       <div class="input tag" id="tag">
         <p>#Tags:</p>
-        <select style="display:none" name="tags[]" id="tags" multiple>
+        <select name="tags[]" id="tags" multiple>
           <?php
           foreach ($info as $tag) {
             ?>
