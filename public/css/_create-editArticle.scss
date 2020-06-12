@@ -33,20 +33,27 @@
       margin-left: 100px;
     }
 
-    select[multiple] {
-      height: 30px;
-      padding: 0 10px;
-      width: auto;
-      background: transparent;
-      margin: 0;
-      border: 0;
-      outline: none;
-      -moz-appearance: menulist;
-      -webkit-appearance: menulist;
-      appearance: menulist;
-
-      &::-webkit-scrollbar {
-        width: 1px;
+    .tag{
+      position: relative;
+      select[multiple] {
+        box-shadow: 5px 5px 5px #00000023;
+        position: absolute !important;
+        height: 0;
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: 30px; 
+        margin-top: 15px;
+        width: 50%;
+        background: $white1;
+        border: 0;
+        outline: none;
+        -moz-appearance: menulist;
+        -webkit-appearance: menulist;
+  
+        &::-webkit-scrollbar {
+          width: 1px;
+        }
       }
     }
 
