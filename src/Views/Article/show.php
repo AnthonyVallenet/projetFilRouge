@@ -1,24 +1,22 @@
 <?php
 ob_start();
 
-$comment = "checked";
+$comment;
+$enabled;
 
-$enabled = "checked";
-
-if ($info["article"]->getComment()) {
-    $info["article"]->getComment() == "1" ?: $comment = "";
+if (old("commentEditArticle")) {
+    old("commentEditArticle") == "on" ? $comment = "checked" : $comment = "";
 } else {
-    old("comment") == "on" ?: $comment = "";
+    $info["article"]->getComment() == "1" ? $comment = "checked" : $comment = "";
 }
 
-if ($info["article"]->getEnabled()) {
-    $info["article"]->getEnabled() == "1" ?: $comment = "";
+if (old("enabledEditArticle")) {
+    old("enabledEditArticle") == "on" ? $enabled = "checked" : $enabled = "";
 } else {
-    old("comment") == "on" ?: $comment = "";
+    $info["article"]->getEnabled() == "1" ? $enabled = "checked" : $enabled = "";
 }
 ?>
 <div id='article'>
-
 
 <!-- show -->
     <div class="toggleDivEdit">
@@ -29,7 +27,7 @@ if ($info["article"]->getEnabled()) {
             <div class="subtitle"><?php echo escape($info["article"]->getDate()); ?></div>
         </div>
 
-        <section class="article">
+        <section class="article sectionPage">
             <?php 
             if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
                 ?>
@@ -60,48 +58,95 @@ if ($info["article"]->getEnabled()) {
                 </div>
             </div>
 
-            <?php 
-                if($info["article"]->getComment() == 1){
-                    ?> 
-                        <div class="comments">
-                            <h2>Commentaires</h2>
-                            <div class="allComments">
-                                <div class="comment">
-                                    <h3 class="commentUsername">
-                                        Guerlain
-                                    </h3>
-                                    <p class=commentContent>
-                                        Je trouve cet article plutôt bien.
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- input pour ecrire le commentaire -->
-                            <div class="sendComment">
-                                <div>
-                                    <input type="text" name="comment" class="input">
-                                    <!-- message d'erreur ici!!-->
-                                </div>
-                                <button type="submit" class="button">Commenter</button>
-                            </div>
-                        </div>
+            
+            <div class="comments">
+                <h2>Commentaires</h2>
+                <div class="allComments">
                     <?php
-                }
-            ?>
-            <!-- <?php echo escape($info["article"]->getComment()); ?> -->
+                        if (!$info["allComments"]) {
+                            ?>
+                                <p>Aucun commentaire n'a été ajouté à cet article. Soyez le premier !</p>
+                            <?php
+                        } else {
+                            foreach ($info["allComments"] as $commentArticle) {
+                                ?>
+                                    <div class="comment">
+                                        <h3>
+                                            <i class="fas fa-user-alt"></i>
+                                            <?php echo escape($commentArticle->getFirstNameComment()); ?>
+                                            <?php
+                                                if ($commentArticle->getEditing()) {
+                                                    ?>
+                                                        <span>(Modifié)</span>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </h3>
+                                        <?php
+                                            if ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) || (escape($commentArticle->getUserId()) === $_SESSION['user']['id'])) {
+                                                ?>
+                                                    <form action="/article/<?php echo escape($info["article"]->getId()); ?>/delete/<?php echo escape($commentArticle->getId()); ?>" method="post">
+                                                        <button type="submit"><i class="fas fa-trash"></i></button>
+                                                    </form>
+                                                <?php
+                                            }
+                                        ?>
+                                        <div class=commentContent>
+                                            <?php
+                                                if ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) || (escape($commentArticle->getUserId()) === $_SESSION['user']['id'])) {
+                                                    ?>
+                                                    <form action="/article/<?php echo escape($info["article"]->getId()); ?>/edit/<?php echo escape($commentArticle->getId()); ?>" method="post">
+                                                        <div>
+                                                            <input type="text" id="commentInputEdit-<?php echo escape($commentArticle->getId());?>" name="commentInputEdit-<?php echo escape($commentArticle->getId());?>" value="<?php echo old("commentInputEdit-" . escape($commentArticle->getId())) ?: escape($commentArticle->getContent());?>" class="input">
+                                                            <button type="submit">Modifier</button>
+                                                            <?php echo error("commentInputEdit-" . escape($commentArticle->getId())) ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentInputEdit-" . escape($commentArticle->getId())) .'</span>' : ""?>
+                                                        </div>
+                                                    </form>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <p><?php echo escape($commentArticle->getContent()); ?></p>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
+                        }
+                    ?>
+                </div>
+
+                <!-- input pour ecrire le commentaire -->
+                <div class="sendComment">
+                    <?php 
+                        if ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) || (isset($_SESSION["user"]) && $info["article"]->getComment() == 1)) {
+                            ?>
+                                <form action="/article/<?php echo escape($info["article"]->getId()); ?>/send" method="post">
+                                    <div>
+                                        <input type="text" id="commentInput" name="commentInput" value="<?php echo old("commentInput");?>" class="input" placeholder="Commentaire">
+                                        <?php echo error("commentInput") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentInput") .'</span>' : ""?>
+                                    </div>
+                                    <button type="submit" class="button">Commenter</button>
+                                </form>
+                            <?php
+                        } else {
+                            ?>
+                                <p><a href="/login">Connectez-vous</a> pour mettre des commentaires !</p>
+                            <?php
+                        }
+                    ?>
+                </div>
+            </div>
+            
         </section>
     </div>
+
     <?php 
         if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
             ?>
                 <!-- edit -->
-                <div class="toggleDivEdit" style="display: none"> 
-                    <div class="bandeau">
-                        <div id='title'>
-                            <h1 class="titre1"><?php echo escape($info["article"]->getTitle()); ?></h1>
-
-                        </div>
-                    </div>
+                <div class="toggleDivEdit" style="display: none">
 
                     <section class="article">
                         <div class="buttonContainer">
@@ -124,7 +169,9 @@ if ($info["article"]->getEnabled()) {
                                             <?php
                                             foreach ($info['allTags'] as $tag) {
                                                 ?>
-                                                    <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
+                                                    <option value="<?php echo escape($tag->getIdTag()); ?>" <?php if (in_array($tag, $info["tagsArticle"])) echo "selected"?>>
+                                                        <?php echo escape($tag->getName()); ?>
+                                                    </option>
                                                 <?php
                                             }
                                             ?>
@@ -168,7 +215,6 @@ if ($info["article"]->getEnabled()) {
                                         <?php echo error("imgEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("imgEditArticle") .'</span>' : ""?>
                                     </div>
 
-
                                     <div class="description">
                                         <label for="contentEditArticle"></label>
                                         <textarea class="input" name="contentEditArticle" id="contentEditArticle" cols="30" rows="10"><?php echo old("contentEditArticle") ?: escape($info["article"]->getContent()); ?></textarea>
@@ -177,22 +223,23 @@ if ($info["article"]->getEnabled()) {
                                 </div>
 
                                 <!-- activer les commentaires et sumbit -->
-
                                 <div class="commentSend">
                                     <label for="commentEditArticle"><span>Autoriser les commentaires</span>
                                     <input type="checkbox" id="commentEditArticle" name="commentEditArticle" <?php echo $comment; ?>>
                                     </label>
                                     <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
                                     <div>
-                                        <button class="button edit" type="submit">Envoyer</button>
-                                        <form action="/administration/article/delete/<?php echo escape($info["article"]->getId()); ?>" method="post">
-                                            <button type="submit" name="button" class="button delete">SUPPRIMER</button>
-                                        </form>
+                                        <button class="button edit" type="submit">Modifier</button>
                                     </div>
                                 </div>
 
 
                                 <?php echo error("messageEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditArticle") .'</span>' : ""?>
+                            </form>
+                            <form action="/administration/article/delete/<?php echo escape($info["article"]->getId()); ?>" method="post">
+                                <div>
+                                    <button type="submit" name="button" class="button delete">SUPPRIMER</button>
+                                </div>
                             </form>
                         </div>
                     </section>

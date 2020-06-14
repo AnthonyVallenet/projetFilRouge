@@ -30,11 +30,7 @@ class TagManager extends Manager {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Tag");
     }
 
-    public function articleTag($tagId, $idArticle) {
-        // VALUES (?, ?)
-        // INSERT IGNORE INTO article_tag(tag_id, article_id) SELECT tag_id, article_id FROM article_tag WHERE NOT EXISTS (SELECT 1 FROM article_tag WHERE tag_id = ? AND article_id = ?)
-        // INSERT INTO article_tag(tag_id, article_id) SELECT tag_id, article_id FROM article_tag WHERE NOT EXISTS (SELECT 1 FROM article_tag WHERE tag_id = ? AND article_id = ?)
-        
+    public function articleTag($tagId, $idArticle) {        
         $stmt = $this->bdd->prepare("INSERT INTO article_tag(tag_id, article_id) VALUES (?, ?)");
         
         $stmt->execute(array(
@@ -73,10 +69,9 @@ class TagManager extends Manager {
         ));
     }
 
-    public function deleteArticleTag($tagId, $idArticle) {
-        $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE tag_id = ? AND article_id = ?");
+    public function deleteArticleTag($idArticle) {
+        $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE article_id = ?");
         $stmt->execute(array(
-            $tagId,
             $idArticle,
         ));
     }

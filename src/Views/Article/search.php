@@ -27,16 +27,17 @@ ob_start();
                     <div>
                         <?php 
                             foreach ($info["articles"] as $article) {
-                                ?>
+                                if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1){
+                                    ?>
                                     <div>
-                                        <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">
+                                        <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>'); <?php echo escape($article->getEnabled()) != 1 ? "" : "border: 2px solid red"?>">
                                             <div class="infos">
                                                 <div>
-                                                    <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title searchText"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
+                                                    <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
                                                     <h3 class="date text-alt"><?php echo strftime("%d %b %G", strtotime(escape($article->getDate())));?></h3>
                                                 </div>
                                                 <div class="fade">
-                                                    <p class="txt searchText"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
+                                                    <p class="txt"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
                                                     <?php
                                                     if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
                                                         ?>
@@ -53,7 +54,38 @@ ob_start();
                                             </div>
                                         </div>
                                     </div>
-                                <?php
+                                    <?php
+                                }elseif ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] != 1) || !isset($_SESSION["user"])){
+                                    if (escape($article->getEnabled()) != 1){
+                                        ?>
+                                        <div>
+                                            <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">
+                                                <div class="infos">
+                                                    <div>
+                                                        <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
+                                                        <h3 class="date text-alt"><?php echo strftime("%d %b %G", strtotime(escape($article->getDate())));?></h3>
+                                                    </div>
+                                                    <div class="fade">
+                                                        <p class="txt"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
+                                                        <?php
+                                                        if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
+                                                            ?>
+                                                                <div>
+                                                                    <form action="/administration/article/delete/<?php echo escape($article->getId()); ?>" method="post">
+                                                                        <button type="submit" name="button">SUPPRIMER</button>
+                                                                    </form>
+                                                                    <a href="/article/<?php echo escape($article->getId());?>?edit" class="edit">MODIFIER</a>
+                                                                </div>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }
                             }
                             ?>
                                 <script>

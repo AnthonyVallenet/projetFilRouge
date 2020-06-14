@@ -11,11 +11,13 @@ class ArticleController extends Controller {
         parent::__construct();
         $this->manager = $this->manager('ArticleManager');
         $this->managerTag = $this->manager('TagManager');
+        $this->managerComments = $this->manager('CommentManager');
     }
 
     public function index() {
         $articles = $this->manager->allArticle();
-        $this->require("Article/index.php", $articles);
+        $tags = $this->managerTag->allTag();
+        $this->require("Article/index.php", ["articles" => $articles, "tags" => $tags]);
     }
 
     public function create() {
@@ -27,59 +29,17 @@ class ArticleController extends Controller {
         $this->require("Article/create.php", $tags);
     }
 
-    public function update($slug) {
-        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
-            $this->redirect("error/404");
-            die;
-        }
-        $this->validator->validate([
-            "titleEditArticle" => ["required", "min:3"],
-            "dateEditArticle" => ["required", "date"],
-            "contentEditArticle" => ["all"]
-        ]);
-        $_SESSION['old'] = $_POST;
-        
-        $img_type = $_FILES['imgEditArticle']['type'];
-        $img_blob = file_get_contents($_FILES['imgEditArticle']['tmp_name']);
-        $enabled = $_POST["enabled"];
-        $comment = $_POST["comment"];
-
-        if (!$this->validator->errors()) {
-            if ($_POST["enabledEditArticle"] == NULL) {
-                $enabled = 0;
-            } else {
-                $enabled = 1;
-            }
-            if ($_POST["commentEditArticle"] == NULL) {
-                $comment = 0;
-            } else {
-                $comment = 1;
-            }
-
-            if (empty($img_blob)) {
-                $article = $this->manager->getArticleBy($slug);
-                $img_blob = $article->getImgBlob();
-                $img_type = $article->getImgType();
-            }
-            
-            $this->manager->update($slug, $img_type, $img_blob, $comment, $enabled);
-            $idArticle = $this->manager->getArticleBy($slug)->getId();
-            foreach ($_POST['tags'] as $tagId) {
-                $this->managerTag->deleteArticleTag($tagId, $idArticle);
-                $this->managerTag->articleTag($tagId, $idArticle);
-            }
-
-            $this->redirect("article/$slug");
-        } else {
-            $this->redirect("article/$slug?edit");
-        }
-    }
-
     public function show($slug) {
         $article = $this->manager->getArticleBy($slug);
         $tagsArticle = $this->managerTag->getTagArticle($slug);
-        $allTags = $this->managerTag->allTag($slug);
-        $this->require("Article/show.php", ["article" => $article, "tagsArticle" => $tagsArticle, "allTags" => $allTags]);
+        $allTags = $this->managerTag->allTag();
+        $allComments = $this->managerComments->allComments($slug);
+
+        if ($article->getEnabled() == "1" && $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("articles");
+        }
+
+        $this->require("Article/show.php", ["article" => $article, "tagsArticle" => $tagsArticle, "allTags" => $allTags, "allComments" => $allComments]);
     }
 
     public function store() {
@@ -106,12 +66,6 @@ class ArticleController extends Controller {
             $this->redirect("article/create");
             die;
         }
-
-        // SELECT a.id, a.title, t.name FROM articles a INNER JOIN article_tag ac ON a.id = ac.article_id INNER JOIN tag t ON t.id = ac.tag_id GROUP BY a.id;
-        // SELECT t.* FROM tag t INNER JOIN article_tag at ON at.tag_id = t.id WHERE at.article_id = "15";
-        // SELECT t.id, t.name, t.color FROM tag t INNER JOIN article_tag at on t.id = at.tag_id INNER JOIN articles a on at.article_id = a.id WHERE a.id = "15";
-        // SELECT t.*, a.title, a.id FROM tag t INNER JOIN article_tag at ON at.tag_id = t.id INNER JOIN articles a ON a.id = at.article_id GROUP BY a.id;
-        // SELECT c.content, u.first_name FROM comment c INNER JOIN articles a ON a.id = c.article_id INNER JOIN users u ON u.id = c.user_id WHERE a.id = 15;
         
         if (!$this->validator->errors()) {
             if ($_POST["enabled"] == NULL) {
@@ -137,6 +91,55 @@ class ArticleController extends Controller {
         }
     }
 
+    public function update($slug) {
+        if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("error/404");
+            die;
+        }
+        $this->validator->validate([
+            "titleEditArticle" => ["required", "min:3"],
+            "dateEditArticle" => ["required", "date"],
+            "contentEditArticle" => ["all"]
+        ]);
+        $_SESSION['old'] = $_POST;
+        
+        $img_type = $_FILES['imgEditArticle']['type'];
+        $img_blob = file_get_contents($_FILES['imgEditArticle']['tmp_name']);
+        $enabled = $_POST["enabledEditArticle"];
+        $comment = $_POST["commentEditArticle"];
+
+        if (!$this->validator->errors()) {
+            unset($_SESSION['old']);
+            if ($_POST["enabledEditArticle"] != "on") {
+                $enabled = 0;
+            } else {
+                $enabled = 1;
+            }
+            if ($_POST["commentEditArticle"] != "on") {
+                $comment = 0;
+            } else {
+                $comment = 1;
+            }
+
+            if (empty($img_blob)) {
+                $article = $this->manager->getArticleBy($slug);
+                $img_blob = $article->getImgBlob();
+                $img_type = $article->getImgType();
+            }
+            
+            $this->manager->update($slug, $img_type, $img_blob, $comment, $enabled);
+            
+            $this->managerTag->deleteArticleTag($slug);
+            foreach ($_POST['tags'] as $tagId) {
+                $this->managerTag->articleTag($tagId, $slug);
+            }
+
+            $this->redirect("article/$slug");
+        } else {
+            $this->redirect("article/$slug?edit");
+        }
+    }
+
     public function searching() {
         $_SESSION['old'] = $_POST;
 
@@ -149,6 +152,12 @@ class ArticleController extends Controller {
         }
 
         $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
+    }
+
+    public function searchByTag($slug) {
+        $articles = $this->manager->searchByTag($slug);
+        
+        $this->require("Article/search.php", ["articles" => $articles, "search" => $slug]);
     }
 
     public function delete($slug) {

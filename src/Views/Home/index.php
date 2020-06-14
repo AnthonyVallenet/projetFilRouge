@@ -97,7 +97,7 @@ ob_start();
 
 <section class="sectionContent articlesCarousel">
   <div class="carouselTitle">
-    <h2>Les artciles</h2>
+    <h2>Les articles</h2>
     <p class="subtitle">Présenter par les élèves</p>
   </div>
     <!-- carousel -->

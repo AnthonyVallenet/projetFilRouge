@@ -57,19 +57,6 @@
                             <p>Contact</p>
                         </a>
                     <?php
-                    if ($_SESSION["user"]["admin"] == 1) {
-                        ?>
-                            <a href="/administration">
-                                <i class="icon fas fa-user-cog"></i>
-                                <p>Administration</p>
-                            </a>
-
-                            <a href="/article/create">
-                                <i class="icon fas fa-plus-circle"></i>
-                                <p>Création</p>
-                            </a>
-                        <?php
-                    }
                 }
                 ?>
             </div>
@@ -88,6 +75,19 @@
                         </a>
                     <?php
                 } else {
+                    if ($_SESSION["user"]["admin"] == 1) {
+                        ?>
+                            <a href="/administration">
+                                <i class="icon fas fa-user-cog"></i>
+                                <p>Administration</p>
+                            </a>
+
+                            <a href="/article/create">
+                                <i class="icon fas fa-plus-circle"></i>
+                                <p>Création</p>
+                            </a>
+                        <?php
+                    }
                     ?>
                         <a href="/logout">
                             <i class="icon fas fa-user-slash"></i>
@@ -96,15 +96,6 @@
                     <?php
                 }
                 ?>
-                <a href="#">
-                    <i class="icon fas fa-unlock-alt"></i>
-                    <p>Politique confidentialité</p>
-                </a>
-
-                <a href="#">
-                    <i class="icon fas fa-file-invoice"></i>
-                    <p>Mentions légales</p>
-                </a>
             </div>
         </nav>
 
