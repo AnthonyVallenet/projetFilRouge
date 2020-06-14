@@ -14,16 +14,15 @@ ob_start();
 
                 <div class="emailLogin">
                     <label for="email"></label>
-                    <input type="text" name="email" id="email" value="<?php echo old("email");?>" placeholder="email">
+                    <input type="text" name="email" id="email" value="<?php echo old("email");?>" placeholder="Mail">
                     <?php echo error("email") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("email") .'</span>' : ""?>
                 </div>
-
 
                 <div class="passwordLogin">
                     <div>
                         <label for="password"></label>
                         <input id="inputPassword" type="password" id="password" name="password"
-                            value="<?php echo old("password");?>" placeholder="password">
+                            value="<?php echo old("password");?>" placeholder="Mot de passe">
                         <button id="btnPassword" type="button" name="button"><i class="far fa-eye"></i></button>
                     </div>
                     <?php echo error("password") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("password") .'</span>' : ""?>

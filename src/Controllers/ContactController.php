@@ -15,10 +15,10 @@ class ContactController extends Controller {
 
     public function store() {
         $this->validator->validate([
-            "firstName"=>["required", "min:3", "alpha"],
-            "lastName"=>["required", "min:3", "alphaDash"],
+            "firstName"=>["required", "min:3", "max:20", "alpha"],
+            "lastName"=>["required", "min:3", "max:20", "alphaDash"],
             "email"=>["required", "email"],
-            "subject"=>["required", "min:2"],
+            "subject"=>["required", "min:2", "max:60"],
             "message"=>["required", "min:3"]
         ]);
         $_SESSION['old'] = $_POST;

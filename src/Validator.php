@@ -23,7 +23,7 @@ class Validator {
         "alphaDash" => "Le champ peut contenir que des lettres minuscules, majuscules, des slash et des tirets !",
         "numeric" => "Le champ peut contenir que des chiffres !",
         "all" => "Le champ est requis !",
-        "confirm" => "Le champs n'est pas conforme au confirm !"
+        "confirm" => "Le champs n'est pas conforme au mot de passe !"
     ];
     private $rules = [
         "required" => "#^.+$#",

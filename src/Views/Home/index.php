@@ -45,13 +45,9 @@ ob_start();
     <p class="subtitle">Projet éolienne</p>
   </div>
   <div>
-    <p>Le projet fil rouge est un projet réalisé tout au long de l'année par les élèves de EDEN School pour promouvoir par le suite la construction d'une petite éolienne capable de recharger un téléphone portable</p>
+    <p>Le projet fil rouge est un projet réalisé tout au long de l'année par les élèves de EDEN School pour promouvoir par la suite la construction d'une petite éolienne capable de recharger un téléphone portable</p>
     </br>
-    <p>Suite au récents événements liés aux Covid 19, la création de l'éolienne a été abandonné et les différents groupes se sont focalisés sur la production de leur site qui comporte désormais
-    une section article</p>
-    </br>
-
-    <p>Retrouvez sur le site du groupe 1 (le meilleur groupe (#^u^#)) les meilleurs articles d'éolienne qui ne nous appartiennent même pas</p>
+    <p>Suite au récents événements liés aux Covid 19, la création de l'éolienne a été abandonnée et les différents groupes se sont focalisés sur la production de leur site.</p>
   </div>
 </section>
 

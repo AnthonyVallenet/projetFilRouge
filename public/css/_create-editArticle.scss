@@ -19,33 +19,37 @@
   padding: 60px;
   height: 100%;
 
-  form {
-    &:last-child {
-      padding: 0 50px;
-      text-align: end;
-
-      &>div {
-        width: auto;
-
-        .delete {
-          margin-top: 0;
-          text-decoration: none;
-          background-color: #c40000;
-          border: solid 1px white;
+  &>div {
+    form {
+      &:last-child {
+        padding: 0 50px;
+        display: flex;
   
-          &:hover {
-            background-color: white;
-            color: #c40000;
-            border: solid 1px #c40000;
-          }
+        &>div {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
   
-          @media screen and (max-width: 920px) {
-            width: 100%;
-            text-align: center;
-          }
-
-          @media screen and (max-width: 550px) {
-            padding: 8px 30px;
+          .delete {
+            margin-top: 0;
+            text-decoration: none;
+            background-color: #c40000;
+            border: solid 1px white;
+    
+            &:hover {
+              background-color: white;
+              color: #c40000;
+              border: solid 1px #c40000;
+            }
+    
+            @media screen and (max-width: 920px) {
+              width: 100%;
+              text-align: center;
+            }
+  
+            @media screen and (max-width: 550px) {
+              padding: 8px 30px;
+            }
           }
         }
       }
