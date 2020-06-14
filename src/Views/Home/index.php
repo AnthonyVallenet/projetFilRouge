@@ -96,18 +96,99 @@ ob_start();
 </section>
 
 <section class="sectionContent articlesCarousel">
-<div>
-  <h2>Les artciles</h2>
-  <p class="subtitle">Présenter par les élèves</p>
+  <div class="carouselTitle">
+    <h2>Les artciles</h2>
+    <p class="subtitle">Présenter par les élèves</p>
+  </div>
+    <!-- carousel -->
+    <div class="carousel2">
+      <div class="completeCarousel">
+
+      <?php
+            foreach ($info as $article) {
+                if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1){
+                    ?>
+                    <div class="myCarousels fade">
+                      <div class="carousel1">
+                        <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">
+                          <div class="infos">
+                            <div>
+                              <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
+                              <h3 class="date text-alt"><?php echo strftime("%d %b %G", strtotime(escape($article->getDate())));?></h3>
+                            </div>
+                            <div class="fade">
+                              <p class="txt"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
+                              <?php
+                                if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
+                                  ?>
+                                    <div>
+                                        <form action="/administration/article/delete/<?php echo escape($article->getId()); ?>" method="post">
+                                            <button type="submit" name="button">SUPPRIMER</button>
+                                        </form>
+                                        <a href="/article/<?php echo escape($article->getId());?>?edit" class="edit">MODIFIER</a>
+                                    </div>
+                                  <?php
+                                }
+                              ?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <?php
+                }
+            
+
+                elseif ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] != 1) || !isset($_SESSION["user"])){
+                    if (escape($article->getEnabled()) != 1){
+                        ?>
+                          <div class="myCarousels fade">
+                            <div class="carousel1">
+                              <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">
+                                <div class="infos">
+                                  <div>
+                                    <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
+                                    <h3 class="date text-alt"><?php echo strftime("%d %b %G", strtotime(escape($article->getDate())));?></h3>
+                                  </div>
+                                  <div class="fade">
+                                    <p class="txt"><?php echo substr(escape($article->getContent()), 0, 70) . (strlen(escape($article->getContent())) > 70 ? "..." : ""); ?></p>
+                                    <?php
+                                      if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
+                                        ?>
+                                          <div>
+                                              <form action="/administration/article/delete/<?php echo escape($article->getId()); ?>" method="post">
+                                                  <button type="submit" name="button">SUPPRIMER</button>
+                                              </form>
+                                              <a href="/article/<?php echo escape($article->getId());?>?edit" class="edit">MODIFIER</a>
+                                          </div>
+                                        <?php
+                                      }
+                                    ?>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <?php
+                    }
+                }
+                
+            }
+        ?>
+        <div class="changeCarousel">
+            <div class="arrowPrevcarousel">
+            <a class="prev" onclick="plusCarousels(-1)"><i class="fas fa-chevron-left"></i></a>
+          </div>
+          <div class="arrowNextcarousel">
+            <a class="next" onclick="plusCarousels(1)"><i class="fas fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
 </div>
 
-<div>
-  
-
-</div>
+    <!-- carousel -->
 </section>
 
-  
   <script>
     var slideIndex = 1;
     showSlides(slideIndex);
@@ -130,6 +211,29 @@ ob_start();
           slides[i].style.display = "none";  
       }
       slides[slideIndex-1].style.display = "block";
+    }
+
+    var carouselIndex = 1;
+    showCarousels(carouselIndex);
+
+    function plusCarousels(n) {
+      showCarousels(carouselIndex += n);
+    }
+
+    function currentCarousel(n) {
+      showCarousels(carouselIndex = n);
+    }
+
+    function showCarousels(n) {
+      var i;
+      var carousels = document.getElementsByClassName("myCarousels");
+
+      if (n > carousels.length) {carouselIndex = 1}    
+      if (n < 1) {carouselIndex = carousels.length}
+      for (i = 0; i < carousels.length; i++) {
+          carousels[i].style.display = "none";  
+      }
+      carousels[carouselIndex-1].style.display = "block";
     }
   </script>
 <?php

@@ -5,10 +5,13 @@ class HomeController extends Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->manager = $this->manager('ArticleManager');
+
     }
 
     public function index() {
-        $this->require("Home/index.php", "");
+        $articles = $this->manager->limitArticle();
+        $this->require("Home/index.php",  $articles);
     }
 
     public function pageNotFound() {
