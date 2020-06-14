@@ -48,7 +48,7 @@ ob_start();
                     </div>
                     <?php
                 }
-
+            
 
                 elseif ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] != 1) || !isset($_SESSION["user"])){
                     if (escape($article->getEnabled()) != 1){

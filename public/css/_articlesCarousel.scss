@@ -2,7 +2,7 @@
 
 .articlesCarousel {
 
-    div {
+    .carouselTitle {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -27,4 +27,5 @@
             border-right: 3px solid #0e2650;
         }
     }
+
 }

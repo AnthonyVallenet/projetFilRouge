@@ -110,18 +110,51 @@ ob_start();
 </section>
 
 <section class="sectionContent articlesCarousel">
-<div>
-  <h2>Les artciles</h2>
-  <p class="subtitle">Présenter par les élèves</p>
+  <div class="carouselTitle">
+    <h2>Les artciles</h2>
+    <p class="subtitle">Présenter par les élèves</p>
+  </div>
+    <!-- carousel -->
+    <div class="container">
+      <div class="carousel">
+        <div class="nav nav-left">
+          <div class="ion-chevron-left carousel-arrow-icon-left"></div>
+        </div>
+
+        <div class="carousel-content">
+          
+          <div class="slide slide-1">
+            <div>cat</div>
+          </div>
+          <div class="slide slide-2">
+            <div>dog</div>
+          </div>
+          <div class="slide slide-3">
+            <div>mouse</div>
+          </div>
+          <div class="slide slide-4">
+            <div>hen</div>
+          </div>
+          <div class="slide slide-5">
+            <div>bug</div>
+          </div>
+        
+        </div>
+
+        <div class="nav nav-right">
+          <div class="ion-chevron-right carousel-arrow-icon-right"></div>
+        </div>
+
+      </div>
+    </div>
+</div>
 </div>
 
-<div>
-  
-
-</div>
+    <!-- carousel -->
 </section>
 
-  
+
+  <script src="/js/carousel.js"></script>
   <script>
     var slideIndex = 1;
     showSlides(slideIndex);
