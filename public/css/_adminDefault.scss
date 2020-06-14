@@ -37,6 +37,9 @@ section.sectionAdmin {
                 width: 100px;
                 height: auto;
                 border-bottom: 2px solid $darkBlueColor;
+                @media screen and (max-width: 550px) {
+                    width: 25px;
+                }
             }
 
             &:last-child {

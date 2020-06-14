@@ -37,11 +37,11 @@ ob_start();
       </div>
 
       <div class="contact-icon">
-        <a><i class="fab fa-facebook-square facebook"></i></a>
+        <a href="https://www.facebook.com/edenschool.fr" target="blank"><i class="fab fa-facebook-square facebook"></i></a>
 
-        <a><i class="fab fa-twitter-square twitter"></i></a>
+        <a href="https://twitter.com/edenschool_FR" target="blank"><i class="fab fa-twitter-square twitter"></i></a>
 
-        <a><i class="fab fa-linkedin linkedin"></i></a>
+        <a href="https://www.linkedin.com/company/eden-school-france/" target="blank"><i class="fab fa-linkedin linkedin"></i></a>
       </div>
     </div>
   </div>
