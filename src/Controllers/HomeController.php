@@ -10,7 +10,7 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $articles = $this->manager->allArticle();
+        $articles = $this->manager->limitArticle();
         $this->require("Home/index.php",  $articles);
     }
 

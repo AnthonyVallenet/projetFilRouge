@@ -50,6 +50,11 @@ class ArticleManager extends Manager {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
     }
 
+    public function limitArticle() {
+        $stmt = $this->bdd->query('SELECT * FROM articles LIMIT 3');
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
+    }
+
     public function getArticleBy($slug) {
         $stmt = $this->bdd->prepare('SELECT * FROM articles WHERE id = ?');
         $stmt->execute(array(
