@@ -69,10 +69,9 @@ class TagManager extends Manager {
         ));
     }
 
-    public function deleteArticleTag($tagId, $idArticle) {
-        $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE tag_id = ? AND article_id = ?");
+    public function deleteArticleTag($idArticle) {
+        $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE article_id = ?");
         $stmt->execute(array(
-            $tagId,
             $idArticle,
         ));
     }
