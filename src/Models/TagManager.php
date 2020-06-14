@@ -7,14 +7,15 @@ class TagManager extends Manager {
 
     function __construct()
     {
+        // récupère les infos du manager générale
         parent::__construct();
     }
-
+// permet de récupérer la bdd dans l'appelle des autres fonctions
     public function getBdd()
     {
         return $this->bdd;
     }
-
+// enregistre un tag en bdd
     public function store() {
         $stmt = $this->bdd->prepare("INSERT INTO tag(name, color) VALUES (?, ?)");
         
@@ -23,13 +24,13 @@ class TagManager extends Manager {
             $_POST["color"],
         ));
     }
-
+// récupère tout les tags
     public function allTag() {
         $stmt = $this->bdd->query('SELECT * FROM tag');
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Tag");
     }
-
+// affili un tag a un article
     public function articleTag($tagId, $idArticle) {        
         $stmt = $this->bdd->prepare("INSERT INTO article_tag(tag_id, article_id) VALUES (?, ?)");
         
@@ -38,7 +39,7 @@ class TagManager extends Manager {
             $idArticle,
         ));
     }
-
+// récupere le tag d'un article
     public function getTagArticle($slug) {
         $stmt = $this->bdd->prepare("SELECT t.* FROM tag t INNER JOIN article_tag at ON at.tag_id = t.id WHERE at.article_id = ?;");
         
@@ -49,7 +50,7 @@ class TagManager extends Manager {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Tag");
     }
 
-
+// récupère un tag en fonction de on ID
     public function findById($value) {
         $stmt = $this->bdd->prepare("SELECT * FROM tag WHERE id = ?");
         $stmt->execute(array(
@@ -59,7 +60,7 @@ class TagManager extends Manager {
 
         return $stmt->fetch();
     }
-
+// met a jours un tag en fonction de son ID
     public function update($slug) {
         $stmt = $this->bdd->prepare("UPDATE tag SET name = ?, color = ? WHERE id = ?");
         $stmt->execute(array(
@@ -68,14 +69,14 @@ class TagManager extends Manager {
             $slug
         ));
     }
-
+// Délie un tag de son article
     public function deleteArticleTag($idArticle) {
         $stmt = $this->bdd->prepare("DELETE FROM article_tag WHERE article_id = ?");
         $stmt->execute(array(
             $idArticle,
         ));
     }
-
+// supprime de la bdd
     public function delete($slug) {
         $stmt = $this->bdd->prepare("DELETE FROM tag WHERE id = ?");
         $stmt->execute(array(

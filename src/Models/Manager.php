@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+// manager general qui defini la bdd
 class Manager
 {
     protected $bdd;

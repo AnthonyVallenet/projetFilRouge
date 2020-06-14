@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+// Défini ce qu'est un tag
 class Tag {
 
     private $id;
