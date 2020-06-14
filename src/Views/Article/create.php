@@ -16,7 +16,7 @@ old("enabled") == "on" ?: $enabled = "";
   <section class="article">
 
     <form action="/article/create" enctype="multipart/form-data" method="post">
-
+<!-- bloc qui contient "mettre en pause" et les tags -->
     <div class="enableAndTag">
       <div class="input enabled">
         <input type="checkbox" id="enabled" name="enabled" <?php echo $enabled; ?>>
@@ -37,8 +37,9 @@ old("enabled") == "on" ?: $enabled = "";
         
       </div>
     </div>
+<!-- bloc qui contient "mettre en pause" et les tags -->
 
-
+<!-- bloc qui contient le titre et la date -->
     <div class="titreDate">
       <div class="block">
         <div class="titre input">
@@ -54,11 +55,11 @@ old("enabled") == "on" ?: $enabled = "";
           <input type="date" name="date" id="date" value="<?php echo old("date");?>">
         </div>
         <?php echo error("date") ? '<span class="error" style="margin-top: 10px"><i class="fas fa-exclamation-circle"></i>'. error("date") .'</span>' : ""?>
-    </div>
-
       </div>
+    </div>
+<!-- bloc qui contient le titre et la date -->
 
-
+<!-- bloc qui contient l'image et la description -->
       <div class="imgDescription">
         <div class="container">
           <div  class="result" >
@@ -76,6 +77,9 @@ old("enabled") == "on" ?: $enabled = "";
           <?php echo error("content") ? '<span class="error" style="margin-top: 10px"><i class="fas fa-exclamation-circle"></i>'. error("content") .'</span>' : ""?>
         </div>
       </div>
+<!-- bloc qui contient l'image et la description -->
+
+<!-- bloc qui contient l'autorisation des commentaires -->
       <div class="commentSend">
         <label for="comment"><span>Autoriser les commentaires</span>
           <input type="checkbox" id="comment" name="comment" <?php echo $comment; ?>>
@@ -83,27 +87,10 @@ old("enabled") == "on" ?: $enabled = "";
 
         <button class="button" type="submit">Envoyer</button>
       </div>
-<!-- 
-        <label for="imgArticle">Img :</label>
-        <input type="file" id="imgArticle" name="imgArticle" accept="image/png, image/jpeg"/>
-        <span class="error" style="margin-top: 10px"><?php echo error("imgArticle");?></span>
+<!-- bloc qui contient l'autorisation des commentaires -->
 
-        <br>
-
-        <select name="tags[]" id="tags" multiple>
-            <?php 
-            foreach ($info as $tag) {
-                ?>
-                <option value="<?php echo escape($tag->getIdTag()); ?>"><?php echo escape($tag->getName()); ?></option>
-                <?php
-            }
-            ?>
-        </select> -->
-
-
-      </div>
-    </form>
-  </section>
+  </form>
+</section>
 </div>
 <script src="/js/hover_image.js" charset="utf-8"></script>
 <script src="/js/show_tag.js" charset="utf-8"></script>

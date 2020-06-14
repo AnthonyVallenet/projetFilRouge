@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-
+<!-- slider de haut de page -->
 <header class="carousel">
 
   <div class="mySlides fade">
@@ -38,7 +38,9 @@ ob_start();
     <a class="next" onclick="plusSlides(1)"><i class="fas fa-chevron-right"></i></a>
   </div>
 </header>
+<!-- slider de haut de page -->
 
+<!-- infos projets -->
 <section class="infoProject sectionContent">
   <div>
     <h2>Quel est ce projet ?</h2>
@@ -50,7 +52,9 @@ ob_start();
     <p>Suite au récents événements liés aux Covid 19, la création de l'éolienne a été abandonnée et les différents groupes se sont focalisés sur la production de leur site.</p>
   </div>
 </section>
+<!-- infos projets -->
 
+<!-- team -->
 <section class="team sectionContent">
   <div>
     <h2>L'équipe du projet</h2>
@@ -90,7 +94,9 @@ ob_start();
     
   </div>
 </section>
+<!-- team -->
 
+<!-- Carousel de bas de page -->
 <section class="sectionContent articlesCarousel">
   <div class="carouselTitle">
     <h2>Les articles</h2>
@@ -180,10 +186,10 @@ ob_start();
           </div>
         </div>
       </div>
-</div>
-
+    </div>
     <!-- carousel -->
 </section>
+<!-- Carousel de bas de page -->
 
   <script>
     var slideIndex = 1;

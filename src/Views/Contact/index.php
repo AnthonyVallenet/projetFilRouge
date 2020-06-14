@@ -11,6 +11,7 @@ ob_start();
 </div>
 
 <section class="sectionContact">
+  <!-- informations -->
   <div class="first">
     <h2 class="second-titre titre2">Informations</h2>
     <div class="contact-info">
@@ -45,7 +46,8 @@ ob_start();
       </div>
     </div>
   </div>
-
+  <!-- informations -->
+<!-- formulaire -->
   <div>
     <h2 class="second-titre titre2">Contact</h2>
     <form action="/contact/" method="post">
@@ -91,6 +93,7 @@ ob_start();
       </div>
     </form>
   </div>
+  <!-- formulaire -->
 </section>
 
 <?php

@@ -9,13 +9,15 @@ ob_start();
 </div>
 <section class="sectionSearch sectionPage">
     <form action="/article/search" method="post">
+    <!-- barre de recherche -->
         <div>
             <input type="text" name="search" id="search" value="<?php echo old("name") ?: escape($info["search"]);?>" placeholder="Search">
             <button><i class="fas fa-search"></i></button>
         </div>
         <span class="error"><?php echo error("search");?></span>
     </form>
-
+    <!-- barre de recherche -->
+<!-- affiche les resultats de la recherche -->
     <div>
         <div>
             <h2><?php echo count($info["articles"])?> <?php echo count($info["articles"]) <= 1 ? "résultat" : "résultats";?> de recherche pour :</h2>
@@ -118,6 +120,7 @@ ob_start();
             }
         ?>
     </div>
+<!-- affiche les resultats de la recherche -->
 </section>
 
 <?php
