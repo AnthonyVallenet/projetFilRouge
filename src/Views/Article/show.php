@@ -120,20 +120,26 @@ if (old("enabledEditArticle")) {
                 <!-- input pour ecrire le commentaire -->
                 <div class="sendComment">
                     <?php 
-                        if ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) || (isset($_SESSION["user"]) && $info["article"]->getComment() == 1)) {
+                        if (escape($info["article"]->getComment()) == 1) {
                             ?>
-                                <form action="/article/<?php echo escape($info["article"]->getId()); ?>/send" method="post">
-                                    <div>
-                                        <input type="text" id="commentInput" name="commentInput" value="<?php echo old("commentInput");?>" class="input" placeholder="Commentaire">
-                                        <?php echo error("commentInput") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentInput") .'</span>' : ""?>
-                                    </div>
-                                    <button type="submit" class="button">Commenter</button>
-                                </form>
+                                <p><strong>Les commentaires sont désactivés !</strong></p>
                             <?php
                         } else {
-                            ?>
-                                <p><a href="/login">Connectez-vous</a> pour mettre des commentaires !</p>
-                            <?php
+                            if ((isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) || (isset($_SESSION["user"]) && $info["article"]->getComment() == 1)) {
+                                ?>
+                                    <form action="/article/<?php echo escape($info["article"]->getId()); ?>/send" method="post">
+                                        <div>
+                                            <input type="text" id="commentInput" name="commentInput" value="<?php echo old("commentInput");?>" class="input" placeholder="Commentaire">
+                                            <?php echo error("commentInput") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentInput") .'</span>' : ""?>
+                                        </div>
+                                        <button type="submit" class="button">Commenter</button>
+                                    </form>
+                                <?php
+                            } else {
+                                ?>
+                                    <p><a href="/login">Connectez-vous</a> pour mettre des commentaires !</p>
+                                <?php
+                            }
                         }
                     ?>
                 </div>
@@ -202,7 +208,6 @@ if (old("enabledEditArticle")) {
                                     </div>
                                 </div>
 
-
                                 <!--  image et description -->
                             
                                 <div class="imgDescription">
@@ -217,7 +222,7 @@ if (old("enabledEditArticle")) {
 
                                     <div class="description">
                                         <label for="contentEditArticle"></label>
-                                        <textarea class="input" name="contentEditArticle" id="contentEditArticle" cols="30" rows="10"><?php echo old("contentEditArticle") ?: escape($info["article"]->getContent()); ?></textarea>
+                                        <textarea class="input" name="contentEditArticle" id="contentEditArticle" cols="30" rows="10" placeholder="Contenu"><?php echo old("contentEditArticle") ?: escape($info["article"]->getContent()); ?></textarea>
                                         <?php echo error("contentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("contentEditArticle") .'</span>' : ""?>
                                     </div>
                                 </div>

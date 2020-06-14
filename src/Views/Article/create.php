@@ -72,7 +72,7 @@ old("enabled") == "on" ?: $enabled = "";
 
         <div class="description">
           <label for="content"></label>
-          <textarea name="content" class="input" id="content" cols="30" rows="10" placeholder="content"><?php echo old("content");?></textarea>
+          <textarea name="content" class="input" id="content" cols="30" rows="10" placeholder="Contenu"><?php echo old("content");?></textarea>
           <?php echo error("content") ? '<span class="error" style="margin-top: 10px"><i class="fas fa-exclamation-circle"></i>'. error("content") .'</span>' : ""?>
         </div>
       </div>

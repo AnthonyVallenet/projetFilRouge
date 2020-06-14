@@ -10,7 +10,7 @@ ob_start();
 <section class="allArticles sectionPage">
     <form action="/article/search" method="post">
         <div>
-            <input type="text" name="search" id="search" value="<?php echo old("name");?>" placeholder="Search">
+            <input type="text" name="search" id="search" value="<?php echo old("name");?>" placeholder="Rechercher">
             <button><i class="fas fa-search"></i></button>
         </div>
         <span class="error"><?php echo error("search");?></span>

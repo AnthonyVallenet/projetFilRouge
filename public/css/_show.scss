@@ -157,6 +157,7 @@
                         position: relative;
                         display: flex;
                         flex-direction: column;
+                        width: 100%;
 
                         &>input {
                             padding: 5px;
@@ -269,12 +270,21 @@
 
 @media screen and (max-width: 768px) {
     .comments{
+
+        .commentContent {
+            form {
+                padding: 0;
+            }
+        }
         
         .sendComment{
-
+            form {
+                padding: 0;
+            }
     
             &>form {
                 button{
+                    margin-top: 10px;
                     padding: 8px 20px;
                 }
             }
