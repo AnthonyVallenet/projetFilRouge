@@ -5,29 +5,29 @@ ob_start();
 <header class="carousel">
 
   <div class="mySlides fade">
-    <div class="slide1" style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+    <div class="slide1" style="background-image: url('/image/img_code.jpg');">
     </div>
     <div class="textSlide">
-      <h1 class="title">Projet Fil Rouge</h1>
-      <p class="subtitle">Sous titre 1</p>
+      <h1 class="title">Un site pour une éolienne</h1>
+      <p class="subtitle">Codé par des élèves!</p>
     </div>
   </div>
 
   <div class="mySlides fade">
-    <div class="slide2" style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+    <div class="slide2" style="background-image: url('/image/eolienne_cassee.jpg');">
     </div>
     <div class="textSlide">
-      <h1 class="title">Projet Fil Rouge</h1>
-      <p class="subtitle">Sous titre 2</p>
+      <h1 class="title">Au final pas d'éolienne...</h1>
+      <p class="subtitle">A cause du covid!</p>
     </div>
   </div>
 
   <div class="mySlides fade ">
-    <div class="slide3" style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+    <div class="slide3" style="background-image: url('/image/examen.jpg');">
     </div>
     <div class="textSlide">
-      <h1 class="title">Projet Fil Rouge</h1>
-      <p class="subtitle">Sous titre 3</p>
+      <h1 class="title">L'examen approche !</h1>
+      <p class="subtitle">Qui va l'avoir ?</p>
     </div>
   </div>
   
@@ -45,7 +45,13 @@ ob_start();
     <p class="subtitle">Projet éolienne</p>
   </div>
   <div>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    <p>Le projet fil rouge est un projet réalisé tout au long de l'année par les élèves de EDEN School pour promouvoir par le suite la construction d'une petite éolienne capable de recharger un téléphone portable</p>
+    </br>
+    <p>Suite au récents événements liés aux Covid 19, la création de l'éolienne a été abandonné et les différents groupes se sont focalisés sur la production de leur site qui comporte désormais
+    une section article</p>
+    </br>
+
+    <p>Retrouvez sur le site du groupe 1 (le meilleur groupe (#^u^#)) les meilleurs articles d'éolienne qui ne nous appartiennent même pas</p>
   </div>
 </section>
 
@@ -58,50 +64,30 @@ ob_start();
 
     <div class="blocPeople">
       <div class="people">
-        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        <div style="background-image: url('/image/team/anthony.jpeg');">
         </div>
         <div>
-          <p>Test 1</p>
+          <p>Anthony Vallenet</p>
         </div>
       </div>
     </div>
 
     <div class="blocPeople">
       <div class="people">
-        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        <div style="background-image: url('/image/team/faustin.jpeg');">
         </div>
         <div>
-          <p>Test 2</p>
+          <p>Faustin Garreau</p>
         </div>
       </div>
     </div>
 
     <div class="blocPeople">
       <div class="people">
-        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
+        <div style="background-image: url('/image/team/guerlain.jpeg');">
         </div>
         <div>
-          <p>Test 3</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="blocPeople">
-      <div class="people">
-        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
-        </div>
-        <div>
-          <p>Test 4</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="blocPeople">
-      <div class="people">
-        <div style="background-image: url('https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg');">
-        </div>
-        <div>
-          <p>Test 5</p>
+          <p>Guerlain Petitmaire</p>
         </div>
       </div>
     </div>
