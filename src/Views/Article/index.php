@@ -34,7 +34,7 @@ ob_start();
                     if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1){
                         ?>
                         <div>
-                            <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>')">
+                            <div class="cardArticle" style="background-image: url('/img/article/<?php echo escape($article->getId());?>'); <?php echo escape($article->getEnabled()) != 1 ? "" : "border: 2px solid red"?>">
                                 <div class="infos">
                                     <div>
                                         <a href="/article/<?php echo escape($article->getId());?>"><h2 class="title"><?php echo escape($article->getTitle()); ?> <i class="fas fa-eye fade"></i></h2></a>
@@ -90,7 +90,6 @@ ob_start();
                             <?php
                         }
                     }
-                    
                 }
             ?>
         </div>

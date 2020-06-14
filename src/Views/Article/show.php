@@ -215,7 +215,6 @@ if (old("enabledEditArticle")) {
                                         <?php echo error("imgEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("imgEditArticle") .'</span>' : ""?>
                                     </div>
 
-
                                     <div class="description">
                                         <label for="contentEditArticle"></label>
                                         <textarea class="input" name="contentEditArticle" id="contentEditArticle" cols="30" rows="10"><?php echo old("contentEditArticle") ?: escape($info["article"]->getContent()); ?></textarea>
@@ -231,14 +230,16 @@ if (old("enabledEditArticle")) {
                                     <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
                                     <div>
                                         <button class="button edit" type="submit">Modifier</button>
-                                        <form action="/administration/article/delete/<?php echo escape($info["article"]->getId()); ?>" method="post">
-                                            <button type="submit" name="button" class="button delete">SUPPRIMER</button>
-                                        </form>
                                     </div>
                                 </div>
 
 
                                 <?php echo error("messageEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("messageEditArticle") .'</span>' : ""?>
+                            </form>
+                            <form action="/administration/article/delete/<?php echo escape($info["article"]->getId()); ?>" method="post">
+                                <div>
+                                    <button type="submit" name="button" class="button delete">SUPPRIMER</button>
+                                </div>
                             </form>
                         </div>
                     </section>
