@@ -7,15 +7,16 @@ class AuthManager extends Manager {
 
     function __construct()
     {
+        // récupère les infos du manager générale
         parent::__construct();
         $this->class = "App\Models\Auth";
     }
-
+// permet de récupérer la bdd dans l'appelle des autres fonctions
     public function getBdd()
     {
         return $this->bdd;
     }
-
+// récupere l'email d'un user en bdd
     public function find($email) {
         $stmt = $this->bdd->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute(array(
@@ -25,7 +26,7 @@ class AuthManager extends Manager {
 
         return $stmt->fetch();
     }
-
+// récupere un user en fnction de son ID
     public function findById($value) {
         $stmt = $this->bdd->prepare("SELECT * FROM users WHERE id = ?");
         $stmt->execute(array(
@@ -35,7 +36,7 @@ class AuthManager extends Manager {
 
         return $stmt->fetch();
     }
-
+// stock en bdd le user
     public function store($password) {
         $stmt = $this->bdd->prepare("INSERT INTO users(first_name, last_name, email, password) VALUES (?, ?, ?, ?)");
         $stmt->execute(array(
@@ -45,7 +46,7 @@ class AuthManager extends Manager {
             $password
         ));
     }
-
+// stock en bdd le user créé par un admin
     public function storeUser($password, $role) {
         $stmt = $this->bdd->prepare("INSERT INTO users(first_name, last_name, email, password, admin) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute(array(
@@ -56,7 +57,7 @@ class AuthManager extends Manager {
             $role
         ));
     }
-
+// met a jour en bdd le user
     public function update($slug) {
         $stmt = $this->bdd->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ?, admin = ? WHERE id = ?");
         $stmt->execute(array(
@@ -67,13 +68,13 @@ class AuthManager extends Manager {
             $slug
         ));
     }
-
+// récupere tout les user
     public function allUser() {
         $stmt = $this->bdd->query('SELECT * FROM users');
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Auth");
     }
-
+// supprime de la bdd
     public function delete($slug) {
         $stmt = $this->bdd->prepare("DELETE FROM users WHERE id = ?");
         $stmt->execute(array(

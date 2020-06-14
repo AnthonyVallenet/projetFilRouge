@@ -7,15 +7,16 @@ class CommentManager extends Manager {
 
     function __construct()
     {
+        // récupère les infos du manager générale
         parent::__construct();
         $this->class = "App\Models\Auth";
     }
-
+// permet de récupérer la bdd dans l'appelle des autres fonctions
     public function getBdd()
     {
         return $this->bdd;
     }
-
+// récupère tout les commentaire d'un article
     public function allComments($slug)
     {
         $stmt = $this->bdd->prepare("SELECT c.*, u.first_name, u.last_name FROM comment c INNER JOIN articles a ON a.id = c.article_id INNER JOIN users u ON u.id = c.user_id WHERE a.id = ? ORDER BY c.created_at DESC;");
@@ -24,7 +25,7 @@ class CommentManager extends Manager {
         ));
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Comment");
     }
-
+// enregistre en bdd un commentaire sur un article
     public function store($slug) {
         $stmt = $this->bdd->prepare("INSERT INTO comment(article_id, user_id, content) VALUES (?, ?, ?)");
         $stmt->execute(array(
@@ -33,7 +34,7 @@ class CommentManager extends Manager {
             $_POST["commentInput"]
         ));
     }
-
+// met a jours un commentaire en bdd
     public function update($slug, $idComment) {
         $stmt = $this->bdd->prepare("UPDATE comment SET content = ?, editing = ? WHERE id = ?");
         $stmt->execute(array(
@@ -42,7 +43,7 @@ class CommentManager extends Manager {
             $idComment
         ));
     }
-
+// supprime de la bdd
     public function delete($slug, $idComment) {
         $stmt = $this->bdd->prepare("DELETE FROM comment WHERE id = ?");
         $stmt->execute(array(

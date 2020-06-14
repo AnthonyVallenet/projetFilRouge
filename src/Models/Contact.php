@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+// Défini ce qu'est un contact
 class Contact {
 
     private $id;

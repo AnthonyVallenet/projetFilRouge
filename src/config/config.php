@@ -6,4 +6,4 @@ define("VIEWS", '../src/Views/');
 
 define('DATABASE', 'projectwirered');
 define('USER', 'root');
-define('PASSWORD', 'root');
+define('PASSWORD', '');

@@ -1,5 +1,8 @@
+// récupère la fleche
 var arrow = document.getElementById('arrow');
+// récupère les tags
 var tags = document.getElementById('tags');
+// Change le  style de la fleche et des tags pour avoir une animation
 function rotate() {
     if (arrow.className === 'fas fa-arrow-down rotate') {
         arrow.className = 'fas fa-arrow-down rotate_down';

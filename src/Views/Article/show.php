@@ -147,11 +147,12 @@ if (old("enabledEditArticle")) {
             
         </section>
     </div>
-
+    <!-- show -->
+    <!-- edit -->
     <?php 
         if (isset($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
             ?>
-                <!-- edit -->
+                
                 <div class="toggleDivEdit" style="display: none">
 
                     <section class="article">
@@ -159,7 +160,6 @@ if (old("enabledEditArticle")) {
                             <button class="btnToggleEdit button">Afficher</button>
                         </div>
 
-                        <!-- edit -->
                         <div class="">
                             <form action="/administration/article/edit/<?php echo escape($info["article"]->getId()); ?>" enctype="multipart/form-data" method="post">
                             <!-- Pause et tag -->
@@ -252,7 +252,7 @@ if (old("enabledEditArticle")) {
             <?php
         }
     ?>
-
+    <!-- edit -->
 </div>
 
 <?php 

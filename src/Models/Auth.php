@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-
+// Défini l'authentification
 class Auth {
 
     private $id;

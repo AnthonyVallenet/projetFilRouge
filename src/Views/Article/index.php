@@ -8,6 +8,7 @@ ob_start();
     </div>
 </div>
 <section class="allArticles sectionPage">
+    <!-- barre de recherche -->
     <form action="/article/search" method="post">
         <div>
             <input type="text" name="search" id="search" value="<?php echo old("name");?>" placeholder="Rechercher">
@@ -17,6 +18,7 @@ ob_start();
     </form>
 
     <div>
+<!-- tout les tags pour rechercher par tags -->
         <div>
             <div>
                 <?php
@@ -28,6 +30,9 @@ ob_start();
                 ?>
             </div>
         </div>
+<!-- tout les tags pour rechercher par tags -->
+
+<!-- tout les articles -->
         <div>
             <?php
                 foreach ($info["articles"] as $article) {
@@ -93,6 +98,7 @@ ob_start();
                 }
             ?>
         </div>
+<!-- tout les articles -->
     </div>
 </section>
 
