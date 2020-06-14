@@ -16,7 +16,8 @@ class ArticleController extends Controller {
 
     public function index() {
         $articles = $this->manager->allArticle();
-        $this->require("Article/index.php", $articles);
+        $tags = $this->managerTag->allTag();
+        $this->require("Article/index.php", ["articles" => $articles, "tags" => $tags]);
     }
 
     public function create() {
@@ -42,16 +43,17 @@ class ArticleController extends Controller {
         
         $img_type = $_FILES['imgEditArticle']['type'];
         $img_blob = file_get_contents($_FILES['imgEditArticle']['tmp_name']);
-        $enabled = $_POST["enabled"];
-        $comment = $_POST["comment"];
+        $enabled = $_POST["enabledEditArticle"];
+        $comment = $_POST["commentEditArticle"];
 
         if (!$this->validator->errors()) {
-            if ($_POST["enabledEditArticle"] == NULL) {
+            unset($_SESSION['old']);
+            if ($_POST["enabledEditArticle"] != "on") {
                 $enabled = 0;
             } else {
                 $enabled = 1;
             }
-            if ($_POST["commentEditArticle"] == NULL) {
+            if ($_POST["commentEditArticle"] != "on") {
                 $comment = 0;
             } else {
                 $comment = 1;
@@ -81,6 +83,10 @@ class ArticleController extends Controller {
         $tagsArticle = $this->managerTag->getTagArticle($slug);
         $allTags = $this->managerTag->allTag();
         $allComments = $this->managerComments->allComments($slug);
+
+        if ($article->getEnabled() == "1" && $_SESSION["user"]["admin"] != 1) {
+            $this->redirect("articles");
+        }
 
         $this->require("Article/show.php", ["article" => $article, "tagsArticle" => $tagsArticle, "allTags" => $allTags, "allComments" => $allComments]);
     }
@@ -146,6 +152,12 @@ class ArticleController extends Controller {
         }
 
         $this->require("Article/search.php", ["articles" => $articles, "search" => $_POST["search"]]);
+    }
+
+    public function searchByTag($slug) {
+        $articles = $this->manager->searchByTag($slug);
+        
+        $this->require("Article/search.php", ["articles" => $articles, "search" => $slug]);
     }
 
     public function delete($slug) {

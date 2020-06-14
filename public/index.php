@@ -25,10 +25,12 @@ $router->get('/administration', "AdminController@index");
 
 $router->get('/articles', "ArticleController@index");
 $router->get('/article/create', "ArticleController@create");
-$router->get('/article/search', "ArticleController@search");
+$router->get('/article/searchTag/:tag', "ArticleController@searchByTag");
 $router->get('/article/:id', "ArticleController@show");
 
-$router->get('/article/:id/send', "CommentController@index");
+$router->post('/article/:id/send', "CommentController@store");
+$router->post('/article/:id/edit/:idComment', "CommentController@update");
+$router->post('/article/:id/delete/:idComment', "CommentController@delete");
 
 
 

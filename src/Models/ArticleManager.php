@@ -79,6 +79,15 @@ class ArticleManager extends Manager {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
     }
 
+    public function searchByTag($slug) {
+        $stmt = $this->bdd->prepare('SELECT a.* FROM article_tag ac INNER JOIN articles a ON a.id = ac.article_id INNER JOIN tag t ON t.id = ac.tag_id WHERE t.name = ?');
+        $stmt->execute(array(
+            $slug
+        ));
+        
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "App\Models\Article");
+    }
+
     public function delete($slug) {
         $stmt = $this->bdd->prepare("DELETE FROM articles WHERE id = ?");
         $stmt->execute(array(
