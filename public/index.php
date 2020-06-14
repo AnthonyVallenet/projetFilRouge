@@ -1,5 +1,5 @@
 <?php
-
+// router: appelle des fonction différents des controller différentes en fonction de l'url
 session_start();
 
 require '../src/config/config.php';
@@ -9,7 +9,8 @@ require SRC . 'database.php';
 
 $router = new App\Router($_SERVER["REQUEST_URI"]);
 $router->get('/', "HomeController@index");
-
+// exemple: si l'url est "/register" on va chercher la fonction "showRegister"
+// pour afficher la page qui est dans le controller "AuthController"
 $router->get('/register', "AuthController@showRegister");
 $router->get('/login', "AuthController@showLogin");
 $router->get('/logout', "AuthController@logout");
