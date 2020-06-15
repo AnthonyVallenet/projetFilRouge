@@ -89,7 +89,7 @@ ob_start();
       </div>
 
       <div>
-        <button class="button send-button" type="submit" name="button">Submit</button>
+        <button class="button send-button" type="submit" name="button">Envoyer</button>
       </div>
     </form>
   </div>

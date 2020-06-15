@@ -52,7 +52,7 @@ class ArticleController extends Controller {
         $this->validator->validate([
             "title" => ["required", "min:3", "max:20"],
             "date" => ["required", "date"],
-            "content" => ["all", "min:3"]
+            "content" => ["all"]
         ]);
         $_SESSION['old'] = $_POST;
 
@@ -104,7 +104,7 @@ class ArticleController extends Controller {
         $this->validator->validate([
             "titleEditArticle" => ["required", "min:3", "max:20"],
             "dateEditArticle" => ["required", "date"],
-            "contentEditArticle" => ["all", "min:3"]
+            "contentEditArticle" => ["all"]
         ]);
         $_SESSION['old'] = $_POST;
         
