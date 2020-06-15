@@ -13,7 +13,7 @@
     <body onload="checkCookie()">
         <nav id="nav" class="close">
             <div>
-                <a href="/"><i class="icon far fa-newspaper"></i></a>
+                <a href="/"><img src="/image/eodenLogo.png" alt="Logo EODEN"></a>
 
                 <div id="burger">
                     <div class="bar1"></div>
