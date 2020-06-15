@@ -229,7 +229,7 @@ if (old("enabledEditArticle")) {
 
                                 <!-- activer les commentaires et sumbit -->
                                 <div class="commentSend">
-                                    <label for="commentEditArticle"><span>Autoriser les commentaires</span>
+                                    <label for="commentEditArticle"><span>Désactiver les commentaires</span>
                                     <input type="checkbox" id="commentEditArticle" name="commentEditArticle" <?php echo $comment; ?>>
                                     </label>
                                     <?php echo error("commentEditArticle") ? '<span class="error"><i class="fas fa-exclamation-circle"></i>'. error("commentEditArticle") .'</span>' : ""?>
